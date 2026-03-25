@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100dvh-10rem)]">
-        <div className="p-10 pb-0 font-bold lg:text-7xl border-r border-slate-100 lg:pt-40 text-6xl flex items-end">
+        <div className="p-10 pb-0 font-bold lg:text-7xl border-r border-slate-100 lg:pt-40 text-5xl flex items-end">
           <TextAnimate animation="blurIn" as="h1">
             THINK SOMETIMES.
           </TextAnimate>
@@ -72,7 +72,7 @@ export default function Home() {
           
           <div className="lg:basis-2/8 w-full border-r border-slate-100 divide-y order-2 lg:order-1">
 
-            <div className="p-10 gap-2 flex flex-col">
+            <div className="p-10 gap-2 flex flex-col border-t lg:border-t-0">
               <h1 className="font-bold text-xl">Background & Problem.</h1>
               <p className="text-md text-slate-600">The school relied on Excel for employee data and manual attendance tracking, with no integration to external systems like BPJS or health insurance services.</p>
             </div>
@@ -123,7 +123,7 @@ export default function Home() {
               <p className="text-md text-slate-600">I used Filament to build this project, the reason is client need the project to best really fast so they can use it asap</p>
             </div>
 
-            <div className="grid lg:grid-cols-4 grid-cols-2 divide-x">
+            <div className="grid lg:grid-cols-4 grid-cols-1 divide-x divide-y lg:divide-y-0">
 
               <div className="p-10 gap-2 flex flex-col">
                 <h1 className="font-bold text-xl">Tailwind CSS</h1>
@@ -158,7 +158,7 @@ export default function Home() {
           
           <div className="lg:basis-2/8 w-full border-l border-slate-100 divide-y order-2">
 
-            <div className="p-10 gap-2 flex flex-col">
+            <div className="p-10 gap-2 flex flex-col border-t lg:border-t-0">
               <h1 className="font-bold text-xl">Background & Problem.</h1>
               <p className="text-md text-slate-600">The client didn’t have any online presence and needed a quick-to-launch solution to showcase their products and services to potential buyers.</p>
             </div>
@@ -209,7 +209,7 @@ export default function Home() {
               <p className="text-md text-slate-600">I use Laravel, MySQL, and Tailwind CSS to build this project, the reason is client need the project to best really fast so they can use it asap</p>
             </div>
 
-            <div className="grid lg:grid-cols-4 grid-cols-2 divide-x">
+            <div className="grid lg:grid-cols-4 grid-cols-1 divide-x divide-y lg:divide-y-0">
 
               <div className="p-10 gap-2 flex flex-col">
                 <h1 className="font-bold text-xl">Tailwind CSS</h1>
@@ -231,8 +231,6 @@ export default function Home() {
                 <h1 className="font-bold text-xl">Laravel</h1>
                 <p className="text-md text-slate-600">A robust PHP framework for building web applications with expressive syntax and powerful features.</p>
               </div>
-
-
             </div>
 
           </div>
