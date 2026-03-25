@@ -13,6 +13,7 @@
   --color-border: var(--color-slate-100);
   --pattern-foreground: var(--color-border);
   --border-style: dashed;
+
   --font-heading: var(--font-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);

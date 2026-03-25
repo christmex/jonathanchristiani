@@ -26,10 +26,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
       <body className="w-full bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-border)]/56">
-        <main className="bg-white max-w-7xl mx-auto border-x border-slate-100 min-h-dvh">
+        <main className="bg-white max-w-7xl mx-auto border-x border-slate-100">
           <Header />
           {children}
         </main>

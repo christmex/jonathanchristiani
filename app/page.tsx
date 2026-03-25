@@ -1,38 +1,258 @@
+import { TextAnimate } from "@/components/ui/text-animate";
 import Image from "next/image";
-import {
-  AnimatedSpan,
-  Terminal,
-  TypingAnimation,
-} from "@/components/ui/terminal"
+import { ExternalLink, ReceiptText } from "lucide-react";
 
 export default function Home() {
   return (
     <>
-      <section className="grid grid-cols-1 lg:grid-cols-2">
-        <div className="p-10 font-bold lg:text-7xl border-r border-slate-100 lg:pt-40 text-6xl">
-          THINK <br /> SOMETIMES.
+      <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100dvh-10rem)]">
+        <div className="p-10 pb-0 font-bold lg:text-7xl border-r border-slate-100 lg:pt-40 text-6xl flex items-end">
+          <TextAnimate animation="blurIn" as="h1">
+            THINK SOMETIMES.
+          </TextAnimate>
         </div>
-        <div className="">
-          <Terminal>
-  <TypingAnimation>pnpm dlx shadcn@latest init</TypingAnimation>
-  <AnimatedSpan>✔ Preflight checks.</AnimatedSpan>
-  <AnimatedSpan>✔ Validating Tailwind CSS.</AnimatedSpan>
-  <TypingAnimation>Success! Project initialization completed.</TypingAnimation>
-</Terminal>
+        <div className="relative">
+          <div className="size-10 bg-black absolute bottom-0 left-0"></div>
         </div>
 
-        <div className="p-10 border border-slate-100 border-l-0">
-          <Image src="/images/filsafat-hero.png" alt="Filsafat Hero" width={500} height={500} className="grayscale hover:grayscale-0 ease-in-out transition-all w-full h-auto" />
+        <div className="p-10 border border-slate-100 border-l-0 relative">
+          <div className="size-10 bg-black absolute top-0 right-0"></div>
+          <Image src="/images/filsafat-hero.png" alt="Filsafat Hero" width={500} height={500} className="w-full h-auto" />
           <p className="text-xl mt-4">I'm Jonathan from Indonesia <br />—a <span className="font-bold">Software Engineer</span>, <br className="lg:hidden" />and a <span className="font-bold">truth seeker</span>.</p>
         </div>
         <div className="p-10 flex items-center gap-4 border border-slate-100 border-l-0 border-r-0">
-          <div className="w-[160px]">
+          <div className="w-[160px] h-full">
             <Image src="/images/socrates-hero.png" alt="Socrates Hero" width={500} height={500} className="grayscale hover:grayscale-0 ease-in-out transition-all w-full h-auto" />
           </div>
           <p className="text-xl mt-4">I know that I know nothing. <br />-Socrates</p>
         </div>
       </section>
-      <p className="p-10 w-full text-center italic">There's nothing else here. Choose your next journey from the navigation above.</p>
+      <p className="p-10 w-full text-center italic">There's nothing else here. Choose your next journey.</p>
+
+      <section className="border-t border-slate-100 scroll-m-12" id="blog">
+        <div className="p-10 font-bold lg:text-7xl border-r border-slate-100 text-6xl">
+          <TextAnimate animation="blurIn" as="h1">
+            BLOG.
+          </TextAnimate>
+        </div>
+
+        <Image src="/images/blog-hero.png" loading="eager" alt="Blog Hero" width={500} height={100} className="w-full h-[200px] object-cover" />
+
+        <div className="grid lg:grid-cols-4 mt-10">
+          <div className="p-10 border border-slate-100 border-l-0">
+            <h1 className="font-bold text-2xl">WHY.</h1>
+            <span className="text-md text-slate-400">I Debug Reality</span>
+            <Image src="/images/blog-why-hero.png" alt="Blog Hero" width={500} height={100} className="grayscale hover:grayscale-0 ease-in-out transition-all w-full h-[350px] mt-6 object-cover" />
+          </div>
+          <div className="p-10 border border-slate-100 border-l-0">
+            <h1 className="font-bold text-2xl">LIFE'S.</h1>
+            <span className="text-md text-slate-400">An Infinite Loop</span>
+            <Image src="/images/blog-life-hero.png" alt="Blog Hero" width={500} height={100} className="grayscale hover:grayscale-0 ease-in-out transition-all w-full h-[350px] mt-6 object-cover" />
+          </div>
+          <div className="p-10 border border-slate-100 border-l-0">
+            <h1 className="font-bold text-2xl">IMPORTANT.</h1>
+            <span className="text-md text-slate-400">For Myself</span>
+            <Image src="/images/blog-important-hero.png" alt="Blog Hero" width={500} height={100} className="grayscale hover:grayscale-0 ease-in-out transition-all w-full h-[350px] mt-6 object-cover" />
+          </div>
+          <div className="p-10 border border-slate-100 border-x-0">
+            
+          </div>
+        </div>
+      </section>
+
+      <p className="p-10 w-full text-center italic bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-border)]/56">Empty on purposes.</p>
+
+      <section className="border-t border-slate-100 scroll-m-12" id="projects">
+        <div className="p-10 font-bold lg:text-7xl text-6xl">
+          <TextAnimate animation="blurIn" as="h1">
+            SELECTED PROJECTS.
+          </TextAnimate>
+        </div>
+        <div className="flex border-y lg:flex-row flex-col">
+          
+          <div className="lg:basis-2/8 w-full border-r border-slate-100 divide-y order-2 lg:order-1">
+
+            <div className="p-10 gap-2 flex flex-col">
+              <h1 className="font-bold text-xl">Background & Problem.</h1>
+              <p className="text-md text-slate-600">The school relied on Excel for employee data and manual attendance tracking, with no integration to external systems like BPJS or health insurance services.</p>
+            </div>
+            
+            <div className="p-10 gap-2 flex flex-col">
+              <h1 className="font-bold text-xl">My Role.</h1>
+              <p className="text-md text-slate-600">Project Manager, UI/UX Designer, Fullstack Developer. I led the end-to-end development process, including planning, database design, backend logic, UI implementation, and quality assurance.</p>
+            </div>
+            
+            <div className="p-10 gap-2 flex flex-col">
+              <h1 className="font-bold text-xl">Impact.</h1>
+              <p className="text-md text-slate-600">Centralized employee data and streamlined payroll processing, significantly reducing manual errors. The system enabled integration with external services like BPJS, boosting overall HR efficiency and accuracy.</p>
+            </div>
+            
+            <div className="p-10 gap-2 flex flex-col">
+              <h1 className="font-bold text-xl">What I Learned.</h1>
+              <p className="text-md text-slate-600">This project helped me understand how to integrate biometric devices (fingerprint) with a Laravel system and deal with external API integrations, which improved my system design and problem-solving skills.</p>
+            </div>
+
+          </div>
+
+          <div className="lg:basis-6/8 w-full order-1 lg:order-2">
+
+            <div className="p-10 gap-2 flex flex-col border-b">
+              <h1 className="font-bold text-xl">Project Overview - Employee & Attendance System</h1>
+              <p className="text-md text-slate-600">An internal web system for BASIC Christian School to centralize employee records and automate attendance, reducing manual processes in HR and payroll.</p>
+            </div>
+
+            <div className="bg-slate-100 h-[500px] relative">
+
+              <Image src="/images/employee-attendance.png" alt="Employee Attendance" fill className="object-cover" />
+
+              <div className="absolute bottom-0 right-0 bg-black flex text-white divide-x cursor-pointer">
+                <span className="px-4 py-2 flex gap-2 text-sm">
+                  <ReceiptText className="size-4" />
+                  Read Details
+                </span>
+                <span className="px-4 py-2 flex gap-2 text-sm">
+                  <ExternalLink className="size-4" />
+                  Visit Live
+                </span>
+              </div>
+
+            </div>
+
+            <div className="p-10 gap-2 flex flex-col border-b">
+              <h1 className="font-bold text-xl">Stacks</h1>
+              <p className="text-md text-slate-600">I used Filament to build this project, the reason is client need the project to best really fast so they can use it asap</p>
+            </div>
+
+            <div className="grid lg:grid-cols-4 grid-cols-2 divide-x">
+
+              <div className="p-10 gap-2 flex flex-col">
+                <h1 className="font-bold text-xl">Tailwind CSS</h1>
+                <p className="text-md text-slate-600">Utility-first CSS framework for rapidly building custom user interfaces.</p>
+              </div>
+
+              <div className="p-10 gap-2 flex flex-col">
+                <h1 className="font-bold text-xl">Alpine Js</h1>
+                <p className="text-md text-slate-600">A rugged, minimal framework for composing behavior directly in your markup.</p>
+              </div>
+
+
+              <div className="p-10 gap-2 flex flex-col">
+                <h1 className="font-bold text-xl">Livewire</h1>
+                <p className="text-md text-slate-600">A full-stack framework for Laravel that makes building dynamic interfaces simple, fast, and enjoyable.</p>
+              </div>
+
+              <div className="p-10 gap-2 flex flex-col">
+                <h1 className="font-bold text-xl">Laravel</h1>
+                <p className="text-md text-slate-600">A robust PHP framework for building web applications with expressive syntax and powerful features.</p>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+
+        <p className="p-10 w-full text-center italic bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-border)]/56">Give some space.</p>
+
+        <div className="flex border-y lg:flex-row flex-col">
+          
+          <div className="lg:basis-2/8 w-full border-l border-slate-100 divide-y order-2">
+
+            <div className="p-10 gap-2 flex flex-col">
+              <h1 className="font-bold text-xl">Background & Problem.</h1>
+              <p className="text-md text-slate-600">The client didn’t have any online presence and needed a quick-to-launch solution to showcase their products and services to potential buyers.</p>
+            </div>
+            
+            <div className="p-10 gap-2 flex flex-col">
+              <h1 className="font-bold text-xl">My Role.</h1>
+              <p className="text-md text-slate-600">Project Manager, UI/UX Designer, Fullstack Developer. I managed client communication, translated business needs into wireframes, ensured the design aligned with brand identity and goals, and coordinated with the WordPress developer to ensure smooth implementation.</p>
+            </div>
+            
+            <div className="p-10 gap-2 flex flex-col">
+              <h1 className="font-bold text-xl">Impact.</h1>
+              <p className="text-md text-slate-600">Helped the client reach new customers online, increase trust, and drive sales by creating a visually appealing and SEO-optimized website.</p>
+            </div>
+            
+            <div className="p-10 gap-2 flex flex-col">
+              <h1 className="font-bold text-xl">What I Learned.</h1>
+              <p className="text-md text-slate-600">I gained insight into search engine optimization (SEO) for small business websites and how to manage both design expectations and deadlines as a project lead.</p>
+            </div>
+
+          </div>
+
+          <div className="lg:basis-6/8 w-full order-1">
+
+            <div className="p-10 gap-2 flex flex-col border-b">
+              <h1 className="font-bold text-xl">Project Overview - Elegant Gorden Website</h1>
+              <p className="text-md text-slate-600">A simple, elegant website for a curtain store in Surabaya, designed for fast publishing and easy content management.</p>
+            </div>
+
+            <div className="bg-slate-100 h-[500px] relative">
+
+              <Image src="/images/elegant-gorden.png" alt="Elegant Gorden" fill className="object-cover" />
+
+              <div className="absolute bottom-0 right-0 bg-black flex text-white divide-x cursor-pointer">
+                <span className="px-4 py-2 flex gap-2 text-sm">
+                  <ReceiptText className="size-4" />
+                  Read Details
+                </span>
+                <span className="px-4 py-2 flex gap-2 text-sm">
+                  <ExternalLink className="size-4" />
+                  Visit Live
+                </span>
+              </div>
+
+            </div>
+
+            <div className="p-10 gap-2 flex flex-col border-b">
+              <h1 className="font-bold text-xl">Stacks</h1>
+              <p className="text-md text-slate-600">I use Laravel, MySQL, and Tailwind CSS to build this project, the reason is client need the project to best really fast so they can use it asap</p>
+            </div>
+
+            <div className="grid lg:grid-cols-4 grid-cols-2 divide-x">
+
+              <div className="p-10 gap-2 flex flex-col">
+                <h1 className="font-bold text-xl">Tailwind CSS</h1>
+                <p className="text-md text-slate-600">Utility-first CSS framework for rapidly building custom user interfaces.</p>
+              </div>
+
+              <div className="p-10 gap-2 flex flex-col">
+                <h1 className="font-bold text-xl">Alpine Js</h1>
+                <p className="text-md text-slate-600">A rugged, minimal framework for composing behavior directly in your markup.</p>
+              </div>
+
+
+              <div className="p-10 gap-2 flex flex-col">
+                <h1 className="font-bold text-xl">Livewire</h1>
+                <p className="text-md text-slate-600">A full-stack framework for Laravel that makes building dynamic interfaces simple, fast, and enjoyable.</p>
+              </div>
+
+              <div className="p-10 gap-2 flex flex-col">
+                <h1 className="font-bold text-xl">Laravel</h1>
+                <p className="text-md text-slate-600">A robust PHP framework for building web applications with expressive syntax and powerful features.</p>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <p className="p-10 w-full text-center italic bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-border)]/56">Last breath.</p>
+
+      <section className="border-t">
+        <div className="p-10 gap-2 flex flex-col">
+          <h1 className="font-bold text-xl">My Motivation and Approach.</h1>
+          <p className="text-md text-slate-600">I’m passionate about using tech to solve real world problems, especially in underrepresented areas like education and small businesses. What sets me apart is my ability to combine hard skills like Laravel, Livewire, TailwindCSS, Linux, Git, and Web Security with soft skills like critical thinking, curiosity, and a strong sense of ownership. I don’t just build things, I ask why it matters, and I iterate with purpose. Whether I’m managing a team or coding solo, I strive for clarity, quality, and positive impact. I’m excited about the opportunity to join your company because I’m eager to grow not just technically, but also in how I think, collaborate, and create value.</p>
+        </div>
+      </section>
+
+      <section className="border-b pt-50">
+          <h1 className="font-bold text-[15vw] leading-none text-center uppercase tracking-tighter text-gray-100">
+            THANK YOU
+          </h1>
+      </section>
     </>
   );
 }
