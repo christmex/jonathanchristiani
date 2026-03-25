@@ -1,4 +1,9 @@
 import Image from "next/image";
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/components/ui/terminal"
 
 export default function Home() {
   return (
@@ -7,7 +12,14 @@ export default function Home() {
         <div className="p-10 font-bold lg:text-7xl border-r border-slate-100 lg:pt-40 text-6xl">
           THINK <br /> SOMETIMES.
         </div>
-        <div className=""></div>
+        <div className="">
+          <Terminal>
+  <TypingAnimation>pnpm dlx shadcn@latest init</TypingAnimation>
+  <AnimatedSpan>✔ Preflight checks.</AnimatedSpan>
+  <AnimatedSpan>✔ Validating Tailwind CSS.</AnimatedSpan>
+  <TypingAnimation>Success! Project initialization completed.</TypingAnimation>
+</Terminal>
+        </div>
 
         <div className="p-10 border border-slate-100 border-l-0">
           <Image src="/images/filsafat-hero.png" alt="Filsafat Hero" width={500} height={500} className="grayscale hover:grayscale-0 ease-in-out transition-all w-full h-auto" />
