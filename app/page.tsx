@@ -94,33 +94,33 @@ export default function Homepage() {
 
   const services = [
     {
-      num: "01 / Ship",
+      num: "01 / Ship Fast",
       title: "Full-stack product builds",
       desc: "From zero to production. Product thinking, UI, database, API, deploy. Ideal for founders who need one accountable operator, not a five-person agency retainer.",
-      chips: ["Laravel", "Next.js", "Filament", "Postgres"],
+      chips: ["Next.js", "Supabase", "Vercel"],
     },
     {
-      num: "02 / Integrate",
-      title: "Enterprise integrations & ACL",
-      desc: "Anti-corruption layers, NetSuite and third-party API integration, queue architecture with Horizon, observability via Telescope and Pulse.",
-      chips: ["Saloon", "Horizon", "Spatie", "NetSuite"],
+      num: "02 / AI Integrations",
+      title: "Enterprise integrations",
+      desc: "MCP integration, workflow automation, and AI-assisted development.",
+      chips: ["Cowork", "MCP Integration", "Workflow Automation"],
     },
     {
-      num: "03 / Rescue",
-      title: "Audit, debug, harden",
+      num: "03 / Consultation",
+      title: "Audit, debug, optimize",
       desc: "Production fires, reconciliation mismatches, legacy refactors. Structured freeze–snapshot–audit–fix. You get a diagnosis, a fix, and a write-up.",
-      chips: ["Pandas", "Laravel", "Python", "Pest"],
+      chips: ["Code Review", "White-box Testing", "Optimization"],
     },
   ];
 
   const processSteps = [
     { num: "STEP 01", title: "Scope", desc: "A 30-minute call to map the real problem, not the surface one. You leave with a fixed scope, timeline, and price." },
-    { num: "STEP 02", title: "Design", desc: "Wireframes, data models, and the decisions that matter before a single line of production code. Reviewed, signed off, locked." },
-    { num: "STEP 03", title: "Build", desc: "Weekly demos on staging. Pest tests, typed APIs, observable infrastructure. Progress, not a black box." },
-    { num: "STEP 04", title: "Ship & Support", desc: "Deployed, documented, handed off. 30-day warranty, plus an optional retainer for the projects that keep evolving." },
+    { num: "STEP 02", title: "MVP", desc: "I'll build a working MVP in 1-2 days using AI. You see real progress in hours. No black box, no fluff." },
+    { num: "STEP 03", title: "Polish", desc: "I'll polish the MVP to production-ready quality. You get a working product that's ready to ship." },
+    { num: "STEP 04", title: "Ship & Support", desc: "Deployed, documented, handed off. 3 months warranty, plus an optional retainer for the projects that keep evolving." },
   ];
 
-  const tickerItems = ["Laravel", "Next.js", "Filament v5", "Sanity CMS", "Tailwind", "TypeScript", "PostgreSQL", "AI-Assisted Dev", "NetSuite", "Vercel"];
+  const tickerItems = ["Laravel", "Next.js", "Filament", "Sanity CMS", "Tailwind", "TypeScript", "PostgreSQL", "AI-Assisted Dev", "Livewire", "Vercel", "AlpineJs", "Mysql"];
 
   return (
     <PageShell
@@ -818,14 +818,13 @@ function MCPBeamsSection({ onHover, onLeave }: { onHover: () => void; onLeave: (
 }
 
 const PROJECT_TYPES = [
-  { value: "ship",      label: "Ship",      sub: "new product build" },
-  { value: "integrate", label: "Integrate", sub: "API / ACL / enterprise" },
-  { value: "rescue",    label: "Rescue",    sub: "audit / debug / harden" },
-  { value: "other",     label: "Other",     sub: "something else" },
+  { value: "fullstack", label: "Fullstack Product Builds", sub: "end-to-end product" },
+  { value: "enterprise", label: "Enterprise Integration",  sub: "API / ACL / systems" },
+  { value: "consult",   label: "Consultation",             sub: "advice / audit / direction" },
 ] as const;
 
 function ContactForm({ onHover, onLeave }: { onHover: () => void; onLeave: () => void }) {
-  const [form, setForm] = useState({ name: "", whatsapp: "", projectType: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", projectType: "", message: "" });
   const [sent, setSent] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
@@ -869,16 +868,16 @@ function ContactForm({ onHover, onLeave }: { onHover: () => void; onLeave: () =>
           />
         </div>
         <div className="form-field">
-          <label htmlFor="cf-whatsapp">WhatsApp</label>
+          <label htmlFor="cf-email">Email</label>
           <input
-            id="cf-whatsapp"
-            name="whatsapp"
-            type="tel"
+            id="cf-email"
+            name="email"
+            type="email"
             required
-            autoComplete="tel"
-            placeholder="+62 812 0000 0000"
-            value={form.whatsapp}
-            onChange={update("whatsapp")}
+            autoComplete="email"
+            placeholder="you@example.com"
+            value={form.email}
+            onChange={update("email")}
             disabled={sent}
           />
         </div>
@@ -1795,7 +1794,7 @@ const css = `
   /* === TYPE PICKER (custom radio chips) === */
   .type-picker {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin-top: 6px;
   }
@@ -2191,7 +2190,7 @@ const css = `
     .cta-inner { grid-template-columns: 1fr; gap: 50px; }
     .contact-form { padding: 22px; }
     .form-row { grid-template-columns: 1fr; }
-    .type-picker { grid-template-columns: repeat(2, 1fr); }
+    .type-picker { grid-template-columns: repeat(3, 1fr); }
     .mcp-section { padding: 70px 0 60px; }
     .mcp-container { grid-template-columns: 1fr; gap: 28px; }
     .mcp-stage-desktop { display: none; }

@@ -30,37 +30,37 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "sekolah-basic",
-    year: "2024",
+    year: "2021 - Present",
     title: "Sekolah Kristen BASIC",
-    role: "K-12 Platform · Solo full-stack",
-    desc: "Complete school management system — enrollment, grade promotion, billing, bank reconciliation. A two-phase algorithm for academic year transitions handles edge cases around idempotency.",
-    tags: ["Laravel", "Filament", "Python / Pandas", "Pest"],
+    role: "School Enterprise System · Solo full-stack",
+    desc: "Complete school management system — enrollment, grade promotion, billing, library, and more. A two-phase algorithm for academic year transitions handles edge cases around idempotency.",
+    tags: ["Laravel", "Filament", "Mysql", "Pest"],
     variant: "v1",
     status: "production",
     image: "/images/employee-attendance.png",
     links: [{ label: "Case study", href: "/work/sekolah-basic" }],
     caseStudy: {
       overview:
-        "A full operating system for a K-12 school: enrollment, grade promotion across academic years, tuition billing, and bank reconciliation — built so non-technical staff can run it without a developer in the loop.",
+        "A full operating system for school management system: enrollment, grade promotion across academic years, tuition billing, and library, and more — built so non-technical staff can run it without a developer in the loop.",
       background:
         "The school was patching together spreadsheets, paper forms, and a legacy admin panel. Academic year transitions were a week of manual copy-paste that regularly broke reconciliation and duplicated student records.",
       myRole:
-        "Solo full-stack. Product scope, data modeling, UI, API, Python reconciliation scripts, Pest test suite, deployment, and training the admin staff.",
+        "Solo full-stack. Product scope, data modeling, UI, API, Pest test suite, deployment, and training the admin staff.",
       impact:
-        "Grade promotion collapsed from a week-long ritual to a one-click, idempotent, auditable operation. Bank reconciliation runs nightly; mismatches are flagged instead of silently accumulating.",
+        "Grade promotion collapsed from a week-long ritual to a one-click, idempotent, auditable operation. Auto calculate student billings from the bank csv cut a day of work to only 1 minute.",
       learned:
         "Idempotency in domain workflows matters more than clever abstractions. A two-phase commit around academic year transitions paid for itself the first time the process was interrupted mid-run.",
-      stack: ["Laravel", "Filament", "PostgreSQL", "Python / Pandas", "Pest"],
+      stack: ["Laravel", "Filament", "Mysql", "Pest"],
     },
   },
   {
     slug: "nihonnomise",
-    year: "2024",
+    year: "2026 - Present",
     title: "Nihonnomise.id",
     role: "Anime Festival Platform · Solo full-stack",
     desc: "Zero to production in weeks. Event registration, gallery management, sponsor showcase, admin dashboard. Built so a non-technical team can run the whole thing independently.",
     tags: ["Next.js", "Laravel", "Filament", "Vercel"],
-    variant: "v2",
+    variant: "v1",
     status: "production",
     image: "/images/projects/nihonnomise.id.png",
     links: [
@@ -83,12 +83,12 @@ export const projects: Project[] = [
   },
   {
     slug: "elegant-gorden",
-    year: "2023",
+    year: "2023 - Present",
     title: "Elegant Gorden",
     role: "Curtain Store Website · PM & Full-stack",
     desc: "Marketing site for a Surabaya curtain store. SEO-first build with a lightweight CMS so the team can publish new product photos and updates without touching code.",
-    tags: ["Next.js", "SEO", "PM", "UX"],
-    variant: "v3",
+    tags: ["Next.js", "SEO", "Vercel", "Supabase"],
+    variant: "v2",
     status: "ongoing",
     image: "/images/projects/elegantgorden.com.png",
     links: [
@@ -107,7 +107,7 @@ export const projects: Project[] = [
         "Helped the client reach new customers online, increase trust, and drive sales through a visually clean, SEO-optimized website.",
       learned:
         "Small-business SEO is mostly information architecture, not magic. Managing design expectations and deadlines as project lead is half the job.",
-      stack: ["Next.js", "Tailwind", "Vercel", "Figma"],
+      stack: ["Next.js", "SEO", "Vercel", "Supabase"],
     },
   },
   {
@@ -116,8 +116,8 @@ export const projects: Project[] = [
     title: "Lancar Logistic",
     role: "Freight Forwarding Site · PM & Design",
     desc: "Managed the project end-to-end: client communication, wireframes, brand alignment, and handoff. SEO-first build for a B2B audience.",
-    tags: ["PM", "UX", "SEO"],
-    variant: "v4",
+    tags: ["PM", "Fullstack Engineer", "SEO"],
+    variant: "v1",
     status: "archived",
     links: [{ label: "Case study", href: "/work/lancar-logistic" }],
     caseStudy: {
@@ -129,7 +129,7 @@ export const projects: Project[] = [
         "Project manager and designer. Client intake, wireframes, brand alignment, and developer handoff.",
       impact:
         "Shipped on time with a clean SEO foundation. Sales now point prospects to the site during outreach instead of attaching PDFs.",
-      stack: ["PM", "UX", "SEO", "WordPress"],
+      stack: ["PM", "Fullstack Engineer", "SEO"],
     },
   },
 ];

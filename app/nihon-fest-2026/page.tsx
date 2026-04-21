@@ -685,7 +685,7 @@ export default function NihonFest2026Page() {
               <h2 className="final-h">
                 Latih <em>First Principle</em>,
                 <br />
-                <em>System</em>, dan <em>Critical Thinking</em>
+                <em>System Thinking</em>, dan <em>Critical Thinking</em>
                 <br />
                 sedini mungkin.
               </h2>
