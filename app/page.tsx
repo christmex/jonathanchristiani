@@ -11,6 +11,7 @@ import {
   type Variants,
   type MotionValue,
 } from "motion/react";
+import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
 import { projects, STATUS_LABEL, type Project } from "@/lib/projects";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
@@ -211,7 +212,7 @@ export default function Homepage() {
                 onMouseLeave={() => setCursorHovering(false)}
               >
                 See Selected Work
-                <motion.span className="arrow" whileHover={{ x: 4, y: -4 }}>↗</motion.span>
+                <motion.span className="arrow" whileHover={{ x: 4, y: -4 }}><ArrowUpRight size={16} strokeWidth={1.75} /></motion.span>
               </motion.a>
               <motion.a
                 href="#contact"
@@ -222,7 +223,7 @@ export default function Homepage() {
                 onMouseLeave={() => setCursorHovering(false)}
               >
                 Start a Project
-                <span className="arrow">→</span>
+                <span className="arrow"><ArrowRight size={16} strokeWidth={1.75} /></span>
               </motion.a>
             </motion.div>
           </motion.div>
@@ -341,7 +342,7 @@ export default function Homepage() {
               onMouseEnter={() => setCursorHovering(true)}
               onMouseLeave={() => setCursorHovering(false)}
             >
-              See All Work <span className="arrow">→</span>
+              See All Work <span className="arrow"><ArrowRight size={16} strokeWidth={1.75} /></span>
             </motion.a>
           </div>
         </div>
@@ -424,7 +425,7 @@ export default function Homepage() {
                     onMouseLeave={() => setCursorHovering(false)}
                   >
                     <span className="cta-channel-label">{c.label}</span>
-                    <span className="cta-channel-value">{c.value} ↗</span>
+                    <span className="cta-channel-value">{c.value} <ArrowUpRight size={14} strokeWidth={1.75} /></span>
                   </motion.a>
                 ))}
               </div>
@@ -438,7 +439,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      <SiteFooter backHref="#" backLabel="↑ BACK TO TOP" />
+      <SiteFooter backHref="#" backLabel="BACK TO TOP" />
     </PageShell>
   );
 }
@@ -565,7 +566,7 @@ function ProjectRow({
               onMouseLeave={onLeave}
             >
               <span>{l.label}</span>
-              <span className="arrow">{l.external ? "↗" : "→"}</span>
+              <span className="arrow">{l.external ? <ArrowUpRight size={14} strokeWidth={1.75} /> : <ArrowRight size={14} strokeWidth={1.75} />}</span>
             </a>
           ))}
         </div>
@@ -848,7 +849,7 @@ function ContactForm({ onHover, onLeave }: { onHover: () => void; onLeave: () =>
       onMouseLeave={onLeave}
     >
       <div className="form-header">
-        <span className="form-kicker">→ Send a message</span>
+        <span className="form-kicker inline-icon"><ArrowRight size={14} strokeWidth={1.75} /> Send a message</span>
         <span className="form-note">I reply within 24h</span>
       </div>
 
@@ -945,7 +946,7 @@ function ContactForm({ onHover, onLeave }: { onHover: () => void; onLeave: () =>
           disabled={sent}
         >
           {sent ? "Message queued — I'll be in touch" : "Send Message"}
-          <span className="arrow">{sent ? "✓" : "↗"}</span>
+          <span className="arrow">{sent ? <Check size={16} strokeWidth={2} /> : <ArrowUpRight size={16} strokeWidth={1.75} />}</span>
         </motion.button>
         <span className="form-hint">
           Or email directly — <a href="mailto:christmex@yahoo.com">christmex@yahoo.com</a>

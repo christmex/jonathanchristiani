@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
 import MobileMenu from "./MobileMenu";
 
 const NAV_LINKS = [
@@ -49,11 +50,11 @@ export default function SiteNav({
 
           <Link
             href="/#contact"
-            className="nav-cta"
+            className="nav-cta inline-icon"
             onMouseEnter={() => setCursorHovering(true)}
             onMouseLeave={() => setCursorHovering(false)}
           >
-            Get in Touch →
+            Get in Touch <ArrowRight size={12} strokeWidth={1.75} />
           </Link>
         </div>
       </motion.nav>

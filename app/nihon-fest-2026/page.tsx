@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, type Variants } from "motion/react";
+import { ArrowUpRight, ArrowRight, ArrowLeft, ArrowUp, ArrowDown, Check } from "lucide-react";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 
@@ -89,7 +90,7 @@ export default function NihonFest2026Page() {
         onMouseEnter={() => setCursorHovering(true)}
         onMouseLeave={() => setCursorHovering(false)}
       >
-        ← jonathan christiani
+        <ArrowLeft size={14} strokeWidth={1.75} /> jonathan christiani
       </Link>
 
       {/* Top-right event meta (persistent across all slides) */}
@@ -109,7 +110,7 @@ export default function NihonFest2026Page() {
           onMouseLeave={() => setCursorHovering(false)}
           aria-label="Previous slide"
         >
-          ↑
+          <ArrowUp size={16} strokeWidth={1.75} />
         </button>
         <div className="deck-counter">
           <span className="deck-counter-cur">{String(current).padStart(2, "0")}</span>
@@ -124,7 +125,7 @@ export default function NihonFest2026Page() {
           onMouseLeave={() => setCursorHovering(false)}
           aria-label="Next slide"
         >
-          ↓
+          <ArrowDown size={16} strokeWidth={1.75} />
         </button>
       </div>
 
@@ -184,7 +185,7 @@ export default function NihonFest2026Page() {
                 di Era Digital.
               </motion.h1>
               <motion.p className="cover-sub" variants={fadeUp}>
-                Dari Fullstack Developer <span className="arrow-seq">→</span>{" "}
+                Dari Fullstack Developer <span className="arrow-seq"><ArrowRight size={20} strokeWidth={1.75} /></span>{" "}
                 <strong>AI Native Engineer</strong>
               </motion.p>
               <motion.div className="cover-hint" variants={fadeUp}>
@@ -238,19 +239,19 @@ export default function NihonFest2026Page() {
                 <div className="tl-tool">GitHub Copilot</div>
                 <div className="tl-era">Era autocomplete</div>
               </div>
-              <div className="tl-arrow">→</div>
+              <div className="tl-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
               <div className="tl-step">
                 <div className="tl-year">2023</div>
                 <div className="tl-tool">ChatGPT</div>
                 <div className="tl-era">Era prompting</div>
               </div>
-              <div className="tl-arrow">→</div>
+              <div className="tl-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
               <div className="tl-step">
                 <div className="tl-year">2024–25</div>
                 <div className="tl-tool">Cursor · Claude Code CLI</div>
                 <div className="tl-era">Agentic editor / CLI</div>
               </div>
-              <div className="tl-arrow">→</div>
+              <div className="tl-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
               <div className="tl-step tl-step-now">
                 <div className="tl-year">April 2026</div>
                 <div className="tl-tool">Opus 4.7 + Routines</div>
@@ -271,23 +272,23 @@ export default function NihonFest2026Page() {
               <div className="cc-panel-right">
                 <ul className="cc-list">
                   <li>
-                    <span className="cc-check">✓</span>
+                    <span className="cc-check"><Check size={14} strokeWidth={2} /></span>
                     Baca seluruh codebase sekaligus — bukan cuma snippet
                   </li>
                   <li>
-                    <span className="cc-check">✓</span>
+                    <span className="cc-check"><Check size={14} strokeWidth={2} /></span>
                     Nulis kode, jalanin test, bikin PR otomatis
                   </li>
                   <li>
-                    <span className="cc-check">✓</span>
+                    <span className="cc-check"><Check size={14} strokeWidth={2} /></span>
                     <strong>Routines</strong>: automation terjadwal di cloud — laptop nggak perlu nyala
                   </li>
                   <li>
-                    <span className="cc-check">✓</span>
+                    <span className="cc-check"><Check size={14} strokeWidth={2} /></span>
                     Konteks 1 juta token · Opus 4.7 · +13% coding benchmark vs 4.6
                   </li>
                   <li>
-                    <span className="cc-check">✓</span>
+                    <span className="cc-check"><Check size={14} strokeWidth={2} /></span>
                     <em>Partner kerja</em> — bukan sekadar autocomplete
                   </li>
                 </ul>
@@ -370,7 +371,7 @@ export default function NihonFest2026Page() {
                   <li>Batasan: kecepatan tangan</li>
                 </ul>
               </div>
-              <div className="split-arrow" aria-hidden="true">→</div>
+              <div className="split-arrow" aria-hidden="true"><ArrowRight size={28} strokeWidth={1.5} /></div>
               <div className="split-col split-after">
                 <div className="split-tag">SEKARANG</div>
                 <h3 className="split-title">AI Native Engineer</h3>
@@ -413,7 +414,7 @@ export default function NihonFest2026Page() {
                 >
                   <div className="showcase-idx">
                     {p.idx}
-                    <span className="showcase-ext" aria-hidden="true">↗</span>
+                    <span className="showcase-ext" aria-hidden="true"><ArrowUpRight size={14} strokeWidth={1.75} /></span>
                   </div>
                   <div className="showcase-name">{p.name}</div>
                   <div className="showcase-tag">{p.tag}</div>
@@ -502,7 +503,7 @@ export default function NihonFest2026Page() {
                     dari kebenaran pertamanya, bukan dari analogi.&rdquo;
                   </div>
                 </div>
-                <div className="lineage-arrow">→</div>
+                <div className="lineage-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
                 <div className="lineage-step">
                   <div className="lineage-year">Hari ini</div>
                   <div className="lineage-name">Elon Musk</div>
@@ -553,7 +554,7 @@ export default function NihonFest2026Page() {
                     dari interaksi, bukan dari komponen tunggal.
                   </div>
                 </div>
-                <div className="lineage-arrow">→</div>
+                <div className="lineage-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
                 <div className="lineage-step">
                   <div className="lineage-year">1990</div>
                   <div className="lineage-name">Peter Senge</div>
@@ -562,7 +563,7 @@ export default function NihonFest2026Page() {
                     melihat dirinya sebagai sistem pembelajar.
                   </div>
                 </div>
-                <div className="lineage-arrow">→</div>
+                <div className="lineage-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
                 <div className="lineage-step">
                   <div className="lineage-year">2005</div>
                   <div className="lineage-name">Steve Jobs</div>
@@ -617,7 +618,7 @@ export default function NihonFest2026Page() {
                     Metode socratic: kebenaran tumbuh dari pertanyaan, bukan dari jawaban.
                   </div>
                 </div>
-                <div className="lineage-arrow">→</div>
+                <div className="lineage-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
                 <div className="lineage-step">
                   <div className="lineage-year">1910</div>
                   <div className="lineage-name">John Dewey</div>
@@ -626,7 +627,7 @@ export default function NihonFest2026Page() {
                     dari bukti, dan bukti dari kebiasaan.
                   </div>
                 </div>
-                <div className="lineage-arrow">→</div>
+                <div className="lineage-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
                 <div className="lineage-step">
                   <div className="lineage-year">Hari ini</div>
                   <div className="lineage-name">AI Native Engineer</div>
@@ -710,7 +711,7 @@ export default function NihonFest2026Page() {
                   onMouseEnter={() => setCursorHovering(true)}
                   onMouseLeave={() => setCursorHovering(false)}
                 >
-                  ↑ Kembali ke Slide Pertama
+                  <span className="inline-icon"><ArrowUp size={14} strokeWidth={1.75} /> Kembali ke Slide Pertama</span>
                 </button>
               </div>
 
@@ -798,6 +799,7 @@ const css = `
     letter-spacing: 0.12em; text-transform: uppercase;
     color: var(--ink-dim); text-decoration: none;
     transition: color 0.2s ease;
+    display: inline-flex; align-items: center; gap: 6px;
   }
   .deck-home:hover { color: var(--accent); }
 

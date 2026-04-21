@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { ArrowRight } from "lucide-react";
 
 const links = [
   { label: "Home", href: "/" },
@@ -85,7 +86,7 @@ export default function MobileMenu() {
                         0{i + 1}
                       </span>
                       <span className="mm-lbl">{l.label}</span>
-                      <span className="mm-arr">→</span>
+                      <span className="mm-arr"><ArrowRight size={20} strokeWidth={1.5} /></span>
                     </Link>
                   </motion.li>
                 ))}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import { type Category, type Post, formatPostDate } from "@/lib/posts";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
@@ -37,7 +38,7 @@ export default function CategoryPostsClient({
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link href="/writing">← All categories</Link>
+            <Link href="/writing" className="inline-icon"><ArrowLeft size={12} strokeWidth={1.75} /> All categories</Link>
             <span className="sep">·</span>
             <span className="bc-kicker">{category.kicker}</span>
             <span className="sep">·</span>
@@ -136,7 +137,7 @@ export default function CategoryPostsClient({
                     ))}
                   </div>
                   <span className="post-read">
-                    Read note <span className="arrow">↗</span>
+                    Read note <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span>
                   </span>
                 </div>
               </Link>
@@ -152,7 +153,7 @@ export default function CategoryPostsClient({
         </div>
       </section>
 
-      <SiteFooter backHref="/writing" backLabel="↑ ALL CATEGORIES" />
+      <SiteFooter backHref="/writing" backLabel="ALL CATEGORIES" />
     </PageShell>
   );
 }

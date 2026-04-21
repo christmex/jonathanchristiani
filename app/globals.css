@@ -181,6 +181,12 @@ footer {
 .btn-ghost  { color: var(--ink); border-color: var(--line); }
 .btn-ghost:hover { border-color: var(--ink); color: var(--accent-2); }
 
+/* ─── Icons (lucide) ─────────────────────────────────────────────────────── */
+svg { vertical-align: middle; }
+.inline-icon { display: inline-flex; align-items: center; gap: 6px; }
+.arrow { display: inline-flex; align-items: center; transition: transform 0.25s ease; }
+.btn:hover .arrow { transform: translate(3px, -3px); }
+
 /* ─── Shared chip / tag ──────────────────────────────────────────────────── */
 .chip {
   font-family: var(--mono); font-size: 10px;

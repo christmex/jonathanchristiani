@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import { STATUS_LABEL, type Project, type ProjectStatus } from "@/lib/projects";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
@@ -52,7 +53,7 @@ export default function WorkListClient({ projects }: { projects: Project[] }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link href="/">← Back Home</Link>
+            <Link href="/" className="inline-icon"><ArrowLeft size={12} strokeWidth={1.75} /> Back Home</Link>
             <span className="sep">·</span>
             <span>§ — Index</span>
           </motion.div>
@@ -129,7 +130,7 @@ export default function WorkListClient({ projects }: { projects: Project[] }) {
                         className="list-link"
                       >
                         <span>{l.label}</span>
-                        <span className="arrow">{l.external ? "↗" : "→"}</span>
+                        <span className="arrow">{l.external ? <ArrowUpRight size={14} strokeWidth={1.75} /> : <ArrowRight size={14} strokeWidth={1.75} />}</span>
                       </a>
                     ))}
                   </div>
@@ -159,7 +160,7 @@ export default function WorkListClient({ projects }: { projects: Project[] }) {
         </div>
       </section>
 
-      <SiteFooter backHref="/" backLabel="↑ BACK HOME" />
+      <SiteFooter backHref="/" backLabel="BACK HOME" />
     </PageShell>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, type Variants } from "motion/react";
+import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import type { Project } from "@/lib/projects";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
@@ -43,7 +44,7 @@ export default function CaseStudyClient({ project }: { project: Project }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link href="/work">← Back to Work</Link>
+            <Link href="/work" className="inline-icon"><ArrowLeft size={12} strokeWidth={1.75} /> Back to Work</Link>
             <span className="sep">·</span>
             <span>{project.year}</span>
           </motion.div>
@@ -107,7 +108,7 @@ export default function CaseStudyClient({ project }: { project: Project }) {
                       onMouseEnter={() => setCursorHovering(true)}
                       onMouseLeave={() => setCursorHovering(false)}
                     >
-                      {l.label} ↗
+                      {l.label} <ArrowUpRight size={12} strokeWidth={1.75} />
                     </a>
                   ))}
                 {project.links.filter((l) => l.external).length === 0 && (
@@ -183,7 +184,7 @@ export default function CaseStudyClient({ project }: { project: Project }) {
                 onMouseEnter={() => setCursorHovering(true)}
                 onMouseLeave={() => setCursorHovering(false)}
               >
-                Start a Project <span className="arrow">↗</span>
+                Start a Project <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span>
               </Link>
               <Link
                 href="/work"
@@ -191,14 +192,14 @@ export default function CaseStudyClient({ project }: { project: Project }) {
                 onMouseEnter={() => setCursorHovering(true)}
                 onMouseLeave={() => setCursorHovering(false)}
               >
-                See Other Work <span className="arrow">→</span>
+                See Other Work <span className="arrow"><ArrowRight size={14} strokeWidth={1.75} /></span>
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <SiteFooter backHref="/work" backLabel="↑ BACK TO WORK" />
+      <SiteFooter backHref="/work" backLabel="BACK TO WORK" />
     </PageShell>
   );
 }

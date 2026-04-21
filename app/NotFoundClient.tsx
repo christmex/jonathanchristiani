@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
+import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 import SiteNav from "@/app/components/SiteNav";
@@ -96,7 +97,7 @@ export default function NotFoundClient() {
               onMouseEnter={() => setCursorHovering(true)}
               onMouseLeave={() => setCursorHovering(false)}
             >
-              ← Back Home
+              <ArrowLeft size={14} strokeWidth={1.75} /> Back Home
             </Link>
             <Link
               href="/writing"
@@ -104,7 +105,7 @@ export default function NotFoundClient() {
               onMouseEnter={() => setCursorHovering(true)}
               onMouseLeave={() => setCursorHovering(false)}
             >
-              Read Notes <span className="arrow">↗</span>
+              Read Notes <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span>
             </Link>
             <Link
               href="/#contact"
@@ -112,7 +113,7 @@ export default function NotFoundClient() {
               onMouseEnter={() => setCursorHovering(true)}
               onMouseLeave={() => setCursorHovering(false)}
             >
-              Report a Bug <span className="arrow">↗</span>
+              Report a Bug <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span>
             </Link>
           </motion.div>
         </div>

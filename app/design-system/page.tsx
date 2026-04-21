@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 import SiteNav from "@/app/components/SiteNav";
@@ -129,8 +130,8 @@ export default function DesignSystemPage() {
           onMouseEnter={() => setCursorHovering(true)}
           onMouseLeave={() => setCursorHovering(false)}
         >
-          <button className="btn btn-primary">Primary <span className="arrow">↗</span></button>
-          <button className="btn btn-ghost">Ghost <span className="arrow">→</span></button>
+          <button className="btn btn-primary">Primary <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span></button>
+          <button className="btn btn-ghost">Ghost <span className="arrow"><ArrowRight size={14} strokeWidth={1.75} /></span></button>
           <button className="btn btn-ghost" disabled style={{ opacity: 0.35 }}>Disabled</button>
         </div>
 
@@ -145,7 +146,7 @@ export default function DesignSystemPage() {
         {/* Nav */}
         <DSSubhead>Nav CTA</DSSubhead>
         <div className="comp-row">
-          <span className="nav-cta" style={{ cursor: "default" }}>Get in Touch →</span>
+          <span className="nav-cta inline-icon" style={{ cursor: "default" }}>Get in Touch <ArrowRight size={12} strokeWidth={1.75} /></span>
         </div>
 
         {/* Status badges */}
@@ -228,7 +229,7 @@ export default function DesignSystemPage() {
         </div>
       </DSSection>
 
-      <SiteFooter backHref="/" backLabel="↑ BACK HOME" />
+      <SiteFooter backHref="/" backLabel="BACK HOME" />
     </PageShell>
   );
 }

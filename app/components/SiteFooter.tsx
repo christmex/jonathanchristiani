@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 
 /**
  * Sitewide footer.
@@ -6,7 +7,7 @@ import Link from "next/link";
  */
 export default function SiteFooter({
   backHref = "/",
-  backLabel = "↑ BACK HOME",
+  backLabel = "BACK HOME",
 }: {
   backHref?: string;
   backLabel?: string;
@@ -19,7 +20,10 @@ export default function SiteFooter({
           <span>BATAM · INDONESIA · GMT+7</span>
           <span>
             I KNOW THAT I KNOW NOTHING ·{" "}
-            <Link href={backHref}>{backLabel}</Link>
+            <Link href={backHref} className="inline-icon">
+              <ArrowUp size={12} strokeWidth={2} />
+              {backLabel}
+            </Link>
           </span>
         </div>
       </div>

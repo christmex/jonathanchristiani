@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import { type Post, type Category, formatPostDate } from "@/lib/posts";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
@@ -37,7 +38,7 @@ export default function PostClient({
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link href="/writing">← All categories</Link>
+            <Link href="/writing" className="inline-icon"><ArrowLeft size={12} strokeWidth={1.75} /> All categories</Link>
             <span className="sep">·</span>
             <Link href={`/writing/${category.id}`} className="bc-cat">{category.kicker}</Link>
             <span className="sep">·</span>
@@ -122,7 +123,7 @@ export default function PostClient({
             <div className="related-head">
               <span className="related-kicker">§ — More in {category.kicker}</span>
               <Link href={`/writing/${category.id}`} className="related-all">
-                All in {category.title} <span className="arrow">↗</span>
+                All in {category.title} <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span>
               </Link>
             </div>
             <div className="related-grid">
@@ -153,7 +154,7 @@ export default function PostClient({
                       <span className="related-chip">{category.kicker}</span>
                       <h3 className="related-title">{p.title}</h3>
                       <p className="related-desc">{p.desc}</p>
-                      <span className="related-read">Read note <span className="arrow">↗</span></span>
+                      <span className="related-read">Read note <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span></span>
                     </div>
                   </Link>
                 </motion.div>
@@ -165,7 +166,7 @@ export default function PostClient({
 
       <SiteFooter
         backHref={`/writing/${category.id}`}
-        backLabel={`↑ BACK TO ${category.kicker}`}
+        backLabel={`BACK TO ${category.kicker}`}
       />
     </PageShell>
   );

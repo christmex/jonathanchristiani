@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import { type Category, countByCategory } from "@/lib/posts";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
@@ -35,7 +36,7 @@ export default function WritingCategoriesClient({
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link href="/">← Back Home</Link>
+            <Link href="/" className="inline-icon"><ArrowLeft size={12} strokeWidth={1.75} /> Back Home</Link>
             <span className="sep">·</span>
             <span>§ — Writing</span>
             <span className="sep">·</span>
@@ -106,7 +107,7 @@ export default function WritingCategoriesClient({
                         ))}
                       </div>
                       <span className="cat-read">
-                        Enter category <span className="arrow">↗</span>
+                        Enter category <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span>
                       </span>
                     </div>
                   </Link>
