@@ -1,29 +1,26 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, type ReactNode, type CSSProperties, type FormEvent, type ChangeEvent } from "react";
 import Image from "next/image";
 import {
   motion,
   useScroll,
   useTransform,
-  useSpring,
   useMotionValue,
   useAnimationFrame,
   type Variants,
   type MotionValue,
 } from "motion/react";
 import { projects, STATUS_LABEL, type Project } from "@/lib/projects";
-import MobileMenu from "@/app/components/MobileMenu";
+import { useCursor } from "@/app/hooks/useCursor";
+import PageShell from "@/app/components/PageShell";
+import SiteNav from "@/app/components/SiteNav";
+import SiteFooter from "@/app/components/SiteFooter";
 
 export default function Homepage() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const workRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLElement>(null);
-
-  // Global scroll progress for page-wide effects
-  const { scrollYProgress } = useScroll();
-  const smoothScroll = useSpring(scrollYProgress, { stiffness: 60, damping: 20 });
 
   // Hero parallax
   const { scrollYProgress: heroProgress } = useScroll({
@@ -35,27 +32,8 @@ export default function Homepage() {
   const heroOpacity = useTransform(heroProgress, [0, 0.8], [1, 0]);
   const heroAsideY = useTransform(heroProgress, [0, 1], [0, -60]);
 
-  // Work section scroll
-  useScroll({
-    target: workRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Cursor follow
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const cursorXSpring = useSpring(cursorX, { stiffness: 300, damping: 30 });
-  const cursorYSpring = useSpring(cursorY, { stiffness: 300, damping: 30 });
-  const [cursorHovering, setCursorHovering] = useState(false);
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-    window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
-  }, [cursorX, cursorY]);
+  // Cursor
+  const { cursorXSpring, cursorYSpring, cursorHovering, setCursorHovering } = useCursor();
 
   // Infinite ticker
   const tickerX = useMotionValue(0);
@@ -145,69 +123,13 @@ export default function Homepage() {
   const tickerItems = ["Laravel", "Next.js", "Filament v5", "Sanity CMS", "Tailwind", "TypeScript", "PostgreSQL", "AI-Assisted Dev", "NetSuite", "Vercel"];
 
   return (
-    <div ref={containerRef} className="page">
+    <PageShell
+      cursorXSpring={cursorXSpring}
+      cursorYSpring={cursorYSpring}
+      cursorHovering={cursorHovering}
+    >
       <style>{css}</style>
-
-      {/* Bokeh atmosphere */}
-      <div className="bokeh" aria-hidden="true">
-        <div className="bokeh-blob bokeh-blob-1" />
-        <div className="bokeh-blob bokeh-blob-2" />
-        <div className="bokeh-blob bokeh-blob-3" />
-        <div className="bokeh-blob bokeh-blob-4" />
-      </div>
-
-      {/* Scroll progress bar */}
-      <motion.div className="progress-bar" style={{ scaleX: smoothScroll }} />
-
-      {/* Custom cursor */}
-      <motion.div
-        className={`cursor ${cursorHovering ? "hover" : ""}`}
-        style={{ x: cursorXSpring, y: cursorYSpring }}
-      />
-
-      {/* NAV */}
-      <motion.nav
-        initial={{ y: -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className="nav-inner">
-          <a href="#" className="nav-logo">
-            <motion.span
-              className="nav-dot"
-              animate={{ scale: [1, 0.85, 1], opacity: [1, 0.5, 1] }}
-              transition={{ duration: 2.5, repeat: Infinity }}
-            />
-            JONATHAN CHRISTIANI
-          </a>
-          <ul className="nav-links">
-            {[
-              { label: "Home", href: "/" },
-              { label: "Work", href: "/work" },
-              { label: "Services", href: "#services" },
-              { label: "Writing", href: "/writing" },
-              { label: "Process", href: "#process" },
-              { label: "Contact", href: "#contact" },
-            ].map((l) => (
-              <li key={l.label}>
-                <a href={l.href}>{l.label}</a>
-              </li>
-            ))}
-          </ul>
-          <motion.a
-            href="#contact"
-            className="nav-cta"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.96 }}
-            onMouseEnter={() => setCursorHovering(true)}
-            onMouseLeave={() => setCursorHovering(false)}
-          >
-            Get in Touch →
-          </motion.a>
-        </div>
-      </motion.nav>
-
-      <MobileMenu />
+      <SiteNav setCursorHovering={setCursorHovering} />
 
       {/* HERO */}
       <motion.header ref={heroRef} className="hero">
@@ -516,19 +438,8 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer>
-        <div className="container">
-          <div className="footer-inner">
-            <div>© 2026 JONATHAN CHRISTIANI</div>
-            <div>BATAM · INDONESIA · GMT+7</div>
-            <div>
-              I KNOW THAT I KNOW NOTHING · <a href="#">↑ BACK TO TOP</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <SiteFooter backHref="#" backLabel="↑ BACK TO TOP" />
+    </PageShell>
   );
 }
 
@@ -565,7 +476,7 @@ function StatCard({ label, value, smallValue, sub, desc, variants }: StatCardPro
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function SectionLabel({ children }: { children: ReactNode }) {
   return (
     <motion.div
       className="section-label"
@@ -583,8 +494,8 @@ function WhatTitle({
   children,
   style,
 }: {
-  children: React.ReactNode;
-  style?: React.CSSProperties;
+  children: ReactNode;
+  style?: CSSProperties;
 }) {
   return (
     <motion.h2
@@ -917,13 +828,13 @@ function ContactForm({ onHover, onLeave }: { onHover: () => void; onLeave: () =>
   const [form, setForm] = useState({ name: "", whatsapp: "", projectType: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     // TODO: wire to backend — for now, show a local confirmation
     setSent(true);
   };
 
-  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+  const update = (k: keyof typeof form) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
   return (
@@ -1047,195 +958,6 @@ function ContactForm({ onHover, onLeave }: { onHover: () => void; onLeave: () =>
 
 // === STYLES ===
 const css = `
-  :root {
-    --bg: #0d0d0c;
-    --bg-2: #141412;
-    --ink: #ecece6;
-    --ink-dim: #9a9a92;
-    --ink-faint: #4a4a44;
-    --accent: #ff5c2e;
-    --accent-2: #eadfc8;
-    --line: #2a2a26;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
-    --serif: 'Fraunces', 'Times New Roman', serif;
-    --sans: 'Inter', -apple-system, system-ui, sans-serif;
-  }
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap');
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); }
-
-  .page {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    position: relative;
-    cursor: none;
-  }
-  .page::before {
-    content: '';
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 100;
-    opacity: 0.35; mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  }
-  .page::after {
-    content: '';
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 99;
-    opacity: 0.45;
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0 2px,
-      rgba(255, 255, 255, 0.012) 2px 3px
-    );
-  }
-
-  .bokeh {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .bokeh-blob {
-    position: absolute;
-    width: 55vw;
-    height: 55vw;
-    border-radius: 50%;
-    filter: blur(130px);
-    opacity: 0.22;
-    will-change: transform;
-  }
-  .bokeh-blob-1 {
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    top: -18%; left: -12%;
-    animation: bokeh-float-1 32s ease-in-out infinite alternate;
-  }
-  .bokeh-blob-2 {
-    background: radial-gradient(circle, var(--accent-2) 0%, transparent 70%);
-    top: 28%; right: -18%;
-    opacity: 0.14;
-    animation: bokeh-float-2 44s ease-in-out infinite alternate;
-  }
-  .bokeh-blob-3 {
-    background: radial-gradient(circle, #8a7ce2 0%, transparent 70%);
-    bottom: -14%; left: 22%;
-    opacity: 0.13;
-    animation: bokeh-float-3 38s ease-in-out infinite alternate;
-  }
-  .bokeh-blob-4 {
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    top: 58%; left: 42%;
-    width: 40vw; height: 40vw;
-    opacity: 0.1;
-    animation: bokeh-float-4 52s ease-in-out infinite alternate;
-  }
-  @keyframes bokeh-float-1 {
-    0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(10vw, 8vh) scale(1.12); }
-    100% { transform: translate(-6vw, 16vh) scale(0.9); }
-  }
-  @keyframes bokeh-float-2 {
-    0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(-13vw, 11vh) scale(1.18); }
-    100% { transform: translate(9vw, -9vh) scale(0.95); }
-  }
-  @keyframes bokeh-float-3 {
-    0%   { transform: translate(0, 0) scale(1); }
-    50%  { transform: translate(16vw, -11vh) scale(1.08); }
-    100% { transform: translate(-9vw, -16vh) scale(1.22); }
-  }
-  @keyframes bokeh-float-4 {
-    0%   { transform: translate(0, 0) scale(0.9); }
-    50%  { transform: translate(-12vw, -14vh) scale(1.1); }
-    100% { transform: translate(14vw, 12vh) scale(1); }
-  }
-  section, nav, header, footer { position: relative; z-index: 1; }
-  @media (prefers-reduced-motion: reduce) {
-    .bokeh-blob { animation: none; }
-  }
-
-  .progress-bar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--accent);
-    transform-origin: 0%;
-    z-index: 200;
-  }
-
-  .cursor {
-    position: fixed;
-    top: 0; left: 0;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: var(--accent);
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
-    transition: width 0.25s, height 0.25s, background 0.25s;
-  }
-  .cursor.hover {
-    width: 40px; height: 40px;
-    background: var(--accent-2);
-  }
-
-  .container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 40px;
-  }
-
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 50;
-    background: rgba(13, 13, 12, 0.72);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-inner {
-    max-width: 1320px; margin: 0 auto;
-    padding: 18px 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .nav-logo {
-    display: flex; align-items: center; gap: 10px;
-    font-weight: 700; color: var(--ink); text-decoration: none;
-  }
-  .nav-dot {
-    width: 8px; height: 8px;
-    background: var(--accent);
-    border-radius: 50%;
-    box-shadow: 0 0 16px var(--accent);
-    display: inline-block;
-  }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    color: var(--ink-dim);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--ink); }
-  .nav-cta {
-    color: var(--ink); text-decoration: none;
-    padding: 8px 16px;
-    border: 1px solid var(--ink);
-    border-radius: 999px;
-    display: inline-block;
-  }
-
   .hero {
     min-height: 100vh;
     padding: 140px 0 80px;
@@ -2460,11 +2182,6 @@ const css = `
   .mcp-m-tool:last-child:nth-child(odd) { grid-column: 1 / -1; }
 
   @media (max-width: 960px) {
-    .page { cursor: auto; }
-    .cursor { display: none; }
-    .container { padding: 0 24px; }
-    .nav-inner { padding: 16px 24px; }
-    .nav-links { display: none; }
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
     .services-grid { grid-template-columns: 1fr; }
     .blog-grid { grid-template-columns: 1fr; }

@@ -1,64 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "motion/react";
+import { motion } from "motion/react";
+import { useCursor } from "@/app/hooks/useCursor";
+import PageShell from "@/app/components/PageShell";
+import SiteNav from "@/app/components/SiteNav";
+import SiteFooter from "@/app/components/SiteFooter";
 
 export default function NotFoundClient() {
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const cursorXSpring = useSpring(cursorX, { stiffness: 300, damping: 30 });
-  const cursorYSpring = useSpring(cursorY, { stiffness: 300, damping: 30 });
-  const [cursorHovering, setCursorHovering] = useState(false);
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-    };
-    window.addEventListener("mousemove", moveCursor);
-    return () => window.removeEventListener("mousemove", moveCursor);
-  }, [cursorX, cursorY]);
+  const { cursorXSpring, cursorYSpring, cursorHovering, setCursorHovering } = useCursor();
 
   return (
-    <div className="page">
+    <PageShell
+      cursorXSpring={cursorXSpring}
+      cursorYSpring={cursorYSpring}
+      cursorHovering={cursorHovering}
+      blobs={3}
+    >
       <style>{css}</style>
-
-      <div className="bokeh" aria-hidden="true">
-        <div className="bokeh-blob bokeh-blob-1" />
-        <div className="bokeh-blob bokeh-blob-2" />
-        <div className="bokeh-blob bokeh-blob-3" />
-      </div>
-
-      <motion.div
-        className={`cursor ${cursorHovering ? "hover" : ""}`}
-        style={{ x: cursorXSpring, y: cursorYSpring }}
-      />
-
-      <motion.nav
-        initial={{ y: -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <div className="nav-inner">
-          <Link href="/" className="nav-logo">
-            <motion.span
-              className="nav-dot"
-              animate={{ scale: [1, 0.85, 1], opacity: [1, 0.5, 1] }}
-              transition={{ duration: 2.5, repeat: Infinity }}
-            />
-            JONATHAN CHRISTIANI
-          </Link>
-          <Link
-            href="/#contact"
-            className="nav-cta"
-            onMouseEnter={() => setCursorHovering(true)}
-            onMouseLeave={() => setCursorHovering(false)}
-          >
-            Get in Touch →
-          </Link>
-        </div>
-      </motion.nav>
+      <SiteNav setCursorHovering={setCursorHovering} />
 
       <main className="err-main">
         <div className="container">
@@ -158,154 +118,38 @@ export default function NotFoundClient() {
         </div>
       </main>
 
-      <footer>
-        <div className="container">
-          <div className="footer-inner">
-            <div>© 2026 JONATHAN CHRISTIANI</div>
-            <div>BATAM · INDONESIA · GMT+7</div>
-            <div>I KNOW THAT I KNOW NOTHING · <Link href="/">↑ BACK HOME</Link></div>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <SiteFooter />
+    </PageShell>
   );
 }
 
 const css = `
-  :root {
-    --bg: #0d0d0c;
-    --bg-2: #141412;
-    --ink: #ecece6;
-    --ink-dim: #9a9a92;
-    --ink-faint: #4a4a44;
-    --accent: #ff5c2e;
-    --accent-2: #eadfc8;
-    --line: #2a2a26;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
-    --serif: 'Fraunces', 'Times New Roman', serif;
-    --sans: 'Inter', -apple-system, system-ui, sans-serif;
-  }
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&display=swap');
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); }
-
-  .page {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    position: relative;
-    cursor: none;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .page::before {
-    content: '';
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 100;
-    opacity: 0.35; mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  }
-  .page::after {
-    content: '';
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 99;
-    opacity: 0.45;
-    background-image: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(255, 255, 255, 0.012) 2px 3px);
-  }
-
-  .bokeh { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
-  .bokeh-blob {
-    position: absolute;
-    width: 55vw; height: 55vw;
-    border-radius: 50%;
-    filter: blur(130px);
-    opacity: 0.22;
-    will-change: transform;
-  }
-  .bokeh-blob-1 { background: radial-gradient(circle, var(--accent) 0%, transparent 70%); top: -22%; left: -14%; animation: bokeh-float-1 32s ease-in-out infinite alternate; }
-  .bokeh-blob-2 { background: radial-gradient(circle, var(--accent-2) 0%, transparent 70%); top: 22%; right: -20%; opacity: 0.14; animation: bokeh-float-2 44s ease-in-out infinite alternate; }
-  .bokeh-blob-3 { background: radial-gradient(circle, #8a7ce2 0%, transparent 70%); bottom: -18%; left: 28%; opacity: 0.13; animation: bokeh-float-3 38s ease-in-out infinite alternate; }
-  @keyframes bokeh-float-1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(10vw, 8vh) scale(1.12); } 100% { transform: translate(-6vw, 16vh) scale(0.9); } }
-  @keyframes bokeh-float-2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-13vw, 11vh) scale(1.18); } 100% { transform: translate(9vw, -9vh) scale(0.95); } }
-  @keyframes bokeh-float-3 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(16vw, -11vh) scale(1.08); } 100% { transform: translate(-9vw, -16vh) scale(1.22); } }
-  @media (prefers-reduced-motion: reduce) { .bokeh-blob { animation: none; } }
-
-  nav, main, footer { position: relative; z-index: 1; }
-
-  .cursor {
-    position: fixed; top: 0; left: 0;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: var(--accent);
-    pointer-events: none; z-index: 9999;
-    mix-blend-mode: difference;
-    transform: translate(-50%, -50%);
-    transition: width 0.25s, height 0.25s, background 0.25s;
-  }
-  .cursor.hover { width: 40px; height: 40px; background: var(--accent-2); }
-
-  .container { max-width: 1320px; margin: 0 auto; padding: 0 40px; width: 100%; }
-
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    background: rgba(13, 13, 12, 0.72);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-inner {
-    max-width: 1320px; margin: 0 auto; padding: 18px 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    font-family: var(--mono); font-size: 12px;
-    letter-spacing: 0.05em; text-transform: uppercase;
-  }
-  .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); text-decoration: none; }
-  .nav-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 16px var(--accent); display: inline-block; }
-  .nav-cta { color: var(--ink); text-decoration: none; padding: 8px 16px; border: 1px solid var(--ink); border-radius: 999px; display: inline-block; }
+  /* Full-height layout so footer sticks to bottom */
+  .page { display: flex; flex-direction: column; }
 
   .err-main {
-    flex: 1;
-    padding: 180px 0 100px;
-    display: flex;
-    align-items: center;
+    flex: 1; padding: 180px 0 100px;
+    display: flex; align-items: center;
   }
   .err-breadcrumb {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-dim);
-    text-transform: uppercase;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--ink-dim); text-transform: uppercase;
     letter-spacing: 0.18em;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 30px; flex-wrap: wrap;
   }
   .err-breadcrumb .sep { color: var(--ink-faint); }
   .err-status { color: var(--ink-faint); }
-  .err-code { color: var(--accent); font-weight: 700; }
+  .err-code   { color: var(--accent); font-weight: 700; }
 
-  .err-number-wrap {
-    position: relative;
-    line-height: 0.85;
-    margin-bottom: 12px;
-  }
+  .err-number-wrap { position: relative; line-height: 0.85; margin-bottom: 12px; }
   .err-number, .err-number-ghost {
-    font-family: var(--serif);
-    font-weight: 900;
+    font-family: var(--serif); font-weight: 900;
     font-size: clamp(120px, 22vw, 280px);
-    letter-spacing: -0.04em;
-    color: var(--ink);
-    display: inline-block;
+    letter-spacing: -0.04em; color: var(--ink); display: inline-block;
   }
   .err-number-ghost {
-    position: absolute;
-    top: 0; left: 0;
+    position: absolute; top: 0; left: 0;
     color: transparent;
     -webkit-text-stroke: 1px var(--accent);
     text-stroke: 1px var(--accent);
@@ -315,97 +159,31 @@ const css = `
   .err-title {
     font-family: var(--serif);
     font-size: clamp(36px, 5.4vw, 76px);
-    line-height: 1.02;
-    font-weight: 400;
+    line-height: 1.02; font-weight: 400;
     letter-spacing: -0.03em;
-    margin-bottom: 24px;
-    max-width: 900px;
+    margin-bottom: 24px; max-width: 900px;
   }
   .err-title em { font-style: italic; color: var(--accent-2); }
 
-  .err-lede {
-    font-size: 17px;
-    line-height: 1.65;
-    color: var(--ink-dim);
-    max-width: 620px;
-    margin-bottom: 40px;
-  }
+  .err-lede { font-size: 17px; line-height: 1.65; color: var(--ink-dim); max-width: 620px; margin-bottom: 40px; }
 
   .err-log {
-    font-family: var(--mono);
-    font-size: 13px;
-    line-height: 1.9;
-    color: var(--ink-dim);
-    border: 1px solid var(--line);
-    background: var(--bg-2);
-    padding: 22px 26px;
-    margin-bottom: 44px;
-    max-width: 620px;
+    font-family: var(--mono); font-size: 13px; line-height: 1.9;
+    color: var(--ink-dim); border: 1px solid var(--line);
+    background: var(--bg-2); padding: 22px 26px;
+    margin-bottom: 44px; max-width: 620px;
   }
-  .err-log-line { display: block; }
+  .err-log-line   { display: block; }
   .err-log-prompt { color: var(--ink-faint); margin-right: 10px; }
-  .err-log-err { color: var(--accent); }
-  .err-log-ok { color: var(--accent-2); }
+  .err-log-err    { color: var(--accent); }
+  .err-log-ok     { color: var(--accent-2); }
 
-  .err-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 22px;
-    border-radius: 999px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1px solid var(--line);
-    transition: all 0.25s ease;
-    cursor: none;
-  }
-  .btn-primary {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--bg);
-  }
-  .btn-primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
-  .btn-ghost {
-    background: transparent;
-    color: var(--ink);
-    border-color: var(--line);
-  }
-  .btn-ghost:hover { border-color: var(--ink); color: var(--accent-2); }
+  .err-actions { display: flex; gap: 14px; flex-wrap: wrap; }
   .arrow { display: inline-block; transition: transform 0.25s ease; }
   .btn:hover .arrow { transform: translate(3px, -3px); }
 
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 30px 0 24px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-dim);
-    letter-spacing: 0.08em;
-  }
-  .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .footer-inner a { color: var(--ink-dim); text-decoration: none; }
-
   @media (max-width: 960px) {
-    .page { cursor: auto; }
-    .cursor { display: none; }
-    .container { padding: 0 24px; }
-    .nav-inner { padding: 16px 24px; }
     .err-main { padding: 130px 0 60px; }
     .err-actions .btn { flex: 1 1 auto; justify-content: center; }
-    .nav-cta, a, button { cursor: pointer; }
   }
 `;
