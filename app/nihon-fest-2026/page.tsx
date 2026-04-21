@@ -240,45 +240,51 @@ export default function NihonFest2026Page() {
               </div>
               <div className="tl-arrow">→</div>
               <div className="tl-step">
-                <div className="tl-year">2022</div>
+                <div className="tl-year">2023</div>
                 <div className="tl-tool">ChatGPT</div>
                 <div className="tl-era">Era prompting</div>
               </div>
               <div className="tl-arrow">→</div>
               <div className="tl-step">
-                <div className="tl-year">2023–24</div>
-                <div className="tl-tool">Cursor · Claude 3.5</div>
-                <div className="tl-era">AI-native editor</div>
+                <div className="tl-year">2024–25</div>
+                <div className="tl-tool">Cursor · Claude Code CLI</div>
+                <div className="tl-era">Agentic editor / CLI</div>
               </div>
               <div className="tl-arrow">→</div>
               <div className="tl-step tl-step-now">
-                <div className="tl-year">2025</div>
-                <div className="tl-tool">Claude Code</div>
-                <div className="tl-era">Agentic CLI</div>
+                <div className="tl-year">April 2026</div>
+                <div className="tl-tool">Opus 4.7 + Routines</div>
+                <div className="tl-era">Agentic cloud platform</div>
               </div>
             </div>
 
             <div className="cc-panel">
               <div className="cc-panel-left">
-                <div className="cc-label">POSISI HARI INI</div>
+                <div className="cc-label">POSISI HARI INI · APRIL 2026</div>
                 <div className="cc-name">Claude Code</div>
                 <div className="cc-meta">
-                  Agentic CLI · Anthropic · rilis Feb 2025
+                  CLI + Desktop app · Opus 4.7 (16 Apr 2026)
+                  <br />
+                  Routines research preview (14 Apr 2026)
                 </div>
               </div>
               <div className="cc-panel-right">
                 <ul className="cc-list">
                   <li>
                     <span className="cc-check">✓</span>
-                    Baca seluruh codebase sekaligus, bukan cuma snippet
+                    Baca seluruh codebase sekaligus — bukan cuma snippet
                   </li>
                   <li>
                     <span className="cc-check">✓</span>
-                    Nulis kode, jalanin test, bikin PR — otomatis
+                    Nulis kode, jalanin test, bikin PR otomatis
                   </li>
                   <li>
                     <span className="cc-check">✓</span>
-                    Konteks jutaan token · multi-step reasoning
+                    <strong>Routines</strong>: automation terjadwal di cloud — laptop nggak perlu nyala
+                  </li>
+                  <li>
+                    <span className="cc-check">✓</span>
+                    Konteks 1 juta token · Opus 4.7 · +13% coding benchmark vs 4.6
                   </li>
                   <li>
                     <span className="cc-check">✓</span>
@@ -389,31 +395,30 @@ export default function NihonFest2026Page() {
             </h2>
 
             <div className="showcase-grid">
-              <div className="showcase-cell">
-                <div className="showcase-idx">01</div>
-                <div className="showcase-name">Suryawedding</div>
-                <div className="showcase-tag">Wedding Invitation Platform</div>
-              </div>
-              <div className="showcase-cell">
-                <div className="showcase-idx">02</div>
-                <div className="showcase-name">jonathanchristiani.com</div>
-                <div className="showcase-tag">Personal Portfolio · website ini</div>
-              </div>
-              <div className="showcase-cell">
-                <div className="showcase-idx">03</div>
-                <div className="showcase-name">Elegant Gorden</div>
-                <div className="showcase-tag">Curtain E-commerce · SEO</div>
-              </div>
-              <div className="showcase-cell">
-                <div className="showcase-idx">04</div>
-                <div className="showcase-name">Sekolah BASIC</div>
-                <div className="showcase-tag">K-12 School Management</div>
-              </div>
-              <div className="showcase-cell">
-                <div className="showcase-idx">05</div>
-                <div className="showcase-name">Nihon Rent</div>
-                <div className="showcase-tag">Rental Platform</div>
-              </div>
+              {[
+                { idx: "01", name: "Suryawedding",          tag: "Wedding Invitation Platform", href: "https://surya-wedding.vercel.app/" },
+                { idx: "02", name: "jonathanchristiani.com", tag: "Personal Portfolio · website ini", href: "https://jonathanchristiani-beta.vercel.app/" },
+                { idx: "03", name: "Elegant Gorden",         tag: "Curtain E-commerce · SEO", href: "https://elegantgorden.vercel.app/" },
+                { idx: "04", name: "Sekolah BASIC",          tag: "K-12 School Management", href: "https://sekolahbasic-fe.vercel.app/" },
+                { idx: "05", name: "Nihon Rent",             tag: "Rental Platform", href: "https://nihonrent.vercel.app/" },
+              ].map((p) => (
+                <a
+                  key={p.idx}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="showcase-cell"
+                  onMouseEnter={() => setCursorHovering(true)}
+                  onMouseLeave={() => setCursorHovering(false)}
+                >
+                  <div className="showcase-idx">
+                    {p.idx}
+                    <span className="showcase-ext" aria-hidden="true">↗</span>
+                  </div>
+                  <div className="showcase-name">{p.name}</div>
+                  <div className="showcase-tag">{p.tag}</div>
+                </a>
+              ))}
             </div>
 
             <div className="math-row">
@@ -737,10 +742,10 @@ const css = `
   .slide {
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    min-height: 100vh; height: 100vh;
+    min-height: 100vh; height: auto;
     display: flex; align-items: center;
     position: relative;
-    padding: 80px 0;
+    padding: 100px 0;
   }
   .slide-inner {
     width: 100%;
@@ -1024,10 +1029,15 @@ const css = `
   .cc-list li {
     font-family: var(--serif); font-size: 15px;
     line-height: 1.45; color: var(--ink-dim);
-    display: grid; grid-template-columns: 20px 1fr; gap: 10px;
+    display: flex; gap: 10px; align-items: baseline;
   }
   .cc-list li em { color: var(--accent); font-style: italic; }
+  .cc-list li strong {
+    color: var(--accent-2); font-weight: 600;
+    font-style: normal;
+  }
   .cc-check {
+    flex: 0 0 20px;
     color: var(--accent); font-family: var(--mono);
     font-size: 12px; line-height: 1.5;
   }
@@ -1141,18 +1151,39 @@ const css = `
   .showcase-cell {
     background: var(--bg); padding: 24px 22px;
     display: flex; flex-direction: column; gap: 10px;
-    transition: background 0.25s ease;
+    text-decoration: none; color: inherit;
+    transition: background 0.25s ease, transform 0.25s ease;
+    position: relative;
+  }
+  .showcase-cell::after {
+    content: ''; position: absolute;
+    left: 0; right: 0; bottom: 0; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.35s ease;
   }
   .showcase-cell:hover { background: var(--bg-2); }
+  .showcase-cell:hover::after { transform: scaleX(1); }
   .showcase-idx {
     font-family: var(--mono); font-size: 10px;
     letter-spacing: 0.18em; color: var(--accent);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .showcase-ext {
+    font-size: 13px; color: var(--ink-faint);
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+  .showcase-cell:hover .showcase-ext {
+    color: var(--accent);
+    transform: translate(2px, -2px);
   }
   .showcase-name {
     font-family: var(--serif); font-size: 18px;
     color: var(--ink); line-height: 1.25;
     letter-spacing: -0.01em;
+    transition: color 0.25s ease;
   }
+  .showcase-cell:hover .showcase-name { color: var(--accent-2); }
   .showcase-tag {
     font-family: var(--mono); font-size: 10px;
     color: var(--ink-dim); letter-spacing: 0.06em;
@@ -1518,7 +1549,8 @@ const css = `
     .cc-panel { grid-template-columns: 1fr; margin-bottom: 20px; }
     .cc-panel-left, .cc-panel-right { padding: 20px 18px; }
     .cc-name { font-size: 24px; }
-    .cc-list li { font-size: 14px; grid-template-columns: 16px 1fr; gap: 8px; }
+    .cc-list li { font-size: 14px; gap: 8px; }
+    .cc-list .cc-check { flex: 0 0 16px; }
 
     /* Showcase */
     .showcase-grid { grid-template-columns: repeat(2, 1fr); margin: 20px 0 28px; }
