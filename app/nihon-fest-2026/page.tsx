@@ -7,7 +7,7 @@ import { ArrowUpRight, ArrowRight, ArrowLeft, ArrowUp, ArrowDown, Check } from "
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 
-const TOTAL_SLIDES = 16;
+const TOTAL_SLIDES = 13;
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -284,12 +284,8 @@ export default function NihonFest2026Page() {
           <div className="slide-inner">
             <div className="slide-num">§ 02 — TREN AI TOOLS</div>
             <h2 className="slide-h slide-h-sm">
-              Dari autocomplete ke <em>engineer di terminal.</em>
+              Dari autocomplete ke <em>partner kerja.</em>
             </h2>
-            <p className="slide-lede">
-              Tren ini bukan teori. Ini tools yang ada di meja kita sekarang —
-              berubah hampir setiap kuartal.
-            </p>
 
             <div className="timeline">
               <div className="tl-step">
@@ -343,7 +339,7 @@ export default function NihonFest2026Page() {
                   </li>
                   <li>
                     <span className="cc-check"><Check size={14} strokeWidth={2} /></span>
-                    Konteks 1 juta token · Opus 4.7 · +13% coding benchmark vs 4.6
+                    MCP Integration
                   </li>
                   <li>
                     <span className="cc-check"><Check size={14} strokeWidth={2} /></span>
@@ -354,67 +350,18 @@ export default function NihonFest2026Page() {
             </div>
 
             <p className="slide-lede slide-lede-center cc-closing">
-              Tapi yang akan kita bahas bukan tools-nya — melainkan
+              Kita ga akan bahas tools-nya tapi kita akan bahas
               <em> cara berpikir</em> yang bikin kita tetap relevan di tengah tren ini.
             </p>
           </div>
         </section>
 
-        {/* 04 — Statistics */}
+        {/* 05 — Transformation */}
         <section className="slide" data-slide={6}>
           <div className="slide-inner">
-            <div className="slide-num">§ 03 — FAKTA DI LAPANGAN</div>
-            <h2 className="slide-h slide-h-sm">Bukan evolusi. <em>Ledakan.</em></h2>
-
-            <div className="stats-grid">
-              <div className="stat-cell">
-                <div className="stat-big">5<span className="stat-unit">hari</span></div>
-                <div className="stat-label">ChatGPT mencapai 1 juta pengguna</div>
-                <div className="stat-sub">Instagram butuh 2.5 bulan · Netflix butuh 3.5 tahun</div>
-              </div>
-              <div className="stat-cell">
-                <div className="stat-big">2<span className="stat-unit">bulan</span></div>
-                <div className="stat-label">Mencapai 100 juta pengguna</div>
-                <div className="stat-sub">Aplikasi tercepat dalam sejarah internet</div>
-              </div>
-              <div className="stat-cell">
-                <div className="stat-big">800M<span className="stat-unit">/minggu</span></div>
-                <div className="stat-label">Pengguna aktif akhir 2025</div>
-                <div className="stat-sub">≈ 1 dari 10 manusia di bumi</div>
-              </div>
-              <div className="stat-cell">
-                <div className="stat-big">+471<span className="stat-unit">%</span></div>
-                <div className="stat-label">Parameter GPT-3 → GPT-4</div>
-                <div className="stat-sub">175B → ~1T parameter dalam 3 tahun</div>
-              </div>
-              <div className="stat-cell stat-cell-wide">
-                <div className="stat-big">92<span className="stat-unit">%</span></div>
-                <div className="stat-label">Fortune 500 sudah mengadopsi AI</div>
-                <div className="stat-sub">Ini bukan hype. Ini infrastruktur baru.</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 04 — Pullquote */}
-        <section className="slide slide-pull" data-slide={7}>
-          <div className="slide-inner slide-center">
-            <div className="slide-num">§ 04 — INSIGHT</div>
-            <h2 className="pull-text">
-              &ldquo;Kalau teknologi berubah secepat ini,
-              <br />
-              <em>peran kita juga harus berubah.</em>&rdquo;
-            </h2>
-            <p className="pull-sub">Pertanyaannya: berubah jadi apa?</p>
-          </div>
-        </section>
-
-        {/* 05 — Transformation */}
-        <section className="slide" data-slide={8}>
-          <div className="slide-inner">
-            <div className="slide-num">§ 05 — TRANSFORMASI PERAN</div>
+            <div className="slide-num">§ 03 — New Era</div>
             <h2 className="slide-h slide-h-sm">
-              Dari <em>menulis kode</em>, ke <em>mengarahkan sistem</em>.
+              From <em>writing code</em>, to <em>orchestrating systems</em>.
             </h2>
 
             <div className="split-grid">
@@ -426,7 +373,6 @@ export default function NihonFest2026Page() {
                   <li>Debugging trial & error berjam-jam</li>
                   <li>Fokus pada implementasi teknis</li>
                   <li>1 fitur = berhari-hari</li>
-                  <li>Batasan: kecepatan tangan</li>
                 </ul>
               </div>
               <div className="split-arrow" aria-hidden="true"><ArrowRight size={28} strokeWidth={1.5} /></div>
@@ -438,7 +384,6 @@ export default function NihonFest2026Page() {
                   <li>Validasi, review, dan arsitektur</li>
                   <li>Fokus pada problem-solving & nilai bisnis</li>
                   <li>1 fitur = hitungan jam</li>
-                  <li>Batasan: kualitas berpikir</li>
                 </ul>
               </div>
             </div>
@@ -446,11 +391,11 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 06 — Showcase */}
-        <section className="slide" data-slide={9}>
+        <section className="slide" data-slide={7}>
           <div className="slide-inner">
-            <div className="slide-num">§ 06 — BUKTI NYATA</div>
+            <div className="slide-num">§ 04 — Showcase</div>
             <h2 className="slide-h slide-h-sm">
-              5 proyek. <em>Kurang dari 1 bulan.</em> Satu orang.
+              5 projects. <em>Less than 1 month.</em> One person.
             </h2>
 
             <div className="showcase-grid">
@@ -458,7 +403,7 @@ export default function NihonFest2026Page() {
                 { idx: "01", name: "Suryawedding",          tag: "Wedding Invitation Platform", href: "https://surya-wedding.vercel.app/" },
                 { idx: "02", name: "jonathanchristiani.com", tag: "Personal Portfolio · website ini", href: "https://jonathanchristiani-beta.vercel.app/" },
                 { idx: "03", name: "Elegant Gorden",         tag: "Curtain E-commerce · SEO", href: "https://elegantgorden.vercel.app/" },
-                { idx: "04", name: "Sekolah BASIC",          tag: "K-12 School Management", href: "https://sekolahbasic-fe.vercel.app/" },
+                { idx: "04", name: "Sekolah BASIC",          tag: "School Management System", href: "https://sekolahbasic-fe.vercel.app/" },
                 { idx: "05", name: "Nihon Rent",             tag: "Rental Platform", href: "https://nihonrent.vercel.app/" },
               ].map((p) => (
                 <a
@@ -491,23 +436,15 @@ export default function NihonFest2026Page() {
                 <div className="math-value math-big">900–4500%</div>
               </div>
             </div>
-
-            <p className="slide-lede slide-lede-center">
-              Angka ini bukan pamer. Ini indikator — batasan hari ini
-              bukan <em>waktu</em>, melainkan <em>kualitas berpikir</em> orang
-              yang memegang AI.
-            </p>
           </div>
         </section>
 
         {/* 07 — The Big Question */}
-        <section className="slide slide-question" data-slide={10}>
+        <section className="slide slide-question" data-slide={8}>
           <div className="slide-inner slide-center">
-            <div className="slide-num">§ 07 — PERTANYAAN BESAR</div>
+            <div className="slide-num">§ 05 — PERTANYAAN BESAR</div>
             <h2 className="question-h">
-              Kalau AI bisa menulis kode,
-              <br />
-              mendesain, menulis, menganalisis —
+              Kalau AI bisa semuanya,
               <br />
               <em>apa nilai kita sebagai manusia?</em>
             </h2>
@@ -515,11 +452,11 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 08 — Three Pillars Overview */}
-        <section className="slide" data-slide={11}>
+        <section className="slide" data-slide={9}>
           <div className="slide-inner">
-            <div className="slide-num">§ 08 — TIGA PILAR</div>
+            <div className="slide-num">§ 06 — TIGA PILAR</div>
             <h2 className="slide-h slide-h-sm">
-              Tiga kemampuan yang <em>tidak bisa</em> digantikan AI.
+              Tiga kemampuan yang <em>harus dilatih</em> sedini mungkin.
             </h2>
 
             <div className="pillars">
@@ -543,7 +480,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 09 — First Principle */}
-        <section className="slide slide-pillar" data-slide={12}>
+        <section className="slide slide-pillar" data-slide={10}>
           <div className="slide-inner">
             <div className="pillar-header">
               <div className="pillar-badge">PILAR I</div>
@@ -586,15 +523,14 @@ export default function NihonFest2026Page() {
               </blockquote>
 
               <div className="pillar-apply">
-                <strong>Penerapan:</strong> Jangan tanya &ldquo;bagaimana AI biasanya dipakai?&rdquo;
-                — tanya &ldquo;masalah sebenarnya apa, dan apa bentuk solusi paling sederhana?&rdquo;
+                <strong>Takeaway:</strong> Jangan menerima sesuatu apa adanya.
               </div>
             </div>
           </div>
         </section>
 
         {/* 10 — System Thinking */}
-        <section className="slide slide-pillar" data-slide={13}>
+        <section className="slide slide-pillar" data-slide={11}>
           <div className="slide-inner">
             <div className="pillar-header">
               <div className="pillar-badge">PILAR II</div>
@@ -647,20 +583,19 @@ export default function NihonFest2026Page() {
               </blockquote>
 
               <div className="pillar-apply">
-                <strong>Penerapan:</strong> AI hebat pada satu bagian. Tapi memahami bagaimana
-                database, UX, bisnis, dan tim saling memengaruhi — itu tetap pekerjaan manusia.
+                <strong>Takeaway:</strong> Kita harus bisa melihat pola/hubungan dari setiap hal.
               </div>
             </div>
           </div>
         </section>
 
         {/* 11 — Critical Thinking */}
-        <section className="slide slide-pillar" data-slide={14}>
+        <section className="slide slide-pillar" data-slide={12}>
           <div className="slide-inner">
             <div className="pillar-header">
               <div className="pillar-badge">PILAR III</div>
               <h2 className="pillar-h">Critical Thinking</h2>
-              <p className="pillar-tag">Bertanya lebih baik daripada menerima lebih banyak.</p>
+              <p className="pillar-tag">Tanya terus sampai dapat jawaban.</p>
             </div>
 
             <div className="pillar-body">
@@ -676,63 +611,18 @@ export default function NihonFest2026Page() {
                     Metode socratic: kebenaran tumbuh dari pertanyaan, bukan dari jawaban.
                   </div>
                 </div>
-                <div className="lineage-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
-                <div className="lineage-step">
-                  <div className="lineage-year">1910</div>
-                  <div className="lineage-name">John Dewey</div>
-                  <div className="lineage-note">
-                    <em>How We Think</em> — berpikir reflektif adalah membedakan keyakinan
-                    dari bukti, dan bukti dari kebiasaan.
-                  </div>
-                </div>
-                <div className="lineage-arrow"><ArrowRight size={22} strokeWidth={1.5} /></div>
-                <div className="lineage-step">
-                  <div className="lineage-year">Hari ini</div>
-                  <div className="lineage-name">AI Native Engineer</div>
-                  <div className="lineage-note">
-                    Mempertanyakan setiap output AI: apakah ini benar? apakah ini <em>aman</em>?
-                    apakah ini yang paling masuk akal?
-                  </div>
-                </div>
-              </div>
-
-              <div className="pillar-stat">
-                <div className="pillar-stat-big">12.2%</div>
-                <div className="pillar-stat-label">
-                  peningkatan produktivitas rata-rata pengguna AI
-                  <span className="pillar-stat-src"> (Harvard &amp; MIT, 2024)</span>
-                </div>
-                <div className="pillar-stat-note">
-                  Tapi hanya untuk yang <em>tahu membedakan</em> output benar dan salah.
-                </div>
+                
               </div>
 
               <div className="pillar-apply">
-                <strong>Penerapan:</strong> AI adalah junior engineer yang sangat cepat dan
-                sangat percaya diri — tugas kita me-review, bukan menerima mentah.
+                <strong>Takeaway:</strong> Pertanyakan segala sesuatu dan jangan cepat puas berhenti sebelum mendapatkan jawaban yang memuaskan.
               </div>
             </div>
           </div>
         </section>
 
-        {/* 12 — Kesimpulan */}
-        <section className="slide slide-conclusion" data-slide={15}>
-          <div className="slide-inner slide-center">
-            <div className="slide-num">§ 09 — KESIMPULAN</div>
-            <h2 className="conclusion-h">
-              <span className="conclusion-line">AI tidak menggantikan manusia.</span>
-              <span className="conclusion-line conclusion-emph">
-                AI menggantikan <em>manusia</em>
-              </span>
-              <span className="conclusion-line conclusion-emph">
-                yang tidak bisa <em>beradaptasi</em> dengan AI.
-              </span>
-            </h2>
-          </div>
-        </section>
-
         {/* 13 — Final */}
-        <section className="slide slide-final" data-slide={16}>
+        <section className="slide slide-final" data-slide={13}>
           <div className="slide-inner slide-center">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -751,14 +641,14 @@ export default function NihonFest2026Page() {
               <p className="final-sub">
                 Karena di era globalisasi digital,
                 <br />
-                yang bertahan bukan yang paling pintar —
+                yang bertahan bukan yang paling pintar 
                 <br />
                 tapi yang paling <em>cepat beradaptasi</em>.
               </p>
 
               <div className="final-sign">
                 <div className="final-sign-name">Jonathan Christiani</div>
-                <div className="final-sign-role">AI Native Engineer · Nihon Fest 2026</div>
+                <div className="final-sign-role">AI Native Engineer - Nihon Fest 2026</div>
               </div>
 
               <div className="final-actions">
