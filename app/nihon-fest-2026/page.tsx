@@ -7,7 +7,7 @@ import { ArrowUpRight, ArrowRight, ArrowLeft, ArrowUp, ArrowDown, Check } from "
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 
-const TOTAL_SLIDES = 15;
+const TOTAL_SLIDES = 16;
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -195,8 +195,66 @@ export default function NihonFest2026Page() {
           </div>
         </section>
 
-        {/* 02 — Opening */}
-        <section className="slide" data-slide={3}>
+        {/* 03 — Speaker Profile */}
+        <section className="slide slide-profile" data-slide={3}>
+          <div className="slide-inner">
+            <motion.div className="profile-grid" initial="hidden" animate="show" variants={fadeIn}>
+
+              <motion.div className="profile-photo-wrap" variants={fadeUp}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/Jonathan.png"
+                  alt="Jonathan Christiani"
+                  className="profile-photo"
+                />
+              </motion.div>
+
+              <div className="profile-content">
+                <motion.div className="profile-eyebrow" variants={fadeUp}>
+                  SPEAKER
+                </motion.div>
+                <motion.h2 className="profile-name" variants={fadeUp}>
+                  Jonathan <em>Christiani.</em>
+                </motion.h2>
+                <motion.p className="profile-role" variants={fadeUp}>
+                  AI Native Engineer · Cyber Security Enthusiast
+                </motion.p>
+                <motion.div className="profile-links" variants={fadeUp}>
+                  <a
+                    href="https://www.instagram.com/christmex"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="profile-link"
+                    onMouseEnter={() => setCursorHovering(true)}
+                    onMouseLeave={() => setCursorHovering(false)}
+                  >
+                    <span className="profile-link-platform">Instagram</span>
+                    <span className="profile-link-handle">
+                      @christmex <ArrowUpRight size={12} strokeWidth={1.75} />
+                    </span>
+                  </a>
+                  <a
+                    href="https://christmex.medium.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="profile-link"
+                    onMouseEnter={() => setCursorHovering(true)}
+                    onMouseLeave={() => setCursorHovering(false)}
+                  >
+                    <span className="profile-link-platform">Medium</span>
+                    <span className="profile-link-handle">
+                      christmex.medium.com <ArrowUpRight size={12} strokeWidth={1.75} />
+                    </span>
+                  </a>
+                </motion.div>
+              </div>
+
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 04 — Opening */}
+        <section className="slide" data-slide={4}>
           <div className="slide-inner">
             <div className="slide-num">§ 01 — OPENING</div>
             <h2 className="slide-h">
@@ -222,7 +280,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 03 — AI Tooling Trend (Claude Code focus) */}
-        <section className="slide" data-slide={4}>
+        <section className="slide" data-slide={5}>
           <div className="slide-inner">
             <div className="slide-num">§ 02 — TREN AI TOOLS</div>
             <h2 className="slide-h slide-h-sm">
@@ -303,7 +361,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 04 — Statistics */}
-        <section className="slide" data-slide={5}>
+        <section className="slide" data-slide={6}>
           <div className="slide-inner">
             <div className="slide-num">§ 03 — FAKTA DI LAPANGAN</div>
             <h2 className="slide-h slide-h-sm">Bukan evolusi. <em>Ledakan.</em></h2>
@@ -339,7 +397,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 04 — Pullquote */}
-        <section className="slide slide-pull" data-slide={6}>
+        <section className="slide slide-pull" data-slide={7}>
           <div className="slide-inner slide-center">
             <div className="slide-num">§ 04 — INSIGHT</div>
             <h2 className="pull-text">
@@ -352,7 +410,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 05 — Transformation */}
-        <section className="slide" data-slide={7}>
+        <section className="slide" data-slide={8}>
           <div className="slide-inner">
             <div className="slide-num">§ 05 — TRANSFORMASI PERAN</div>
             <h2 className="slide-h slide-h-sm">
@@ -388,7 +446,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 06 — Showcase */}
-        <section className="slide" data-slide={8}>
+        <section className="slide" data-slide={9}>
           <div className="slide-inner">
             <div className="slide-num">§ 06 — BUKTI NYATA</div>
             <h2 className="slide-h slide-h-sm">
@@ -443,7 +501,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 07 — The Big Question */}
-        <section className="slide slide-question" data-slide={9}>
+        <section className="slide slide-question" data-slide={10}>
           <div className="slide-inner slide-center">
             <div className="slide-num">§ 07 — PERTANYAAN BESAR</div>
             <h2 className="question-h">
@@ -457,7 +515,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 08 — Three Pillars Overview */}
-        <section className="slide" data-slide={10}>
+        <section className="slide" data-slide={11}>
           <div className="slide-inner">
             <div className="slide-num">§ 08 — TIGA PILAR</div>
             <h2 className="slide-h slide-h-sm">
@@ -485,7 +543,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 09 — First Principle */}
-        <section className="slide slide-pillar" data-slide={11}>
+        <section className="slide slide-pillar" data-slide={12}>
           <div className="slide-inner">
             <div className="pillar-header">
               <div className="pillar-badge">PILAR I</div>
@@ -536,7 +594,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 10 — System Thinking */}
-        <section className="slide slide-pillar" data-slide={12}>
+        <section className="slide slide-pillar" data-slide={13}>
           <div className="slide-inner">
             <div className="pillar-header">
               <div className="pillar-badge">PILAR II</div>
@@ -597,7 +655,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 11 — Critical Thinking */}
-        <section className="slide slide-pillar" data-slide={13}>
+        <section className="slide slide-pillar" data-slide={14}>
           <div className="slide-inner">
             <div className="pillar-header">
               <div className="pillar-badge">PILAR III</div>
@@ -658,7 +716,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 12 — Kesimpulan */}
-        <section className="slide slide-conclusion" data-slide={14}>
+        <section className="slide slide-conclusion" data-slide={15}>
           <div className="slide-inner slide-center">
             <div className="slide-num">§ 09 — KESIMPULAN</div>
             <h2 className="conclusion-h">
@@ -674,7 +732,7 @@ export default function NihonFest2026Page() {
         </section>
 
         {/* 13 — Final */}
-        <section className="slide slide-final" data-slide={15}>
+        <section className="slide slide-final" data-slide={16}>
           <div className="slide-inner slide-center">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -881,6 +939,69 @@ const css = `
     font-family: var(--mono); font-size: 12px;
     color: var(--ink-faint); letter-spacing: 0.12em;
   }
+  /* 03 Profile slide */
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 80px; align-items: center;
+  }
+  .profile-photo-wrap {
+    position: relative;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: var(--bg-2);
+  }
+  .profile-photo {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    display: block;
+    filter: grayscale(100%) contrast(1.05);
+    transition: filter 0.5s ease;
+  }
+  .profile-photo-wrap:hover .profile-photo { filter: grayscale(0%) contrast(1); }
+  .profile-content { display: flex; flex-direction: column; }
+  .profile-eyebrow {
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+    margin-bottom: 28px;
+  }
+  .profile-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 6.5vw, 96px);
+    line-height: 0.96; font-weight: 400;
+    letter-spacing: -0.04em; color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .profile-name em { font-style: italic; color: var(--accent); }
+  .profile-role {
+    font-family: var(--mono); font-size: clamp(11px, 1.1vw, 14px);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-dim); margin-bottom: 44px;
+  }
+  .profile-links {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .profile-link {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 6px;
+    padding: 18px 24px; border: 1px solid var(--line);
+    background: var(--bg-2); text-decoration: none;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+    min-width: 180px;
+  }
+  .profile-link:hover { border-color: var(--ink); transform: translateY(-4px); }
+  .profile-link-platform {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .profile-link-handle {
+    font-family: var(--serif); font-size: clamp(14px, 1.4vw, 18px);
+    color: var(--ink); letter-spacing: -0.01em;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .profile-link:hover .profile-link-handle { color: var(--accent); }
+
   /* 01 QR scan slide */
   .slide-qr { justify-content: center; }
   .qr-meta { justify-content: center; margin-bottom: 56px; }
@@ -1499,6 +1620,14 @@ const css = `
     .slide-h   { font-size: clamp(30px, 9vw, 48px); margin-bottom: 24px; }
     .slide-h-sm { font-size: clamp(28px, 8vw, 40px); }
     .slide-lede { font-size: 15px; }
+
+    /* Profile */
+    .profile-grid { grid-template-columns: 1fr; gap: 32px; }
+    .profile-photo-wrap { max-height: 300px; }
+    .profile-name { font-size: clamp(40px, 11vw, 64px); margin-bottom: 14px; }
+    .profile-role { font-size: 11px; margin-bottom: 28px; }
+    .profile-links { gap: 10px; }
+    .profile-link { padding: 14px 20px; min-width: 0; flex: 1; }
 
     /* Cover */
     .deck-meta { margin-bottom: 32px; font-size: 10px; gap: 8px; }
