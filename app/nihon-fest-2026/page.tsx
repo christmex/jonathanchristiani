@@ -448,9 +448,9 @@ export default function NihonFest2026Page() {
               viewport={{ once: true }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="final-label">PESAN TERAKHIR</div>
+              <div className="final-label">The end</div>
               <h2 className="final-h">
-                Latih <em>First Principle</em>,
+                Latih <em>First Principle Thinking</em>,
                 <br />
                 <em>System Thinking</em>, dan <em>Critical Thinking</em>
                 <br />
