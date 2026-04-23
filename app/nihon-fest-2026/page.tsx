@@ -163,11 +163,6 @@ export default function NihonFest2026Page() {
                 jonathanchristiani-beta.vercel.app/nihon-fest-2026
               </motion.div>
 
-              <motion.p className="qr-note" variants={fadeUp}>
-                Biar kalian bisa baca materi, lihat kutipan, dan buka link sendiri
-                sambil saya bicara.
-              </motion.p>
-
               <motion.div className="cover-hint" variants={fadeUp}>
                 tekan <kbd>↓</kbd> untuk mulai
               </motion.div>
