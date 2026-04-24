@@ -8,62 +8,69 @@ import PageShell from "@/app/components/PageShell";
 import { useCursor } from "@/app/hooks/useCursor";
 
 /* ─────────────────────────────────────────────────────────────────────────
-   /intro — cinematic launch reveal
-   ~24 seconds. Kinetic typography + layered SVG + synthesised soundtrack.
-   Starts only after user clicks Play (autoplay policy).
+   /intro  — cinematic launch reveal  (~35 s)
+   Slower, readable frames · energetic 128-BPM electronic soundtrack
    ───────────────────────────────────────────────────────────────────── */
 
 type Frame =
   | { kind: "kicker";  text: string }
-  | { kind: "hero";    pre: string;   main: string; accent: boolean }
+  | { kind: "hero";    pre: string; main: string; accent: boolean }
   | { kind: "subhook"; text: string }
-  | { kind: "menu";    num: string;   total: string; label: string; desc: string }
-  | { kind: "brand";   text: string;  sub: string }
-  | { kind: "url";     text: string;  sub: string };
+  | { kind: "menu";    num: string; total: string; label: string; desc: string }
+  | { kind: "brand";   text: string; sub: string }
+  | { kind: "url";     text: string; sub: string };
 
 const TIMELINE: Array<{ at: number; frame: Frame }> = [
-  { at:    0, frame: { kind: "kicker",  text: "2026 · RELAUNCH" } },
-  { at: 1200, frame: { kind: "hero",    pre: "Just",     main: "released.",         accent: true  } },
-  { at: 3200, frame: { kind: "hero",    pre: "A brand",  main: "new portfolio.",    accent: false } },
-  { at: 5000, frame: { kind: "subhook", text: "Seven sections. One story." } },
-  { at: 6600, frame: { kind: "menu", num: "01", total: "07", label: "Home",     desc: "The landing — where it all begins" } },
-  { at: 8400, frame: { kind: "menu", num: "02", total: "07", label: "Work",     desc: "Selected projects & case studies" } },
-  { at:10200, frame: { kind: "menu", num: "03", total: "07", label: "Services", desc: "What I build for clients" } },
-  { at:12000, frame: { kind: "menu", num: "04", total: "07", label: "Writing",  desc: "Essays on craft, code, and process" } },
-  { at:13800, frame: { kind: "menu", num: "05", total: "07", label: "Slides",   desc: "Decks from talks & pitches" } },
-  { at:15600, frame: { kind: "menu", num: "06", total: "07", label: "Process",  desc: "How I work with clients" } },
-  { at:17400, frame: { kind: "menu", num: "07", total: "07", label: "Contact",  desc: "Let's build something together" } },
-  { at:19400, frame: { kind: "brand", text: "JONATHAN CHRISTIANI", sub: "Fullstack → AI Native Engineer" } },
-  { at:21800, frame: { kind: "url",   text: "jonathanchristiani.com", sub: "Explore the new site." } },
+  { at:     0, frame: { kind: "kicker",  text: "2026 · RELAUNCH" } },
+  { at:  2000, frame: { kind: "hero",    pre: "Just",    main: "released.",         accent: true  } },
+  { at:  5000, frame: { kind: "hero",    pre: "A brand", main: "new portfolio.",    accent: false } },
+  { at:  8000, frame: { kind: "subhook", text: "Seven sections. One story." } },
+  { at: 10000, frame: { kind: "menu", num: "01", total: "07", label: "Home",     desc: "The landing — where it all begins" } },
+  { at: 12500, frame: { kind: "menu", num: "02", total: "07", label: "Work",     desc: "Selected projects & case studies" } },
+  { at: 15000, frame: { kind: "menu", num: "03", total: "07", label: "Services", desc: "What I build for clients" } },
+  { at: 17500, frame: { kind: "menu", num: "04", total: "07", label: "Writing",  desc: "Essays on craft, code & process" } },
+  { at: 20000, frame: { kind: "menu", num: "05", total: "07", label: "Slides",   desc: "Decks from talks & pitches" } },
+  { at: 22500, frame: { kind: "menu", num: "06", total: "07", label: "Process",  desc: "How I work with clients" } },
+  { at: 25000, frame: { kind: "menu", num: "07", total: "07", label: "Contact",  desc: "Let's build something together" } },
+  { at: 27500, frame: { kind: "brand", text: "JONATHAN CHRISTIANI", sub: "Fullstack → AI Native Engineer" } },
+  { at: 31500, frame: { kind: "url",   text: "jonathanchristiani.com", sub: "Explore the new site." } },
 ];
 
-const DURATION = 24500;
+const DURATION = 35500;
 
-/* ── Motion variants ────────────────────────────────────────────────── */
+/* ── Motion variants ──────────────────────────────────────────────── */
 
 const charParent: Variants = {
   hidden: {},
-  show:   { transition: { staggerChildren: 0.04, delayChildren: 0.05 } },
-  exit:   { transition: { staggerChildren: 0.015, staggerDirection: -1 } },
+  show:   { transition: { staggerChildren: 0.055, delayChildren: 0.05 } },
+  exit:   { transition: { staggerChildren: 0.02,  staggerDirection: -1 } },
 };
 const charChild: Variants = {
-  hidden: { opacity: 0, y: 60, rotateX: -80, filter: "blur(10px)" },
-  show:   { opacity: 1, y: 0,  rotateX: 0,  filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
-  exit:   { opacity: 0, y: -30, filter: "blur(8px)", transition: { duration: 0.28, ease: "easeIn" } },
+  hidden: { opacity: 0, y: 70,  rotateX: -90, filter: "blur(12px)" },
+  show:   { opacity: 1, y: 0,   rotateX:   0, filter: "blur(0px)",
+            transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+  exit:   { opacity: 0, y: -28, filter: "blur(8px)",
+            transition: { duration: 0.3, ease: "easeIn" } },
 };
 
-function Chars({ text, className, style }: { text: string; className?: string; style?: React.CSSProperties }) {
+function Chars({ text, className, style }: {
+  text: string; className?: string; style?: React.CSSProperties;
+}) {
   return (
     <motion.span
       className={className}
-      style={{ display: "inline-block", perspective: 1000, ...style }}
+      style={{ display: "inline-block", perspective: 1200, ...style }}
       variants={charParent}
       initial="hidden"
       animate="show"
       exit="exit"
     >
       {text.split("").map((ch, i) => (
-        <motion.span key={i} variants={charChild} style={{ display: "inline-block", transformStyle: "preserve-3d" }}>
+        <motion.span
+          key={i}
+          variants={charChild}
+          style={{ display: "inline-block", transformStyle: "preserve-3d" }}
+        >
           {ch === " " ? "\u00A0" : ch}
         </motion.span>
       ))}
@@ -71,175 +78,255 @@ function Chars({ text, className, style }: { text: string; className?: string; s
   );
 }
 
-/* ── Soundtrack (Web Audio) ─────────────────────────────────────────── */
+/* ── Soundtrack — energetic 128-BPM electronic ────────────────────── */
 
-type AudioHandle = {
-  stop: () => void;
-  setMuted: (m: boolean) => void;
-};
+type AudioHandle = { stop: () => void; setMuted: (m: boolean) => void };
 
 function startSoundtrack(): AudioHandle | null {
   try {
     type WithWebkit = typeof window & { webkitAudioContext?: typeof AudioContext };
-    const w = window as WithWebkit;
-    const AC = window.AudioContext || w.webkitAudioContext;
+    const AC = window.AudioContext || (window as WithWebkit).webkitAudioContext;
     if (!AC) return null;
     const ctx = new AC();
+
+    /* Master bus with hard-limiter compressor */
     const master = ctx.createGain();
-    master.gain.value = 0.55;
-    const masterFilter = ctx.createBiquadFilter();
-    masterFilter.type = "lowpass";
-    masterFilter.frequency.value = 4200;
-    masterFilter.Q.value = 0.5;
-    master.connect(masterFilter).connect(ctx.destination);
+    master.gain.value = 0.65;
+    const comp = ctx.createDynamicsCompressor();
+    comp.threshold.value = -6; comp.knee.value = 6;
+    comp.ratio.value = 8; comp.attack.value = 0.003; comp.release.value = 0.08;
+    master.connect(comp).connect(ctx.destination);
 
     const now = ctx.currentTime;
-    const T = (seconds: number) => now + seconds;
+    const T   = (s: number) => now + s;
 
-    // ── Sub drone (A1/A1-detune) ──
-    const drone = (freq: number, fadeInStart: number, peak: number) => {
+    /* Shared noise buffer — one allocation, reused by every noise source */
+    const noiseLen  = Math.ceil(ctx.sampleRate * 0.6);
+    const noiseBuf  = ctx.createBuffer(1, noiseLen, ctx.sampleRate);
+    const noiseData = noiseBuf.getChannelData(0);
+    for (let i = 0; i < noiseLen; i++) noiseData[i] = Math.random() * 2 - 1;
+
+    /* ── Percussion helpers ─────────────────────────────────────── */
+    const kick = (t: number, vol = 0.72) => {
+      const osc = ctx.createOscillator();
+      osc.type = "sine";
+      const g = ctx.createGain();
+      osc.frequency.setValueAtTime(160, T(t));
+      osc.frequency.exponentialRampToValueAtTime(36, T(t + 0.18));
+      g.gain.setValueAtTime(vol, T(t));
+      g.gain.exponentialRampToValueAtTime(0.001, T(t + 0.4));
+      osc.connect(g).connect(master);
+      osc.start(T(t)); osc.stop(T(t + 0.45));
+    };
+
+    const snare = (t: number, vol = 0.5) => {
+      /* tone body */
+      const osc = ctx.createOscillator();
+      osc.type = "triangle";
+      const og = ctx.createGain();
+      osc.frequency.setValueAtTime(220, T(t));
+      osc.frequency.exponentialRampToValueAtTime(80, T(t + 0.1));
+      og.gain.setValueAtTime(vol * 0.5, T(t));
+      og.gain.exponentialRampToValueAtTime(0.001, T(t + 0.14));
+      osc.connect(og).connect(master);
+      osc.start(T(t)); osc.stop(T(t + 0.15));
+      /* noise snap */
+      const src = ctx.createBufferSource();
+      src.buffer = noiseBuf;
+      const f = ctx.createBiquadFilter();
+      f.type = "bandpass"; f.frequency.value = 3200; f.Q.value = 2;
+      const ng = ctx.createGain();
+      ng.gain.setValueAtTime(vol, T(t));
+      ng.gain.exponentialRampToValueAtTime(0.001, T(t + 0.2));
+      src.connect(f).connect(ng).connect(master);
+      src.start(T(t));
+    };
+
+    const closedHat = (t: number, vol = 0.2) => {
+      const src = ctx.createBufferSource();
+      src.buffer = noiseBuf;
+      const f = ctx.createBiquadFilter();
+      f.type = "highpass"; f.frequency.value = 9000;
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(vol, T(t));
+      g.gain.exponentialRampToValueAtTime(0.001, T(t + 0.04));
+      src.connect(f).connect(g).connect(master);
+      src.start(T(t));
+    };
+
+    const openHat = (t: number, vol = 0.12) => {
+      const src = ctx.createBufferSource();
+      src.buffer = noiseBuf;
+      const f = ctx.createBiquadFilter();
+      f.type = "highpass"; f.frequency.value = 6500;
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(vol, T(t));
+      g.gain.exponentialRampToValueAtTime(0.001, T(t + 0.24));
+      src.connect(f).connect(g).connect(master);
+      src.start(T(t));
+    };
+
+    const bassNote = (t: number, freq: number, dur = 0.22) => {
       const osc = ctx.createOscillator();
       osc.type = "sine";
       osc.frequency.value = freq;
       const g = ctx.createGain();
-      g.gain.setValueAtTime(0, T(0));
-      g.gain.linearRampToValueAtTime(peak, T(fadeInStart));
-      g.gain.setValueAtTime(peak, T(22));
-      g.gain.linearRampToValueAtTime(0, T(24.2));
+      g.gain.setValueAtTime(0.38, T(t));
+      g.gain.exponentialRampToValueAtTime(0.001, T(t + dur));
       osc.connect(g).connect(master);
-      osc.start(T(0));
-      osc.stop(T(24.5));
+      osc.start(T(t)); osc.stop(T(t + dur + 0.05));
     };
-    drone(55, 3, 0.3);
-    drone(55.4, 4, 0.18);
-    drone(110, 5, 0.09);
 
-    // ── Pad chord (A minor → A major at brand) ──
-    const pad = (freq: number, start: number, end: number, peak = 0.05) => {
+    const stab = (t: number, freq: number, vol = 0.07) => {
+      const osc = ctx.createOscillator();
+      osc.type = "sawtooth";
+      osc.frequency.value = freq;
+      const f = ctx.createBiquadFilter();
+      f.type = "lowpass"; f.frequency.value = freq * 2.8; f.Q.value = 4;
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0, T(t));
+      g.gain.linearRampToValueAtTime(vol, T(t + 0.01));
+      g.gain.exponentialRampToValueAtTime(0.001, T(t + 0.3));
+      osc.connect(f).connect(g).connect(master);
+      osc.start(T(t)); osc.stop(T(t + 0.35));
+    };
+
+    /* ── 128-BPM drum machine ────────────────────────────────────── */
+    const BPM       = 128;
+    const sixteenth = 60 / BPM / 4;   // ≈ 0.117 s
+    const drumStart = 1.8;
+    const drumEnd   = 35.0;
+    const numSteps  = Math.floor((drumEnd - drumStart) / sixteenth);
+
+    /*
+      16-step pattern (1 bar of 4/4):
+      Pos:    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+      Kick:   K        k        K        k        K        k     ← 4-on-floor + synco ghost
+      Snare:                 S                          S        ← beats 2 & 4
+      Hat:    H     H     H     H     H     H     H     H        ← 8th-note closed
+      OpenH:                        oH                       oH  ← just before snare
+      Bass:   B              B     B        B              B
+    */
+    const K =  [1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0];  // 4-on-floor w/ syncopated ghost
+    const S =  [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0];  // snare 2 & 4
+    const H =  [1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0];  // 8th closed hats
+    const OH = [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0];  // open hats
+    const BF = [55,0,0,0,0,41.2,0,0,55,0,0,0,0,41.2,0,0]; // bass freqs
+
+    for (let i = 0; i < numSteps; i++) {
+      const t    = drumStart + i * sixteenth;
+      const pos  = i % 16;
+      const bar  = Math.floor(i / 16);
+      const intro = t < 4.5;
+      const build = t >= 25.0 && t < 27.5;  // riser section
+      const drop  = t >= 27.5 && t < 31.5;  // brand climax
+
+      const kv = drop ? 0.88 : intro ? 0.5 : 0.72;
+      const hv = intro ? 0 : build ? 0.28 : 0.2;
+
+      if (K[pos])  kick(t, kv);
+      if (S[pos] && !intro) snare(t, drop ? 0.62 : 0.5);
+      if (H[pos])  closedHat(t, hv);
+      if (OH[pos] && !intro) openHat(t, drop ? 0.18 : 0.12);
+      if (BF[pos] && !intro) bassNote(t, BF[pos]);
+
+      /* Synth stab chord every 4 bars on the downbeat */
+      if (pos === 0 && bar >= 3 && bar % 4 === 0 && !intro) {
+        [440, 554.37, 659.25].forEach((f, fi) => stab(t + fi * 0.04, f));
+      }
+    }
+
+    /* ── Ambient pad chord (texture, low in mix) ────────────────── */
+    const pad = (freq: number, start: number, end: number, vol = 0.035) => {
       const osc = ctx.createOscillator();
       osc.type = "triangle";
       osc.frequency.value = freq;
-      const f = ctx.createBiquadFilter();
-      f.type = "lowpass";
-      f.frequency.value = 900;
-      f.Q.value = 1;
+      const lp = ctx.createBiquadFilter();
+      lp.type = "lowpass"; lp.frequency.value = 650; lp.Q.value = 0.7;
       const g = ctx.createGain();
       g.gain.setValueAtTime(0, T(start));
-      g.gain.linearRampToValueAtTime(peak, T(start + 1.6));
-      g.gain.setValueAtTime(peak, T(end - 0.6));
+      g.gain.linearRampToValueAtTime(vol, T(start + 2));
+      g.gain.setValueAtTime(vol, T(end - 0.8));
       g.gain.linearRampToValueAtTime(0, T(end));
-      osc.connect(f).connect(g).connect(master);
-      osc.start(T(start));
-      osc.stop(T(end + 0.1));
+      osc.connect(lp).connect(g).connect(master);
+      osc.start(T(start)); osc.stop(T(end + 0.1));
     };
-    // A-minor 7 pad during tour
-    pad(220.00, 1,  19.2);  // A3
-    pad(261.63, 2,  19.2);  // C4
-    pad(329.63, 3,  19.2);  // E4
-    // Shift to A major on brand reveal (C → C#)
-    pad(220.00, 19.2, 24.3, 0.06);
-    pad(277.18, 19.3, 24.3, 0.05);  // C#4
-    pad(329.63, 19.4, 24.3, 0.05);
-    pad(440.00, 19.6, 24.3, 0.035); // add A4 on top
+    /* A-minor pad during tour */
+    pad(110, 1, 27.5, 0.04); pad(220, 2, 27.5, 0.03);
+    pad(261.63, 3, 27.5, 0.025); pad(329.63, 4, 27.5, 0.02);
+    /* Shift to A-major at brand reveal */
+    pad(220, 27.5, 35.5, 0.045); pad(277.18, 27.5, 35.5, 0.04);
+    pad(329.63, 27.5, 35.5, 0.035); pad(440, 28, 35.5, 0.025);
 
-    // ── Kicks on transitions ──
-    const kick = (t: number, vol = 0.55) => {
-      const osc = ctx.createOscillator();
-      osc.type = "sine";
-      const g = ctx.createGain();
-      osc.frequency.setValueAtTime(130, T(t));
-      osc.frequency.exponentialRampToValueAtTime(38, T(t + 0.22));
-      g.gain.setValueAtTime(vol, T(t));
-      g.gain.exponentialRampToValueAtTime(0.001, T(t + 0.45));
-      osc.connect(g).connect(master);
-      osc.start(T(t));
-      osc.stop(T(t + 0.5));
-    };
-    [1.2, 3.2, 5.0, 6.6, 8.4, 10.2, 12.0, 13.8, 15.6, 17.4, 19.4, 21.8].forEach((t, i) => {
-      kick(t, i === 10 ? 0.75 : 0.45);
-    });
-
-    // ── Whoosh (filtered noise sweep) on big transitions ──
-    const whoosh = (t: number, durSec = 0.9, vol = 0.14) => {
-      const bufSize = Math.floor(ctx.sampleRate * (durSec + 0.5));
-      const buffer = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
-      const src = ctx.createBufferSource();
-      src.buffer = buffer;
-      const filter = ctx.createBiquadFilter();
-      filter.type = "bandpass";
-      filter.frequency.setValueAtTime(200, T(t));
-      filter.frequency.exponentialRampToValueAtTime(3800, T(t + durSec));
-      filter.Q.value = 2;
-      const g = ctx.createGain();
-      g.gain.setValueAtTime(0, T(t));
-      g.gain.linearRampToValueAtTime(vol, T(t + durSec * 0.5));
-      g.gain.linearRampToValueAtTime(0, T(t + durSec));
-      src.connect(filter).connect(g).connect(master);
-      src.start(T(t));
-      src.stop(T(t + durSec + 0.1));
-    };
-    whoosh(0.8, 1.2, 0.12);
-    whoosh(4.8, 0.8, 0.12);
-    whoosh(18.4, 1.2, 0.22);   // riser into brand
-    whoosh(21.3, 0.7, 0.12);
-
-    // ── Riser (saw pitch sweep up) leading into brand ──
+    /* ── Riser into brand reveal ─────────────────────────────────── */
     {
       const osc = ctx.createOscillator();
       osc.type = "sawtooth";
-      osc.frequency.setValueAtTime(180, T(17.8));
-      osc.frequency.exponentialRampToValueAtTime(1200, T(19.35));
-      const f = ctx.createBiquadFilter();
-      f.type = "lowpass";
-      f.frequency.setValueAtTime(350, T(17.8));
-      f.frequency.exponentialRampToValueAtTime(3200, T(19.35));
-      f.Q.value = 4;
+      osc.frequency.setValueAtTime(80, T(25.5));
+      osc.frequency.exponentialRampToValueAtTime(2000, T(27.4));
+      const lp = ctx.createBiquadFilter();
+      lp.type = "lowpass";
+      lp.frequency.setValueAtTime(180, T(25.5));
+      lp.frequency.exponentialRampToValueAtTime(4500, T(27.4));
+      lp.Q.value = 6;
       const g = ctx.createGain();
-      g.gain.setValueAtTime(0, T(17.8));
-      g.gain.linearRampToValueAtTime(0.12, T(19.2));
-      g.gain.linearRampToValueAtTime(0, T(19.5));
-      osc.connect(f).connect(g).connect(master);
-      osc.start(T(17.8));
-      osc.stop(T(19.6));
+      g.gain.setValueAtTime(0, T(25.5));
+      g.gain.linearRampToValueAtTime(0.14, T(27.3));
+      g.gain.linearRampToValueAtTime(0, T(27.6));
+      osc.connect(lp).connect(g).connect(master);
+      osc.start(T(25.5)); osc.stop(T(27.7));
     }
 
-    // ── Bell chimes on brand & URL reveals ──
-    const chime = (t: number, freq: number, vol = 0.16, tailSec = 2.6) => {
+    /* ── Noise whoosh sweeps ─────────────────────────────────────── */
+    const whoosh = (t: number, dur = 0.9, vol = 0.13) => {
+      const src = ctx.createBufferSource();
+      src.buffer = noiseBuf;
+      const f = ctx.createBiquadFilter();
+      f.type = "bandpass";
+      f.frequency.setValueAtTime(200, T(t));
+      f.frequency.exponentialRampToValueAtTime(4000, T(t + dur));
+      f.Q.value = 2;
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0, T(t));
+      g.gain.linearRampToValueAtTime(vol, T(t + dur * 0.5));
+      g.gain.linearRampToValueAtTime(0, T(t + dur));
+      src.connect(f).connect(g).connect(master);
+      src.start(T(t)); src.stop(T(t + dur + 0.05));
+    };
+    whoosh(0.6, 1.3, 0.11);
+    whoosh(4.8, 0.8, 0.10);
+    whoosh(9.8, 0.6, 0.10);
+    whoosh(27.2, 0.5, 0.18);
+    whoosh(31.2, 0.5, 0.12);
+
+    /* ── Bell chimes on brand & URL ─────────────────────────────── */
+    const chime = (t: number, freq: number, vol = 0.14, tail = 2.6) => {
       const osc = ctx.createOscillator();
       osc.type = "sine";
       osc.frequency.value = freq;
       const g = ctx.createGain();
       g.gain.setValueAtTime(0, T(t));
       g.gain.linearRampToValueAtTime(vol, T(t + 0.02));
-      g.gain.exponentialRampToValueAtTime(0.001, T(t + tailSec));
+      g.gain.exponentialRampToValueAtTime(0.001, T(t + tail));
       osc.connect(g).connect(master);
-      osc.start(T(t));
-      osc.stop(T(t + tailSec + 0.1));
+      osc.start(T(t)); osc.stop(T(t + tail + 0.1));
     };
-    // Brand reveal: A–C#–E chord bells
-    chime(19.4, 880,  0.16);
-    chime(19.55, 1108.73, 0.13);
-    chime(19.7, 1318.51, 0.10, 3.2);
-    // URL reveal: octave + fifth
-    chime(21.8, 880,  0.14);
-    chime(22.0, 1318.51, 0.10, 3.0);
+    chime(27.5, 880, 0.15, 3.0); chime(27.65, 1108.73, 0.12, 2.6); chime(27.8, 1318.51, 0.09, 3.3);
+    chime(31.5, 880, 0.13, 2.8); chime(31.7, 1318.51, 0.09, 3.0);
 
-    let muted = false;
+    let _muted = false;
     return {
       stop: () => {
         try {
           master.gain.cancelScheduledValues(ctx.currentTime);
-          master.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.3);
-          setTimeout(() => { void ctx.close(); }, 400);
+          master.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.25);
+          setTimeout(() => { void ctx.close(); }, 350);
         } catch { /* noop */ }
       },
       setMuted: (m: boolean) => {
-        muted = m;
+        _muted = m;
         master.gain.cancelScheduledValues(ctx.currentTime);
-        master.gain.linearRampToValueAtTime(m ? 0 : 0.55, ctx.currentTime + 0.15);
-        void muted; // keep ref
+        master.gain.linearRampToValueAtTime(m ? 0 : 0.65, ctx.currentTime + 0.12);
       },
     };
   } catch {
@@ -247,24 +334,16 @@ function startSoundtrack(): AudioHandle | null {
   }
 }
 
-/* ── Scene renderers ────────────────────────────────────────────────── */
+/* ── Scene renderers ──────────────────────────────────────────────── */
 
 function SceneKicker({ text }: { text: string }) {
   return (
     <div className="scene scene-kicker">
-      <motion.div
-        className="kicker-line"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      />
+      <motion.div className="kicker-line" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} />
       <Chars text={text} className="kicker-text" />
-      <motion.div
-        className="kicker-line"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-      />
+      <motion.div className="kicker-line" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
+        transition={{ duration: 0.8, delay: 0.12, ease: [0.22, 1, 0.36, 1] }} />
     </div>
   );
 }
@@ -272,34 +351,21 @@ function SceneKicker({ text }: { text: string }) {
 function SceneHero({ pre, main, accent }: { pre: string; main: string; accent: boolean }) {
   return (
     <div className="scene scene-hero">
-      <motion.div
-        className="hero-pre"
-        initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 40 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <span className="hero-bracket">⟦</span> {pre} <span className="hero-bracket">⟧</span>
+      <motion.div className="hero-pre"
+        initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 50 }}
+        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}>
+        <span className="hero-bracket">⟦</span>{pre}<span className="hero-bracket">⟧</span>
       </motion.div>
       <div className={`hero-main${accent ? " hero-main-accent" : ""}`}>
         <Chars text={main} />
       </div>
-      <motion.svg
-        className="hero-underline"
-        viewBox="0 0 600 6"
-        preserveAspectRatio="none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-      >
-        <motion.line
-          x1="0" y1="3" x2="600" y2="3"
-          stroke={accent ? "var(--accent)" : "var(--ink-dim)"}
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        />
+      <motion.svg className="hero-underline" viewBox="0 0 600 6" preserveAspectRatio="none"
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}>
+        <motion.line x1="0" y1="3" x2="600" y2="3"
+          stroke={accent ? "var(--accent)" : "var(--ink-dim)"} strokeWidth="2"
+          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+          transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }} />
       </motion.svg>
     </div>
   );
@@ -308,22 +374,16 @@ function SceneHero({ pre, main, accent }: { pre: string; main: string; accent: b
 function SceneSubhook({ text }: { text: string }) {
   return (
     <div className="scene scene-subhook">
-      <motion.svg
-        viewBox="0 0 24 24" className="subhook-asterisk"
-        initial={{ opacity: 0, rotate: -180, scale: 0.5 }}
-        animate={{ opacity: 1, rotate: 0, scale: 1 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <motion.svg viewBox="0 0 28 28" className="subhook-asterisk"
+        initial={{ opacity: 0, rotate: -180, scale: 0.4 }}
+        animate={{ opacity: 1, rotate: 0,    scale: 1 }}
+        transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}>
         {[0, 45, 90, 135].map((a, i) => (
-          <motion.line
-            key={i}
-            x1="12" y1="2" x2="12" y2="22"
-            stroke="var(--accent)" strokeWidth="1.5"
-            transform={`rotate(${a} 12 12)`}
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 + i * 0.06 }}
-          />
+          <motion.line key={i} x1="14" y1="2" x2="14" y2="26"
+            stroke="var(--accent)" strokeWidth="1.8"
+            transform={`rotate(${a} 14 14)`}
+            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 + i * 0.07 }} />
         ))}
       </motion.svg>
       <Chars text={text} className="subhook-text" />
@@ -331,63 +391,50 @@ function SceneSubhook({ text }: { text: string }) {
   );
 }
 
-function SceneMenu({ num, total, label, desc }: { num: string; total: string; label: string; desc: string }) {
+function SceneMenu({ num, total, label, desc }: {
+  num: string; total: string; label: string; desc: string;
+}) {
   return (
     <div className="scene scene-menu">
-      {/* Number badge with corner brackets */}
-      <motion.div
-        className="menu-badge"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <motion.div className="menu-badge"
+        initial={{ opacity: 0, y: -24 }} animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -12 }}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}>
         <svg className="menu-badge-brackets" viewBox="0 0 140 44" preserveAspectRatio="none">
-          {/* four corner brackets */}
-          <motion.path d="M0 12 L0 0 L12 0" stroke="var(--accent)" strokeWidth="1.5" fill="none"
-            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.35, delay: 0.1 }} />
-          <motion.path d="M140 12 L140 0 L128 0" stroke="var(--accent)" strokeWidth="1.5" fill="none"
-            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.35, delay: 0.15 }} />
-          <motion.path d="M0 32 L0 44 L12 44" stroke="var(--accent)" strokeWidth="1.5" fill="none"
-            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.35, delay: 0.2 }} />
-          <motion.path d="M140 32 L140 44 L128 44" stroke="var(--accent)" strokeWidth="1.5" fill="none"
-            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.35, delay: 0.25 }} />
+          {[
+            "M0 12 L0 0 L12 0",
+            "M140 12 L140 0 L128 0",
+            "M0 32 L0 44 L12 44",
+            "M140 32 L140 44 L128 44",
+          ].map((d, i) => (
+            <motion.path key={i} d={d} stroke="var(--accent)" strokeWidth="1.5" fill="none"
+              initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+              transition={{ duration: 0.4, delay: 0.1 + i * 0.06 }} />
+          ))}
         </svg>
         <span className="menu-badge-text">
           <span className="menu-badge-num">{num}</span>
           <span className="menu-badge-slash">/</span>
-          <span className="menu-badge-total">{total}</span>
+          <span className="menu-badge-tot">{total}</span>
         </span>
       </motion.div>
 
-      {/* Label with crosshair lines */}
-      <div className="menu-label-wrap">
-        <motion.div
-          className="menu-crosshair menu-crosshair-l"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 0.5 }}
-          transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        />
-        <div className="menu-label">
-          <Chars text={label} />
-        </div>
-        <motion.div
-          className="menu-crosshair menu-crosshair-r"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 0.5 }}
-          transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        />
+      <div className="menu-label-row">
+        <motion.div className="menu-crosshair"
+          initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 0.55 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }} />
+        <div className="menu-label"><Chars text={label} /></div>
+        <motion.div className="menu-crosshair"
+          initial={{ scaleX: 0, opacity: 0 }} animate={{ scaleX: 1, opacity: 0.55 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }} />
       </div>
 
-      {/* Description */}
-      <motion.div
-        className="menu-desc"
-        initial={{ opacity: 0, y: 22, filter: "blur(6px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        exit={{ opacity: 0, y: -12 }}
-        transition={{ duration: 0.6, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <span className="menu-desc-dash">—</span> {desc}
+      <motion.div className="menu-desc"
+        initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+        animate={{ opacity: 1, y: 0,  filter: "blur(0px)" }}
+        exit={{ opacity: 0, y: -14 }}
+        transition={{ duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}>
+        <span className="menu-desc-dash">—</span>{desc}
       </motion.div>
     </div>
   );
@@ -396,61 +443,37 @@ function SceneMenu({ num, total, label, desc }: { num: string; total: string; la
 function SceneBrand({ text, sub }: { text: string; sub: string }) {
   return (
     <div className="scene scene-brand">
-      {/* Expanding rings */}
-      <svg className="brand-rings" viewBox="-220 -220 440 440" aria-hidden="true">
-        {[40, 80, 120, 160, 200].map((r, i) => (
-          <motion.circle
-            key={r}
-            cx="0" cy="0" r={r}
-            fill="none"
-            stroke="var(--accent)"
-            strokeWidth={i === 4 ? 0.6 : 0.9}
+      <svg className="brand-rings" viewBox="-240 -240 480 480" aria-hidden="true">
+        {[40, 80, 120, 165, 210].map((r, i) => (
+          <motion.circle key={r} cx="0" cy="0" r={r} fill="none"
+            stroke="var(--accent)" strokeWidth={i < 2 ? 1.2 : 0.7}
             initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 0.35 - i * 0.04 }}
-            transition={{ duration: 1.3, delay: 0.1 + i * 0.14, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformOrigin: "center" }}
-          />
+            animate={{ scale: 1, opacity: 0.4 - i * 0.05 }}
+            transition={{ duration: 1.4, delay: 0.12 + i * 0.16, ease: [0.22, 1, 0.36, 1] }}
+            style={{ transformOrigin: "center" }} />
         ))}
-        {/* Crosshair */}
-        <motion.line
-          x1="-220" y1="0" x2="220" y2="0"
-          stroke="var(--accent)" strokeWidth="0.5" strokeOpacity="0.35"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-        />
-        <motion.line
-          x1="0" y1="-220" x2="0" y2="220"
-          stroke="var(--accent)" strokeWidth="0.5" strokeOpacity="0.35"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.2, delay: 0.35 }}
-        />
+        <motion.line x1="-240" y1="0" x2="240" y2="0"
+          stroke="var(--accent)" strokeWidth="0.5" strokeOpacity="0.4"
+          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+          transition={{ duration: 1.4, delay: 0.25 }} />
+        <motion.line x1="0" y1="-240" x2="0" y2="240"
+          stroke="var(--accent)" strokeWidth="0.5" strokeOpacity="0.4"
+          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+          transition={{ duration: 1.4, delay: 0.4 }} />
       </svg>
-
-      <motion.div
-        className="brand-text"
-        initial={{ opacity: 0, letterSpacing: "0.5em", filter: "blur(14px)" }}
-        animate={{ opacity: 1, letterSpacing: "0.1em", filter: "blur(0px)" }}
+      <motion.div className="brand-text"
+        initial={{ opacity: 0, letterSpacing: "0.55em", filter: "blur(16px)" }}
+        animate={{ opacity: 1, letterSpacing: "0.1em",  filter: "blur(0px)" }}
         exit={{ opacity: 0, letterSpacing: "0.04em" }}
-        transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-      >
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}>
         {text}
       </motion.div>
-
-      <motion.div
-        className="brand-divider"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      />
-
-      <motion.div
-        className="brand-sub"
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.9 }}
-      >
+      <motion.div className="brand-divider"
+        initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
+        transition={{ duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] }} />
+      <motion.div className="brand-sub"
+        initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.0 }}>
         {sub}
       </motion.div>
     </div>
@@ -458,52 +481,44 @@ function SceneBrand({ text, sub }: { text: string; sub: string }) {
 }
 
 function SceneUrl({ text, sub }: { text: string; sub: string }) {
+  const [base, ext] = [text.replace(".com", ""), ".com"];
   return (
     <div className="scene scene-url">
-      <motion.div
-        className="url-sub"
-        initial={{ opacity: 0, y: 14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div className="url-sub"
+        initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}>
         {sub}
       </motion.div>
-      <motion.div
-        className="url-text"
-        initial={{ opacity: 0, scale: 0.88, filter: "blur(12px)" }}
-        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-        transition={{ duration: 1.1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {text.replace(".com", "")}<span className="url-dot">.</span>com
+      <motion.div className="url-text"
+        initial={{ opacity: 0, scale: 0.88, filter: "blur(14px)" }}
+        animate={{ opacity: 1, scale: 1,    filter: "blur(0px)" }}
+        transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}>
+        {base}<span className="url-dot">.</span>com
+        <span style={{ display: "none" }}>{ext}</span>
       </motion.div>
       <motion.svg viewBox="0 0 400 4" className="url-underline" preserveAspectRatio="none">
-        <motion.line
-          x1="0" y1="2" x2="400" y2="2"
+        <motion.line x1="0" y1="2" x2="400" y2="2"
           stroke="var(--accent)" strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1.1, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        />
+          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+          transition={{ duration: 1.3, delay: 0.8, ease: [0.22, 1, 0.36, 1] }} />
       </motion.svg>
     </div>
   );
 }
 
-/* ── Main page ──────────────────────────────────────────────────────── */
+/* ── Main page ────────────────────────────────────────────────────── */
 
 export default function IntroPage() {
   const { cursorXSpring, cursorYSpring, cursorHovering, setCursorHovering } = useCursor();
   const [started, setStarted] = useState(false);
-  const [idx, setIdx] = useState(0);
-  const [done, setDone] = useState(false);
-  const [muted, setMuted] = useState(false);
-  const [runKey, setRunKey] = useState(0);
+  const [idx, setIdx]         = useState(0);
+  const [done, setDone]       = useState(false);
+  const [muted, setMuted]     = useState(false);
+  const [runKey, setRunKey]   = useState(0);
   const audioRef = useRef<AudioHandle | null>(null);
 
-  const start = () => {
-    setIdx(0);
-    setDone(false);
-    setStarted(true);
+  const launch = () => {
+    setIdx(0); setDone(false); setStarted(true);
     setRunKey((k) => k + 1);
     audioRef.current?.stop();
     audioRef.current = startSoundtrack();
@@ -511,135 +526,117 @@ export default function IntroPage() {
   };
 
   const replay = () => {
-    audioRef.current?.stop();
-    audioRef.current = null;
-    setDone(false);
-    setIdx(0);
-    setRunKey((k) => k + 1);
+    audioRef.current?.stop(); audioRef.current = null;
+    setDone(false); setIdx(0); setRunKey((k) => k + 1);
     requestAnimationFrame(() => {
       audioRef.current = startSoundtrack();
       if (muted) audioRef.current?.setMuted(true);
     });
   };
 
-  // schedule frame advances whenever we start a run
   useEffect(() => {
     if (!started) return;
-    const timeouts: ReturnType<typeof setTimeout>[] = [];
-    TIMELINE.forEach((step, i) => {
-      timeouts.push(setTimeout(() => setIdx(i), step.at));
-    });
-    timeouts.push(setTimeout(() => setDone(true), DURATION));
-    return () => timeouts.forEach(clearTimeout);
+    const ids: ReturnType<typeof setTimeout>[] = [];
+    TIMELINE.forEach((step, i) => { ids.push(setTimeout(() => setIdx(i), step.at)); });
+    ids.push(setTimeout(() => setDone(true), DURATION));
+    return () => ids.forEach(clearTimeout);
   }, [started, runKey]);
 
-  // stop audio on unmount
-  useEffect(() => {
-    return () => { audioRef.current?.stop(); };
-  }, []);
+  useEffect(() => () => { audioRef.current?.stop(); }, []);
 
   const toggleMute = () => {
-    const next = !muted;
-    setMuted(next);
+    const next = !muted; setMuted(next);
     audioRef.current?.setMuted(next);
   };
 
   const current = TIMELINE[idx]?.frame;
 
   return (
-    <PageShell
-      cursorXSpring={cursorXSpring}
-      cursorYSpring={cursorYSpring}
-      cursorHovering={cursorHovering}
-      blobs={3}
-    >
+    <PageShell cursorXSpring={cursorXSpring} cursorYSpring={cursorYSpring}
+      cursorHovering={cursorHovering} blobs={3}>
       <style>{css}</style>
 
-      {/* Static chrome */}
-      <div className="intro-top-right">
+      {/* Top-right chrome */}
+      <div className="intro-tr">
         {started && (
-          <button
-            type="button"
-            className="intro-icon-btn"
-            onClick={toggleMute}
+          <button type="button" className="intro-icon-btn" onClick={toggleMute}
             onMouseEnter={() => setCursorHovering(true)}
             onMouseLeave={() => setCursorHovering(false)}
-            aria-label={muted ? "Unmute" : "Mute"}
-          >
-            {muted ? <VolumeX size={14} strokeWidth={1.75} /> : <Volume2 size={14} strokeWidth={1.75} />}
+            aria-label={muted ? "Unmute" : "Mute"}>
+            {muted
+              ? <VolumeX size={14} strokeWidth={1.75} />
+              : <Volume2 size={14} strokeWidth={1.75} />}
           </button>
         )}
-        <Link
-          href="/"
-          className="intro-skip"
+        <Link href="/" className="intro-skip"
           onMouseEnter={() => setCursorHovering(true)}
-          onMouseLeave={() => setCursorHovering(false)}
-        >
+          onMouseLeave={() => setCursorHovering(false)}>
           skip →
         </Link>
       </div>
 
-      {/* Ambient corner brackets */}
-      <CornerBrackets />
+      {/* Permanent corner brackets */}
+      <svg className="intro-corners" aria-hidden="true">
+        {[
+          { d: "M24 56 L24 24 L56 24",              style: {} },
+          { d: "M-56 24 L-24 24 L-24 56",           style: { transform: "translateX(100%)" } },
+          { d: "M24 -56 L24 -24 L56 -24",           style: { transform: "translateY(100%)" } },
+          { d: "M-56 -24 L-24 -24 L-24 -56",        style: { transform: "translate(100%,100%)" } },
+        ].map(({ d, style }, i) => (
+          <motion.path key={i} d={d} stroke="var(--ink-faint)" strokeWidth="1" fill="none"
+            style={style}
+            initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.2 + i * 0.08 }} />
+        ))}
+      </svg>
 
-      {/* Splash — press play */}
+      {/* ── Splash ── */}
       <AnimatePresence>
         {!started && (
-          <motion.div
-            className="intro-splash"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <motion.div
-              className="splash-dot"
-              animate={{ scale: [1, 1.4, 1], opacity: [0.8, 1, 0.8] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <div className="splash-title">
-              <span className="splash-kicker">JONATHAN CHRISTIANI · 2026</span>
+          <motion.div className="intro-splash"
+            initial={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.55 }}>
+            <motion.div className="splash-dot"
+              animate={{ scale: [1, 1.5, 1], opacity: [0.8, 1, 0.8] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} />
+            <div className="splash-copy">
+              <p className="splash-eyebrow">JONATHAN CHRISTIANI · 2026 RELAUNCH</p>
               <h1>A new site<br /><em>is live.</em></h1>
-              <p>Press play for the 24-second tour.<br />Sound on — headphones recommended.</p>
+              <p className="splash-hint">
+                35-second cinematic tour of the site.<br />
+                Sound on — it goes hard.
+              </p>
             </div>
-            <motion.button
-              type="button"
-              className="splash-btn"
-              onClick={start}
+            <motion.button type="button" className="splash-btn"
+              onClick={launch}
               onMouseEnter={() => setCursorHovering(true)}
               onMouseLeave={() => setCursorHovering(false)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-            >
+              whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <Play size={16} strokeWidth={1.75} fill="currentColor" />
-              <span>Play intro</span>
+              Play intro
             </motion.button>
-            <button
-              type="button"
-              className="splash-mute-toggle"
+            <button type="button" className="splash-mute"
               onClick={() => setMuted(!muted)}
               onMouseEnter={() => setCursorHovering(true)}
-              onMouseLeave={() => setCursorHovering(false)}
-            >
-              {muted ? <VolumeX size={12} strokeWidth={1.75} /> : <Volume2 size={12} strokeWidth={1.75} />}
-              {muted ? " sound off" : " sound on"}
+              onMouseLeave={() => setCursorHovering(false)}>
+              {muted
+                ? <><VolumeX size={11} strokeWidth={1.75} /> start muted</>
+                : <><Volume2 size={11} strokeWidth={1.75} /> sound on</>}
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Main stage */}
+      {/* ── Stage ── */}
       {started && (
         <div className="intro-stage">
           <AnimatePresence mode="wait">
             {current && (
-              <motion.div
-                key={`${runKey}-${idx}`}
-                className="intro-frame"
-                initial={{ opacity: 0, scale: 0.985 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.015 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              >
+              <motion.div key={`${runKey}-${idx}`} className="intro-frame"
+                initial={{ opacity: 0, scale: 0.984, filter: "blur(4px)" }}
+                animate={{ opacity: 1, scale: 1,     filter: "blur(0px)" }}
+                exit={{    opacity: 0, scale: 1.016, filter: "blur(4px)" }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
                 {current.kind === "kicker"  && <SceneKicker  text={current.text} />}
                 {current.kind === "hero"    && <SceneHero    pre={current.pre} main={current.main} accent={current.accent} />}
                 {current.kind === "subhook" && <SceneSubhook text={current.text} />}
@@ -652,29 +649,20 @@ export default function IntroPage() {
 
           <AnimatePresence>
             {done && (
-              <motion.div
-                className="intro-cta-row"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
+              <motion.div className="intro-cta-row"
+                initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <Link
-                  href="/"
-                  className="intro-cta intro-cta-primary"
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}>
+                <Link href="/" className="cta-primary"
                   onMouseEnter={() => setCursorHovering(true)}
-                  onMouseLeave={() => setCursorHovering(false)}
-                >
-                  <span className="inline-icon">Enter the site <ArrowRight size={14} strokeWidth={1.75} /></span>
+                  onMouseLeave={() => setCursorHovering(false)}>
+                  Enter the site <ArrowRight size={14} strokeWidth={1.75} />
                 </Link>
-                <button
-                  type="button"
-                  className="intro-cta intro-cta-ghost"
+                <button type="button" className="cta-ghost"
                   onClick={replay}
                   onMouseEnter={() => setCursorHovering(true)}
-                  onMouseLeave={() => setCursorHovering(false)}
-                >
-                  <span className="inline-icon"><RotateCcw size={12} strokeWidth={1.75} /> replay</span>
+                  onMouseLeave={() => setCursorHovering(false)}>
+                  <RotateCcw size={12} strokeWidth={1.75} /> replay
                 </button>
               </motion.div>
             )}
@@ -684,27 +672,21 @@ export default function IntroPage() {
 
       {/* Progress bar */}
       {started && (
-        <div className="intro-progress">
-          <motion.div
-            key={`p-${runKey}`}
-            className="intro-progress-fill"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: DURATION / 1000, ease: "linear" }}
-          />
+        <div className="intro-prog">
+          <motion.div key={`p-${runKey}`} className="intro-prog-fill"
+            initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
+            transition={{ duration: DURATION / 1000, ease: "linear" }} />
         </div>
       )}
 
-      {/* Ambient captions */}
-      <div className="intro-caption intro-caption-bl" aria-hidden="true">
-        <span>REC</span>
-        <span className="rec-dot" />
-        <span className="sep">·</span>
-        <span>2026 / RELAUNCH</span>
+      {/* Ambient corner captions */}
+      <div className="intro-cap cap-bl" aria-hidden="true">
+        <span>REC</span><span className="rec-dot" />
+        <span className="sep">·</span><span>2026 / RELAUNCH</span>
       </div>
-      <div className="intro-caption intro-caption-br" aria-hidden="true">
+      <div className="intro-cap cap-br" aria-hidden="true">
         <span>FRAME</span>
-        <span className="caption-num">{String(idx + 1).padStart(2, "0")}</span>
+        <span className="cap-num">{String(idx + 1).padStart(2, "0")}</span>
         <span className="sep">/</span>
         <span>{String(TIMELINE.length).padStart(2, "0")}</span>
       </div>
@@ -712,31 +694,7 @@ export default function IntroPage() {
   );
 }
 
-function CornerBrackets() {
-  const bracketStroke = { stroke: "var(--ink-faint)", strokeWidth: 1, fill: "none" as const };
-  return (
-    <svg className="intro-corners" aria-hidden="true">
-      {/* four corners */}
-      <motion.path d="M24 60 L24 24 L60 24" {...bracketStroke}
-        initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.2 }} />
-      <motion.path d="M-60 24 L-24 24 L-24 60" {...bracketStroke}
-        style={{ transform: "translateX(100%)" }}
-        initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.25 }} />
-      <motion.path d="M24 -60 L24 -24 L60 -24" {...bracketStroke}
-        style={{ transform: "translateY(100%)" }}
-        initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.3 }} />
-      <motion.path d="M-60 -24 L-24 -24 L-24 -60" {...bracketStroke}
-        style={{ transform: "translate(100%, 100%)" }}
-        initial={{ pathLength: 0, opacity: 0 }} animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.35 }} />
-    </svg>
-  );
-}
-
-/* ── Styles ─────────────────────────────────────────────────────────── */
+/* ── CSS ──────────────────────────────────────────────────────────── */
 
 const css = `
   .intro-stage {
@@ -747,16 +705,13 @@ const css = `
     position: relative; z-index: 2;
   }
   .intro-frame {
-    width: 100%; max-width: 1280px;
-    text-align: center;
-    will-change: transform, opacity;
+    width: 100%; max-width: 1300px;
+    text-align: center; will-change: transform, opacity;
   }
-  .scene {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 18px;
-  }
+  .scene { display: flex; flex-direction: column; align-items: center; gap: 20px; }
 
-  .intro-top-right {
+  /* ── Top-right chrome ─────────────────────── */
+  .intro-tr {
     position: fixed; top: 22px; right: 26px; z-index: 60;
     display: flex; align-items: center; gap: 14px;
     font-family: var(--mono); font-size: 11px;
@@ -766,145 +721,131 @@ const css = `
     background: transparent; border: 1px solid var(--line);
     color: var(--ink-dim); width: 30px; height: 30px; cursor: pointer;
     display: inline-flex; align-items: center; justify-content: center;
-    transition: color 0.2s, border-color 0.2s;
+    transition: color .2s, border-color .2s;
   }
   .intro-icon-btn:hover { color: var(--ink); border-color: var(--ink-dim); }
-  .intro-skip { color: var(--ink-faint); text-decoration: none; transition: color 0.2s; }
+  .intro-skip { color: var(--ink-faint); text-decoration: none; transition: color .2s; }
   .intro-skip:hover { color: var(--accent); }
 
-  /* ── Splash ─────────────────────────────────── */
+  /* ── Splash ────────────────────────────────── */
   .intro-splash {
     position: fixed; inset: 0; z-index: 40;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 32px; padding: 60px 24px;
-    background: rgba(13,13,12,0.82);
-    backdrop-filter: blur(6px);
+    gap: 36px; padding: 60px 24px;
+    background: rgba(13,13,12,0.85);
+    backdrop-filter: blur(8px);
   }
   .splash-dot {
-    width: 14px; height: 14px; border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 40px rgba(255,92,46,0.6);
+    width: 16px; height: 16px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 48px rgba(255,92,46,0.65);
   }
-  .splash-title { text-align: center; max-width: 560px; }
-  .splash-kicker {
-    font-family: var(--mono); font-size: 11px;
-    letter-spacing: 0.22em; color: var(--ink-faint);
-    display: block; margin-bottom: 22px;
+  .splash-copy { text-align: center; max-width: 580px; }
+  .splash-eyebrow {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em;
+    color: var(--ink-faint); margin-bottom: 22px; display: block;
+    text-transform: uppercase;
   }
-  .splash-title h1 {
+  .splash-copy h1 {
     font-family: var(--serif); font-weight: 400;
-    font-size: clamp(42px, 6vw, 72px);
-    line-height: 1.02; letter-spacing: -0.035em;
-    margin-bottom: 24px;
+    font-size: clamp(44px, 6.5vw, 76px);
+    line-height: 1.02; letter-spacing: -0.035em; margin-bottom: 22px;
   }
-  .splash-title h1 em { color: var(--accent); font-style: italic; }
-  .splash-title p {
+  .splash-copy h1 em { color: var(--accent); font-style: italic; }
+  .splash-hint {
     font-family: var(--mono); font-size: 12px;
-    letter-spacing: 0.08em; color: var(--ink-dim);
-    line-height: 1.8;
+    letter-spacing: 0.08em; color: var(--ink-dim); line-height: 1.9;
   }
   .splash-btn {
     display: inline-flex; align-items: center; gap: 12px;
-    background: var(--accent); color: var(--bg);
-    border: none; cursor: pointer;
+    background: var(--accent); color: var(--bg); border: none; cursor: pointer;
     font-family: var(--mono); font-size: 13px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    padding: 16px 28px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 18px 30px;
   }
-  .splash-mute-toggle {
+  .splash-mute {
     background: transparent; border: none; cursor: pointer;
     color: var(--ink-faint); font-family: var(--mono);
     font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
     display: inline-flex; align-items: center; gap: 6px;
-    transition: color 0.2s;
+    transition: color .2s;
   }
-  .splash-mute-toggle:hover { color: var(--ink-dim); }
+  .splash-mute:hover { color: var(--ink-dim); }
 
-  /* ── Kicker scene ───────────────────────────── */
-  .scene-kicker { gap: 22px; }
-  .kicker-line {
-    width: 80px; height: 1px; background: var(--accent);
-    transform-origin: center;
-  }
+  /* ── Kicker ─────────────────────────────────── */
+  .scene-kicker { gap: 24px; }
+  .kicker-line { width: 80px; height: 1px; background: var(--accent); transform-origin: center; }
   .kicker-text {
-    font-family: var(--mono); font-size: clamp(14px, 1.6vw, 20px);
-    letter-spacing: 0.34em; color: var(--accent);
-    font-weight: 700;
+    font-family: var(--mono); font-size: clamp(14px, 1.6vw, 22px);
+    letter-spacing: 0.36em; color: var(--accent); font-weight: 700;
   }
 
-  /* ── Hero scene ────────────────────────────── */
+  /* ── Hero ───────────────────────────────────── */
   .scene-hero { gap: 18px; }
   .hero-pre {
     font-family: var(--serif); font-style: italic;
-    font-size: clamp(26px, 3.2vw, 48px);
+    font-size: clamp(26px, 3.4vw, 50px);
     color: var(--ink-dim); letter-spacing: -0.02em;
-    display: inline-flex; align-items: center; gap: 14px;
+    display: inline-flex; align-items: center; gap: 16px;
   }
-  .hero-bracket { color: var(--accent); font-style: normal; opacity: 0.5; font-family: var(--mono); font-size: 0.7em; }
+  .hero-bracket { color: var(--accent); font-style: normal; opacity: 0.45; font-family: var(--mono); font-size: 0.7em; }
   .hero-main {
     font-family: var(--serif); font-weight: 400;
-    font-size: clamp(62px, 10.5vw, 168px);
-    letter-spacing: -0.045em; line-height: 0.94;
-    color: var(--ink);
+    font-size: clamp(66px, 11vw, 172px);
+    letter-spacing: -0.045em; line-height: 0.94; color: var(--ink);
   }
   .hero-main-accent { color: var(--accent); }
-  .hero-underline {
-    width: min(440px, 70vw); height: 6px;
-    margin-top: 6px;
-  }
+  .hero-underline { width: min(460px, 74vw); height: 6px; margin-top: 4px; }
 
-  /* ── Subhook scene ─────────────────────────── */
-  .scene-subhook { gap: 22px; }
-  .subhook-asterisk { width: 28px; height: 28px; transform-origin: center; }
+  /* ── Subhook ─────────────────────────────────── */
+  .scene-subhook { gap: 24px; }
+  .subhook-asterisk { width: 30px; height: 30px; }
   .subhook-text {
     font-family: var(--serif); font-style: italic;
-    font-size: clamp(30px, 4.2vw, 58px);
+    font-size: clamp(32px, 4.4vw, 62px);
     color: var(--ink); letter-spacing: -0.02em; line-height: 1.1;
   }
 
-  /* ── Menu scene ────────────────────────────── */
-  .scene-menu { gap: 26px; }
+  /* ── Menu ────────────────────────────────────── */
+  .scene-menu { gap: 28px; }
   .menu-badge {
-    position: relative;
-    width: 140px; height: 44px;
+    position: relative; width: 140px; height: 44px;
     display: inline-flex; align-items: center; justify-content: center;
   }
   .menu-badge-brackets { position: absolute; inset: 0; width: 100%; height: 100%; }
   .menu-badge-text {
-    font-family: var(--mono); font-size: 13px; letter-spacing: 0.22em;
+    font-family: var(--mono); font-size: 14px; letter-spacing: 0.2em;
     color: var(--accent); font-weight: 700;
-    display: inline-flex; gap: 6px;
+    display: inline-flex; align-items: baseline; gap: 5px;
   }
-  .menu-badge-total, .menu-badge-slash { color: var(--ink-faint); font-weight: 400; }
+  .menu-badge-slash, .menu-badge-tot { color: var(--ink-faint); font-weight: 400; }
 
-  .menu-label-wrap {
-    display: flex; align-items: center; justify-content: center; gap: 28px;
-    width: 100%;
+  .menu-label-row {
+    display: flex; align-items: center; justify-content: center;
+    gap: 24px; width: 100%;
   }
   .menu-crosshair {
-    flex: 1; max-width: 180px; height: 1px;
+    flex: 1; max-width: 200px; height: 1px;
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
     transform-origin: center;
   }
   .menu-label {
     font-family: var(--serif); font-style: italic; font-weight: 400;
-    font-size: clamp(80px, 13.5vw, 220px);
-    letter-spacing: -0.055em; line-height: 0.92;
-    color: var(--ink); white-space: nowrap;
+    font-size: clamp(82px, 14vw, 230px);
+    letter-spacing: -0.055em; line-height: 0.92; color: var(--ink);
+    white-space: nowrap;
   }
-
   .menu-desc {
-    font-family: var(--mono); font-size: clamp(13px, 1.5vw, 18px);
-    letter-spacing: 0.06em; color: var(--ink-dim);
-    max-width: 620px; line-height: 1.55;
+    font-family: var(--mono); font-size: clamp(13px, 1.5vw, 19px);
+    letter-spacing: 0.06em; color: var(--ink-dim); max-width: 640px;
   }
   .menu-desc-dash { color: var(--accent); margin-right: 10px; }
 
-  /* ── Brand scene ───────────────────────────── */
+  /* ── Brand ───────────────────────────────────── */
   .scene-brand { position: relative; gap: 24px; padding: 40px 0; }
   .brand-rings {
-    position: absolute; inset: 50% auto auto 50%;
-    width: 720px; height: 720px;
+    position: absolute;
+    inset: 50% auto auto 50%;
+    width: 760px; height: 760px;
     transform: translate(-50%, -50%);
     pointer-events: none; z-index: 0;
     max-width: 100vw; max-height: 100vh;
@@ -912,99 +853,93 @@ const css = `
   .brand-text {
     position: relative; z-index: 1;
     font-family: var(--mono); font-weight: 700;
-    font-size: clamp(30px, 5.2vw, 78px);
+    font-size: clamp(28px, 5vw, 76px);
     color: var(--ink);
   }
   .brand-divider {
     position: relative; z-index: 1;
-    width: min(260px, 50vw); height: 1px;
-    background: var(--accent);
-    transform-origin: center;
+    width: min(280px, 50vw); height: 1px;
+    background: var(--accent); transform-origin: center;
   }
   .brand-sub {
     position: relative; z-index: 1;
     font-family: var(--serif); font-style: italic;
-    font-size: clamp(18px, 2.2vw, 30px);
+    font-size: clamp(18px, 2.4vw, 32px);
     color: var(--accent);
   }
 
-  /* ── URL scene ─────────────────────────────── */
+  /* ── URL ─────────────────────────────────────── */
   .scene-url { gap: 24px; }
   .url-sub {
     font-family: var(--mono); font-size: clamp(11px, 1.2vw, 14px);
-    letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-dim);
+    letter-spacing: 0.26em; text-transform: uppercase; color: var(--ink-dim);
   }
   .url-text {
     font-family: var(--serif); font-weight: 400;
-    font-size: clamp(42px, 7.8vw, 124px);
+    font-size: clamp(40px, 7.5vw, 120px);
     letter-spacing: -0.035em; color: var(--ink); line-height: 1;
   }
   .url-dot { color: var(--accent); }
-  .url-underline { width: min(380px, 70vw); height: 4px; margin-top: 4px; }
+  .url-underline { width: min(400px, 72vw); height: 4px; margin-top: 4px; }
 
-  /* ── End CTAs ──────────────────────────────── */
+  /* ── End CTAs ────────────────────────────────── */
   .intro-cta-row {
-    position: absolute; bottom: 96px; left: 50%;
-    transform: translateX(-50%);
+    position: absolute; bottom: 96px; left: 50%; transform: translateX(-50%);
     display: flex; gap: 14px; align-items: center;
   }
-  .intro-cta {
+  .cta-primary, .cta-ghost {
     font-family: var(--mono); font-size: 12px;
     letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 14px 22px; text-decoration: none;
-    cursor: pointer; border: none;
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    padding: 14px 22px; text-decoration: none; cursor: pointer; border: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: transform .2s, background .2s, color .2s;
   }
-  .intro-cta-primary { background: var(--accent); color: var(--bg); }
-  .intro-cta-primary:hover { transform: translateY(-2px); }
-  .intro-cta-ghost {
-    background: transparent; color: var(--ink-dim);
-    border: 1px solid var(--line);
+  .cta-primary { background: var(--accent); color: var(--bg); }
+  .cta-primary:hover { transform: translateY(-2px); }
+  .cta-ghost {
+    background: transparent; color: var(--ink-dim); border: 1px solid var(--line);
   }
-  .intro-cta-ghost:hover { color: var(--ink); border-color: var(--ink-dim); }
+  .cta-ghost:hover { color: var(--ink); border-color: var(--ink-dim); }
 
-  /* ── Progress bar ──────────────────────────── */
-  .intro-progress {
+  /* ── Progress bar ────────────────────────────── */
+  .intro-prog {
     position: fixed; left: 0; right: 0; bottom: 0;
     height: 2px; background: var(--line); z-index: 55;
   }
-  .intro-progress-fill { height: 100%; background: var(--accent); transform-origin: left center; }
+  .intro-prog-fill { height: 100%; background: var(--accent); transform-origin: left center; }
 
-  /* ── Captions ──────────────────────────────── */
-  .intro-caption {
+  /* ── Captions ────────────────────────────────── */
+  .intro-cap {
     position: fixed; z-index: 40;
     font-family: var(--mono); font-size: 10px;
-    letter-spacing: 0.24em; text-transform: uppercase;
-    color: var(--ink-faint);
-    display: flex; align-items: center; gap: 8px;
+    letter-spacing: 0.26em; text-transform: uppercase;
+    color: var(--ink-faint); display: flex; align-items: center; gap: 8px;
   }
-  .intro-caption .sep { color: var(--line); }
-  .intro-caption-bl { bottom: 18px; left: 24px; }
-  .intro-caption-br { bottom: 18px; right: 24px; }
-  .caption-num { color: var(--accent); }
+  .intro-cap .sep { color: var(--line); }
+  .cap-bl { bottom: 18px; left: 24px; }
+  .cap-br { bottom: 18px; right: 24px; }
+  .cap-num { color: var(--accent); }
   .rec-dot {
     width: 7px; height: 7px; border-radius: 50%;
     background: var(--accent); display: inline-block;
-    animation: pulse 1.2s ease-in-out infinite;
+    animation: blink 1.1s ease-in-out infinite;
   }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%      { opacity: 0.25; }
-  }
+  @keyframes blink { 0%,100%{ opacity:1; } 50%{ opacity:0.2; } }
 
-  /* ── Corner brackets ───────────────────────── */
+  /* ── Corner brackets ─────────────────────────── */
   .intro-corners {
     position: fixed; inset: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 5;
   }
 
+  /* ── Mobile ──────────────────────────────────── */
   @media (max-width: 760px) {
     .intro-stage { padding: 60px 20px; }
-    .intro-cta-row { bottom: 64px; flex-direction: column; }
-    .intro-caption-bl { left: 14px; bottom: 10px; font-size: 9px; }
-    .intro-caption-br { right: 14px; bottom: 10px; font-size: 9px; }
-    .menu-crosshair { max-width: 60px; }
-    .menu-label-wrap { gap: 12px; }
+    .intro-cta-row { bottom: 64px; flex-direction: column; gap: 10px; }
+    .cap-bl { left: 14px; bottom: 10px; font-size: 9px; }
+    .cap-br { right: 14px; bottom: 10px; font-size: 9px; }
+    .menu-crosshair { max-width: 50px; }
+    .menu-label-row { gap: 10px; }
     .brand-rings { width: 480px; height: 480px; }
   }
 `;
