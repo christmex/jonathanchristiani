@@ -19,16 +19,6 @@ const SLIDES = [
     date: "Apr 2026",
     tags: ["AI", "Career", "Technology"],
   },
-  {
-    id: "solutech-vision-webapp-architecture",
-    href: "/slider/solutech-vision-webapp-architecture",
-    kicker: "PROPOSAL",
-    title: "Pendekatan & Best Practice Pengembangan Sistem VISION",
-    desc: "Web app architecture untuk Save the Children Indonesia. Laravel 13, Filament v5, Laravel Cloud.",
-    event: "Save the Children Indonesia",
-    date: "Apr 2026",
-    tags: ["Laravel", "Filament", "Architecture"],
-  },
 ] as const;
 
 export default function SliderIndexPage() {
