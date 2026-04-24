@@ -8,8 +8,8 @@ import PageShell from "@/app/components/PageShell";
 import { useCursor } from "@/app/hooks/useCursor";
 
 /* ─────────────────────────────────────────────────────────────────────────
-   /intro  — cinematic launch reveal  (~35 s)
-   Slower, readable frames · energetic 128-BPM electronic soundtrack
+   /intro  — cinematic launch reveal  (~49 s)
+   Readable frames (4 s each) · energetic 128-BPM electronic soundtrack
    ───────────────────────────────────────────────────────────────────── */
 
 type Frame =
@@ -23,20 +23,20 @@ type Frame =
 const TIMELINE: Array<{ at: number; frame: Frame }> = [
   { at:     0, frame: { kind: "kicker",  text: "2026 · RELAUNCH" } },
   { at:  2000, frame: { kind: "hero",    pre: "Just",    main: "released.",         accent: true  } },
-  { at:  5000, frame: { kind: "hero",    pre: "A brand", main: "new portfolio.",    accent: false } },
-  { at:  8000, frame: { kind: "subhook", text: "Seven sections. One story." } },
-  { at: 10000, frame: { kind: "menu", num: "01", total: "07", label: "Home",     desc: "The landing — where it all begins" } },
-  { at: 12500, frame: { kind: "menu", num: "02", total: "07", label: "Work",     desc: "Selected projects & case studies" } },
-  { at: 15000, frame: { kind: "menu", num: "03", total: "07", label: "Services", desc: "What I build for clients" } },
-  { at: 17500, frame: { kind: "menu", num: "04", total: "07", label: "Writing",  desc: "Essays on craft, code & process" } },
-  { at: 20000, frame: { kind: "menu", num: "05", total: "07", label: "Slides",   desc: "Decks from talks & pitches" } },
-  { at: 22500, frame: { kind: "menu", num: "06", total: "07", label: "Process",  desc: "How I work with clients" } },
-  { at: 25000, frame: { kind: "menu", num: "07", total: "07", label: "Contact",  desc: "Let's build something together" } },
-  { at: 27500, frame: { kind: "brand", text: "JONATHAN CHRISTIANI", sub: "Fullstack → AI Native Engineer" } },
-  { at: 31500, frame: { kind: "url",   text: "jonathanchristiani.com", sub: "Explore the new site." } },
+  { at:  5500, frame: { kind: "hero",    pre: "A brand", main: "new portfolio.",    accent: false } },
+  { at:  9000, frame: { kind: "subhook", text: "Seven sections. One story." } },
+  { at: 13000, frame: { kind: "menu", num: "01", total: "07", label: "Home",     desc: "The landing — where it all begins" } },
+  { at: 17000, frame: { kind: "menu", num: "02", total: "07", label: "Work",     desc: "Selected projects & case studies" } },
+  { at: 21000, frame: { kind: "menu", num: "03", total: "07", label: "Services", desc: "What I build for clients" } },
+  { at: 25000, frame: { kind: "menu", num: "04", total: "07", label: "Writing",  desc: "Essays on craft, code & process" } },
+  { at: 29000, frame: { kind: "menu", num: "05", total: "07", label: "Slides",   desc: "Decks from talks & pitches" } },
+  { at: 33000, frame: { kind: "menu", num: "06", total: "07", label: "Process",  desc: "How I work with clients" } },
+  { at: 37000, frame: { kind: "menu", num: "07", total: "07", label: "Contact",  desc: "Let's build something together" } },
+  { at: 41000, frame: { kind: "brand", text: "JONATHAN CHRISTIANI", sub: "Fullstack → AI Native Engineer" } },
+  { at: 46000, frame: { kind: "url",   text: "jonathanchristiani.com", sub: "Explore the new site." } },
 ];
 
-const DURATION = 35500;
+const DURATION = 50500;
 
 /* ── Motion variants ──────────────────────────────────────────────── */
 
@@ -195,7 +195,7 @@ function startSoundtrack(): AudioHandle | null {
     const BPM       = 128;
     const sixteenth = 60 / BPM / 4;   // ≈ 0.117 s
     const drumStart = 1.8;
-    const drumEnd   = 35.0;
+    const drumEnd   = 50.0;
     const numSteps  = Math.floor((drumEnd - drumStart) / sixteenth);
 
     /*
@@ -218,8 +218,8 @@ function startSoundtrack(): AudioHandle | null {
       const pos  = i % 16;
       const bar  = Math.floor(i / 16);
       const intro = t < 4.5;
-      const build = t >= 25.0 && t < 27.5;  // riser section
-      const drop  = t >= 27.5 && t < 31.5;  // brand climax
+      const build = t >= 38.5 && t < 41.0;  // riser section
+      const drop  = t >= 41.0 && t < 46.0;  // brand climax
 
       const kv = drop ? 0.88 : intro ? 0.5 : 0.72;
       const hv = intro ? 0 : build ? 0.28 : 0.2;
@@ -252,29 +252,29 @@ function startSoundtrack(): AudioHandle | null {
       osc.start(T(start)); osc.stop(T(end + 0.1));
     };
     /* A-minor pad during tour */
-    pad(110, 1, 27.5, 0.04); pad(220, 2, 27.5, 0.03);
-    pad(261.63, 3, 27.5, 0.025); pad(329.63, 4, 27.5, 0.02);
+    pad(110, 1, 41.0, 0.04); pad(220, 2, 41.0, 0.03);
+    pad(261.63, 3, 41.0, 0.025); pad(329.63, 4, 41.0, 0.02);
     /* Shift to A-major at brand reveal */
-    pad(220, 27.5, 35.5, 0.045); pad(277.18, 27.5, 35.5, 0.04);
-    pad(329.63, 27.5, 35.5, 0.035); pad(440, 28, 35.5, 0.025);
+    pad(220, 41.0, 50.5, 0.045); pad(277.18, 41.0, 50.5, 0.04);
+    pad(329.63, 41.0, 50.5, 0.035); pad(440, 41.5, 50.5, 0.025);
 
     /* ── Riser into brand reveal ─────────────────────────────────── */
     {
       const osc = ctx.createOscillator();
       osc.type = "sawtooth";
-      osc.frequency.setValueAtTime(80, T(25.5));
-      osc.frequency.exponentialRampToValueAtTime(2000, T(27.4));
+      osc.frequency.setValueAtTime(80, T(39.0));
+      osc.frequency.exponentialRampToValueAtTime(2000, T(40.9));
       const lp = ctx.createBiquadFilter();
       lp.type = "lowpass";
-      lp.frequency.setValueAtTime(180, T(25.5));
-      lp.frequency.exponentialRampToValueAtTime(4500, T(27.4));
+      lp.frequency.setValueAtTime(180, T(39.0));
+      lp.frequency.exponentialRampToValueAtTime(4500, T(40.9));
       lp.Q.value = 6;
       const g = ctx.createGain();
-      g.gain.setValueAtTime(0, T(25.5));
-      g.gain.linearRampToValueAtTime(0.14, T(27.3));
-      g.gain.linearRampToValueAtTime(0, T(27.6));
+      g.gain.setValueAtTime(0, T(39.0));
+      g.gain.linearRampToValueAtTime(0.14, T(40.8));
+      g.gain.linearRampToValueAtTime(0, T(41.1));
       osc.connect(lp).connect(g).connect(master);
-      osc.start(T(25.5)); osc.stop(T(27.7));
+      osc.start(T(39.0)); osc.stop(T(41.2));
     }
 
     /* ── Noise whoosh sweeps ─────────────────────────────────────── */
@@ -293,11 +293,11 @@ function startSoundtrack(): AudioHandle | null {
       src.connect(f).connect(g).connect(master);
       src.start(T(t)); src.stop(T(t + dur + 0.05));
     };
-    whoosh(0.6, 1.3, 0.11);
-    whoosh(4.8, 0.8, 0.10);
-    whoosh(9.8, 0.6, 0.10);
-    whoosh(27.2, 0.5, 0.18);
-    whoosh(31.2, 0.5, 0.12);
+    whoosh(0.6,  1.3, 0.11);
+    whoosh(5.2,  0.8, 0.10);
+    whoosh(8.7,  0.6, 0.10);
+    whoosh(40.7, 0.5, 0.18);
+    whoosh(45.7, 0.5, 0.12);
 
     /* ── Bell chimes on brand & URL ─────────────────────────────── */
     const chime = (t: number, freq: number, vol = 0.14, tail = 2.6) => {
@@ -311,8 +311,8 @@ function startSoundtrack(): AudioHandle | null {
       osc.connect(g).connect(master);
       osc.start(T(t)); osc.stop(T(t + tail + 0.1));
     };
-    chime(27.5, 880, 0.15, 3.0); chime(27.65, 1108.73, 0.12, 2.6); chime(27.8, 1318.51, 0.09, 3.3);
-    chime(31.5, 880, 0.13, 2.8); chime(31.7, 1318.51, 0.09, 3.0);
+    chime(41.0, 880, 0.15, 3.0); chime(41.15, 1108.73, 0.12, 2.6); chime(41.3, 1318.51, 0.09, 3.3);
+    chime(46.0, 880, 0.13, 2.8); chime(46.2, 1318.51, 0.09, 3.0);
 
     let _muted = false;
     return {
@@ -433,7 +433,7 @@ function SceneMenu({ num, total, label, desc }: {
         initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
         animate={{ opacity: 1, y: 0,  filter: "blur(0px)" }}
         exit={{ opacity: 0, y: -14 }}
-        transition={{ duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}>
+        transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}>
         <span className="menu-desc-dash">—</span>{desc}
       </motion.div>
     </div>
@@ -603,7 +603,7 @@ export default function IntroPage() {
               <p className="splash-eyebrow">JONATHAN CHRISTIANI · 2026 RELAUNCH</p>
               <h1>A new site<br /><em>is live.</em></h1>
               <p className="splash-hint">
-                35-second cinematic tour of the site.<br />
+                50-second cinematic tour of the site.<br />
                 Sound on — it goes hard.
               </p>
             </div>
