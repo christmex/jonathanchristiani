@@ -85,12 +85,12 @@ export default function NihonFest2026Page() {
 
       {/* Top-left back link */}
       <Link
-        href="/"
+        href="/slider"
         className="deck-home"
         onMouseEnter={() => setCursorHovering(true)}
         onMouseLeave={() => setCursorHovering(false)}
       >
-        <ArrowLeft size={14} strokeWidth={1.75} /> jonathan christiani
+        <span className="inline-icon"><ArrowLeft size={14} strokeWidth={1.75} /> slides</span>
       </Link>
 
       {/* Top-right event meta (persistent across all slides) */}

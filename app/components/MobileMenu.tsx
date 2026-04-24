@@ -10,6 +10,7 @@ const links = [
   { label: "Work", href: "/work" },
   { label: "Services", href: "/#services" },
   { label: "Writing", href: "/writing" },
+  { label: "Slides", href: "/slider" },
   { label: "Process", href: "/#process" },
   { label: "Contact", href: "/#contact" },
 ];
@@ -19,10 +20,13 @@ export default function MobileMenu() {
 
   useEffect(() => {
     if (open) {
-      const prev = document.body.style.overflow;
+      const prevBody = document.body.style.overflow;
+      const prevHtml = document.documentElement.style.overflow;
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       return () => {
-        document.body.style.overflow = prev;
+        document.body.style.overflow = prevBody;
+        document.documentElement.style.overflow = prevHtml;
       };
     }
   }, [open]);

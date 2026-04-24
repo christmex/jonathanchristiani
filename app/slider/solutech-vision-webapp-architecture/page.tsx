@@ -84,12 +84,12 @@ export default function SolutechVisionPage() {
 
       {/* Top-left back link */}
       <Link
-        href="/"
+        href="/slider"
         className="deck-home"
         onMouseEnter={() => setCursorHovering(true)}
         onMouseLeave={() => setCursorHovering(false)}
       >
-        <span className="inline-icon"><ArrowLeft size={14} strokeWidth={1.75} /> jonathan christiani</span>
+        <span className="inline-icon"><ArrowLeft size={14} strokeWidth={1.75} /> slides</span>
       </Link>
 
       {/* Top-right event meta */}
@@ -490,9 +490,6 @@ export default function SolutechVisionPage() {
         <section className="slide" data-slide={9}>
           <div className="slide-inner">
             <div className="slide-num">§ 08 — ENTERPRISE CONSIDERATIONS</div>
-            <h2 className="slide-h slide-h-sm">
-              Hal-hal yang <em>sering terlewat</em> tapi penting untuk sistem serius.
-            </h2>
             <div className="ent-grid">
               <div className="ent-cell">
                 <div className="ent-label">OPERATIONAL</div>
