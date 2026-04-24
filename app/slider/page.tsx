@@ -13,8 +13,8 @@ const SLIDES = [
     id: "nihon-fest-2026",
     href: "/nihon-fest-2026",
     kicker: "KEYNOTE",
-    title: "Menjawab Tantangan Globalisasi di Era Digital",
-    desc: "Dari Fullstack Developer ke AI Native Engineer. Presentasi untuk Nihon Fest 2026.",
+    title: "Answering the Challenges of Globalization in the Digital Era",
+    desc: "From Fullstack Developer to AI Native Engineer. A keynote for Nihon Fest 2026.",
     event: "Nihon Fest 2026",
     date: "Apr 2026",
     tags: ["AI", "Career", "Technology"],
@@ -75,7 +75,7 @@ export default function SliderIndexPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
           >
-            Kumpulan presentasi — keynote, proposal, dan technical pitch.
+            A collection of presentations — keynotes, proposals, and technical pitches.
           </motion.p>
         </div>
       </header>

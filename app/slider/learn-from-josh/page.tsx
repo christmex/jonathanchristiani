@@ -107,14 +107,14 @@ export default function LearnFromJoshPage() {
         <section className="slide slide-cover" data-slide={1}>
           <div className="slide-inner">
             <motion.div initial="hidden" animate="show" variants={fadeIn}>
-              <motion.div className="cover-kicker" variants={fadeUp}>CATATAN DARI SEBUAH PERCAKAPAN</motion.div>
+              <motion.div className="cover-kicker" variants={fadeUp}>NOTES FROM A CONVERSATION</motion.div>
               <motion.h1 className="cover-title" variants={fadeUp}>
                 Learn from<br /><em>Josh.</em>
               </motion.h1>
               <motion.p className="cover-sub" variants={fadeUp}>
                 Lessons on craft, mindset, and how to work well.
               </motion.p>
-              <motion.div className="cover-hint" variants={fadeUp}>tekan <kbd>↓</kbd> untuk mulai</motion.div>
+              <motion.div className="cover-hint" variants={fadeUp}>press <kbd>↓</kbd> to begin</motion.div>
             </motion.div>
           </div>
         </section>
@@ -129,8 +129,8 @@ export default function LearnFromJoshPage() {
               into simple solutions.
             </h2>
             <p className="principle-sub">
-              Kerumitan bukan tanda keahlian. Solusi paling elegan adalah
-              yang paling mudah dipahami — oleh siapa pun, kapan pun.
+              Complexity is not a sign of expertise. The most elegant solution
+              is the one that&rsquo;s easiest to understand — by anyone, at any time.
             </p>
           </div>
         </section>
@@ -139,24 +139,24 @@ export default function LearnFromJoshPage() {
         <section className="slide" data-slide={3}>
           <div className="slide-inner">
             <div className="slide-num">§ 02 — CRAFT</div>
-            <h2 className="slide-h slide-h-sm">Detail kecil <em>mencerminkan profesionalisme.</em></h2>
+            <h2 className="slide-h slide-h-sm">Small details <em>reflect professionalism.</em></h2>
             <div className="craft-grid">
               <div className="craft-card">
                 <div className="craft-num">01</div>
                 <h3 className="craft-title">Attention to Detail</h3>
                 <p className="craft-desc">
-                  Selalu perhatikan hal-hal kecil — margin, padding, konsistensi
-                  desain. Detail yang terlewat adalah yang pertama kali dilihat klien.
-                  Justru karena kecil, itulah yang paling mudah diperbaiki.
+                  Always pay attention to the small things — margins, padding,
+                  design consistency. Missed details are the first things a client
+                  notices. Precisely because they&rsquo;re small, they&rsquo;re the easiest to fix.
                 </p>
               </div>
               <div className="craft-card craft-card-accent">
                 <div className="craft-num">02</div>
                 <h3 className="craft-title">Client-Ready Mindset</h3>
                 <p className="craft-desc">
-                  Bangun fitur dan solusi yang stabil, polished, dan siap ditunjukkan
-                  ke klien. Tujuannya: hasilkan sesuatu yang bisa kita banggakan
-                  dan klien anggap profesional.
+                  Build features and solutions that are stable, polished, and ready
+                  to show the client. The goal: deliver something we&rsquo;re proud of
+                  and the client sees as professional.
                 </p>
               </div>
             </div>
@@ -169,9 +169,9 @@ export default function LearnFromJoshPage() {
             <div className="slide-num">§ 03 — DEFINITION OF DONE</div>
             <div className="done-word">DONE.</div>
             <p className="done-sub">
-              Hanya sebut sesuatu <em>"selesai"</em> ketika kamu benar-benar yakin
-              hasilnya solid, stabil, dan bebas bug —
-              sesuatu yang tidak mudah rusak oleh siapa pun.
+              Only call something <em>&ldquo;done&rdquo;</em> when you&rsquo;re truly confident
+              the result is solid, stable, and bug-free —
+              something that nobody can easily break.
             </p>
             <div className="done-rule">
               <Check size={14} strokeWidth={2} />
@@ -189,7 +189,7 @@ export default function LearnFromJoshPage() {
           <div className="slide-inner">
             <div className="slide-num">§ 04 — CLIENT FRAMEWORK</div>
             <h2 className="slide-h slide-h-sm">
-              Tiga pertanyaan yang selalu <em>harus dijawab</em> bersama klien.
+              Three questions that must always <em>be answered</em> together with the client.
             </h2>
             <div className="whw-row">
               <div className="whw-item">
@@ -197,8 +197,8 @@ export default function LearnFromJoshPage() {
                 <div className="whw-q">What</div>
                 <div className="whw-label">does the client want?</div>
                 <p className="whw-desc">
-                  Pahami kebutuhan, bukan hanya permintaan.
-                  Apa masalah sebenarnya yang ingin diselesaikan?
+                  Understand the need, not just the request.
+                  What&rsquo;s the real problem to be solved?
                 </p>
               </div>
               <div className="whw-divider" />
@@ -207,8 +207,8 @@ export default function LearnFromJoshPage() {
                 <div className="whw-q">How</div>
                 <div className="whw-label">will we build it?</div>
                 <p className="whw-desc">
-                  Tentukan pendekatan, tools, dan batasan sebelum mulai.
-                  Satu halaman rencana lebih baik dari seminggu asumsi.
+                  Define the approach, tools, and constraints before starting.
+                  One page of planning beats a week of assumptions.
                 </p>
               </div>
               <div className="whw-divider" />
@@ -217,8 +217,8 @@ export default function LearnFromJoshPage() {
                 <div className="whw-q">What</div>
                 <div className="whw-label">did we actually build?</div>
                 <p className="whw-desc">
-                  Verifikasi bahwa hasil akhir menjawab pertanyaan pertama.
-                  Tutup loop — jangan biarkan klien menebak sendiri.
+                  Verify that the final result answers the first question.
+                  Close the loop — don&rsquo;t leave the client guessing.
                 </p>
               </div>
             </div>
@@ -230,16 +230,15 @@ export default function LearnFromJoshPage() {
           <div className="slide-inner">
             <div className="slide-num">§ 05 — PRIORITIZATION</div>
             <h2 className="slide-h slide-h-sm">
-              <em>Must-have</em> dulu. Nice-to-have belakangan.
+              <em>Must-haves</em> first. Nice-to-haves later.
             </h2>
             <div className="prio-grid">
               <div className="prio-card prio-must">
                 <div className="prio-tag">MUST-HAVE</div>
-                <h3 className="prio-title">Kerjakan ini dulu.</h3>
+                <h3 className="prio-title">Build this first.</h3>
                 <p className="prio-desc">
-                  Fitur yang jika tidak ada, produk tidak bisa berfungsi
-                  atau klien tidak bisa menerima delivery. Ini yang dikerjakan
-                  pertama, tanpa kompromi.
+                  Features without which the product can&rsquo;t function or the client
+                  can&rsquo;t accept delivery. These get built first, without compromise.
                 </p>
                 <div className="prio-examples">
                   <span>Core functionality</span>
@@ -249,15 +248,15 @@ export default function LearnFromJoshPage() {
               </div>
               <div className="prio-card prio-nice">
                 <div className="prio-tag prio-tag-dim">NICE-TO-HAVE</div>
-                <h3 className="prio-title">Kerjakan jika ada waktu.</h3>
+                <h3 className="prio-title">Build when there&rsquo;s time.</h3>
                 <p className="prio-desc">
-                  Fitur yang menambah nilai tapi bukan blocker. Bisa dikerjakan
-                  setelah must-have selesai — atau dijadwal di iterasi berikutnya.
+                  Features that add value but aren&rsquo;t blockers. Can be built after
+                  must-haves are done — or scheduled for the next iteration.
                 </p>
                 <div className="prio-examples prio-examples-dim">
                   <span>UI polish</span>
                   <span>Advanced filters</span>
-                  <span>Export format tambahan</span>
+                  <span>Additional export formats</span>
                 </div>
               </div>
             </div>
@@ -269,7 +268,7 @@ export default function LearnFromJoshPage() {
           <div className="slide-inner">
             <div className="slide-num">§ 06 — DECISION MATRIX</div>
             <h2 className="slide-h slide-h-sm">
-              Bangun yang <em>high value + high efficient</em> terlebih dahulu.
+              Build the <em>high value + high efficient</em> things first.
             </h2>
             <div className="matrix-wrap">
               <div className="matrix">
@@ -282,21 +281,21 @@ export default function LearnFromJoshPage() {
                 {/* Quadrants */}
                 <div className="matrix-grid">
                   <div className="quadrant q-tl">
-                    <div className="q-title">Penting, tapi lambat</div>
-                    <div className="q-desc">Plan carefully — jangan skip, tapi cari cara lebih efisien</div>
+                    <div className="q-title">Important, but slow</div>
+                    <div className="q-desc">Plan carefully — don&rsquo;t skip it, but find a more efficient way</div>
                   </div>
                   <div className="quadrant q-tr quadrant-star">
                     <div className="q-star">★</div>
-                    <div className="q-title">Prioritas utama</div>
-                    <div className="q-desc">High value + high efficiency — kerjakan ini lebih dulu, selalu</div>
+                    <div className="q-title">Top priority</div>
+                    <div className="q-desc">High value + high efficiency — always do this first</div>
                   </div>
                   <div className="quadrant q-bl">
-                    <div className="q-title">Hindari</div>
-                    <div className="q-desc">Buang waktu, tidak menghasilkan nilai nyata</div>
+                    <div className="q-title">Avoid</div>
+                    <div className="q-desc">Wastes time, produces no real value</div>
                   </div>
                   <div className="quadrant q-br">
                     <div className="q-title">Quick wins</div>
-                    <div className="q-desc">Cepat dikerjakan tapi nilai rendah — kerjakan jika ada sisa waktu</div>
+                    <div className="q-desc">Fast to do but low value — tackle when time allows</div>
                   </div>
                 </div>
 
@@ -313,35 +312,35 @@ export default function LearnFromJoshPage() {
           <div className="slide-inner">
             <div className="slide-num">§ 07 — SUSTAINABILITY</div>
             <h2 className="slide-h slide-h-sm">
-              Hasil terbaik datang dari orang yang <em>benar-benar istirahat.</em>
+              The best work comes from people who <em>truly rest.</em>
             </h2>
             <div className="wlb-list">
               <div className="wlb-item">
                 <div className="wlb-icon">○</div>
                 <div className="wlb-content">
                   <div className="wlb-title">No weekends</div>
-                  <div className="wlb-desc">Hindari kerja di akhir pekan. Burnout tidak pernah menghasilkan kerja yang bagus.</div>
+                  <div className="wlb-desc">Avoid working on weekends. Burnout never produces good work.</div>
                 </div>
               </div>
               <div className="wlb-item">
                 <div className="wlb-icon">○</div>
                 <div className="wlb-content">
                   <div className="wlb-title">Shift your mindset</div>
-                  <div className="wlb-desc">Dari &ldquo;I can&rsquo;t&rdquo; ke &ldquo;Of course I can do it.&rdquo; — dan dari &ldquo;I don&rsquo;t know&rdquo; ke &ldquo;I will eventually learn.&rdquo;</div>
+                  <div className="wlb-desc">From &ldquo;I can&rsquo;t&rdquo; to &ldquo;Of course I can do it.&rdquo; — and from &ldquo;I don&rsquo;t know&rdquo; to &ldquo;I will eventually learn.&rdquo;</div>
                 </div>
               </div>
               <div className="wlb-item">
                 <div className="wlb-icon">○</div>
                 <div className="wlb-content">
                   <div className="wlb-title">Sleep well</div>
-                  <div className="wlb-desc">Tidur yang cukup adalah investasi untuk tetap tajam, sehat, dan produktif esok hari.</div>
+                  <div className="wlb-desc">Good sleep is an investment in staying sharp, healthy, and productive the next day.</div>
                 </div>
               </div>
               <div className="wlb-item">
                 <div className="wlb-icon">○</div>
                 <div className="wlb-content">
                   <div className="wlb-title">Stay positive</div>
-                  <div className="wlb-desc">Yang tidak kamu tahu hari ini — suatu saat kamu pasti bisa pelajari. Proses itu bagian dari pekerjaannya.</div>
+                  <div className="wlb-desc">What you don&rsquo;t know today — you&rsquo;ll learn eventually. The process is part of the job.</div>
                 </div>
               </div>
             </div>
@@ -357,7 +356,7 @@ export default function LearnFromJoshPage() {
               viewport={{ once: true }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="final-label">TERIMA KASIH</div>
+              <div className="final-label">THANK YOU</div>
               <h2 className="final-h">
                 Thank you,<br /><em>Josh.</em>
               </h2>
@@ -367,7 +366,7 @@ export default function LearnFromJoshPage() {
               </p>
               <div className="final-actions">
                 <button type="button" className="btn btn-primary" onClick={() => goTo(1)} onMouseEnter={() => setCursorHovering(true)} onMouseLeave={() => setCursorHovering(false)}>
-                  <span className="inline-icon"><ArrowUp size={14} strokeWidth={1.75} /> Kembali ke Awal</span>
+                  <span className="inline-icon"><ArrowUp size={14} strokeWidth={1.75} /> Back to Start</span>
                 </button>
               </div>
             </motion.div>
