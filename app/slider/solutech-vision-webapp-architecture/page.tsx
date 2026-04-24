@@ -599,14 +599,15 @@ const css = `
   .deck-event .sep { color: var(--line); }
 
   .deck-chrome {
-    position: fixed; bottom: 32px; right: 32px; z-index: 50;
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    position: fixed; bottom: 28px; right: 32px; z-index: 100;
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--mono);
   }
   .deck-arrow {
     width: 36px; height: 36px;
-    border: 1px solid var(--line); background: var(--bg-2);
-    color: var(--ink-dim); cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line); background: transparent;
+    color: var(--ink-dim); cursor: pointer; font-size: 14px;
+    display: inline-flex; align-items: center; justify-content: center;
     transition: border-color 0.2s, color 0.2s;
   }
   .deck-arrow:hover { border-color: var(--ink); color: var(--ink); }
@@ -615,7 +616,7 @@ const css = `
     color: var(--ink-faint); letter-spacing: 0.1em;
     display: flex; align-items: center; gap: 4px;
   }
-  .deck-counter-cur { color: var(--ink); }
+  .deck-counter-cur { color: var(--accent); }
   .deck-counter-sep { color: var(--line); }
 
   .deck-dots {
