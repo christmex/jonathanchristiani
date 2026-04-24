@@ -19,6 +19,16 @@ const SLIDES = [
     date: "Apr 2026",
     tags: ["AI", "Career", "Technology"],
   },
+  {
+    id: "learn-from-josh",
+    href: "/slider/learn-from-josh",
+    kicker: "NOTES",
+    title: "Learn from Josh",
+    desc: "Lessons on craft, mindset, and how to work well — from a talk by Josh.",
+    event: "Internal Talk",
+    date: "Apr 2026",
+    tags: ["Mindset", "Craft", "Process"],
+  },
 ] as const;
 
 export default function SliderIndexPage() {
