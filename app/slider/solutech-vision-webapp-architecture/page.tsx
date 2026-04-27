@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowUp, ArrowDown, ArrowRight, Check } from "lucide-react";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 
-const TOTAL_SLIDES = 10;
+const TOTAL_SLIDES = 8;
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -231,57 +231,10 @@ export default function SolutechVisionPage() {
           </div>
         </section>
 
-        {/* 04 — Development Approach */}
+        {/* 04 — UI/UX */}
         <section className="slide" data-slide={4}>
           <div className="slide-inner">
-            <div className="slide-num">§ 03 — DEVELOPMENT APPROACH</div>
-            <h2 className="slide-h slide-h-sm">
-              Dibangun dengan <em>AI-assisted development</em> — cepat dan akurat.
-            </h2>
-            <div className="dev-grid">
-              <div className="dev-card dev-card-lg">
-                <div className="dev-icon-wrap">
-                  <span className="dev-icon-txt">CC</span>
-                </div>
-                <div className="dev-card-body">
-                  <div className="dev-badge">PRIMARY TOOL</div>
-                  <h3 className="dev-title">Claude Code</h3>
-                  <p className="dev-desc">
-                    Agentic coding assistant dari Anthropic. Menjalankan tugas
-                    development end-to-end: baca codebase, tulis fitur, jalankan test,
-                    debug error. Mempercepat delivery tanpa mengurangi kualitas —
-                    selama output-nya direview.
-                  </p>
-                </div>
-              </div>
-              <div className="dev-card dev-card-lg">
-                <div className="dev-icon-wrap">
-                  <span className="dev-icon-txt">FB</span>
-                </div>
-                <div className="dev-card-body">
-                  <div className="dev-badge">FILAMENT EXTENSION</div>
-                  <h3 className="dev-title">Filament Blueprint</h3>
-                  <p className="dev-desc">
-                    Premium extension dari Laravel Boost. Memberi AI agent
-                    pengetahuan spesifik tentang Filament — component namespace
-                    yang benar, CLI command siap pakai, config chain yang akurat.
-                    <strong> Meminimalkan hallucination</strong> saat generate kode Filament.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="dev-note">
-              <span className="dev-note-label">CATATAN</span>
-              AI digunakan sebagai <em>accelerator</em>, bukan pengganti engineer.
-              Setiap output direview manual, di-test, dan disesuaikan konteks bisnis.
-            </div>
-          </div>
-        </section>
-
-        {/* 05 — UI/UX */}
-        <section className="slide" data-slide={5}>
-          <div className="slide-inner">
-            <div className="slide-num">§ 04 — UI / UX STRATEGY</div>
+            <div className="slide-num">§ 03 — UI / UX STRATEGY</div>
             <h2 className="slide-h slide-h-sm">
               Filament panel <em>sulit dikustomisasi berat.</em> Kita punya 3 opsi.
             </h2>
@@ -335,10 +288,10 @@ export default function SolutechVisionPage() {
           </div>
         </section>
 
-        {/* 06 — Arsitektur Modular */}
-        <section className="slide" data-slide={6}>
+        {/* 05 — Arsitektur Modular */}
+        <section className="slide" data-slide={5}>
           <div className="slide-inner">
-            <div className="slide-num">§ 05 — ARSITEKTUR MODULAR</div>
+            <div className="slide-num">§ 04 — ARSITEKTUR MODULAR</div>
             <h2 className="slide-h slide-h-sm">
               Satu aplikasi. <em>Banyak panel.</em> Satu codebase.
             </h2>
@@ -389,10 +342,10 @@ export default function SolutechVisionPage() {
           </div>
         </section>
 
-        {/* 07 — RBAC */}
-        <section className="slide" data-slide={7}>
+        {/* 06 — RBAC */}
+        <section className="slide" data-slide={6}>
           <div className="slide-inner">
-            <div className="slide-num">§ 06 — ACCESS CONTROL (RBAC)</div>
+            <div className="slide-num">§ 05 — ACCESS CONTROL (RBAC)</div>
             <h2 className="slide-h slide-h-sm">
               Mulai <em>sederhana.</em> Naikkan kompleksitas hanya jika perlu.
             </h2>
@@ -433,10 +386,10 @@ export default function SolutechVisionPage() {
           </div>
         </section>
 
-        {/* 08 — Quality & Plugins */}
-        <section className="slide" data-slide={8}>
+        {/* 07 — Quality & Plugins */}
+        <section className="slide" data-slide={7}>
           <div className="slide-inner">
-            <div className="slide-num">§ 07 — QUALITY &amp; DEVELOPMENT</div>
+            <div className="slide-num">§ 06 — QUALITY &amp; DEVELOPMENT</div>
             <h2 className="slide-h slide-h-sm">
               <em>TDD</em> sebagai fondasi.
             </h2>
@@ -486,44 +439,8 @@ export default function SolutechVisionPage() {
           </div>
         </section>
 
-        {/* 09 — Enterprise Considerations */}
-        <section className="slide" data-slide={9}>
-          <div className="slide-inner">
-            <div className="slide-num">§ 08 — ENTERPRISE CONSIDERATIONS</div>
-            <div className="ent-grid">
-              <div className="ent-cell">
-                <div className="ent-label">OPERATIONAL</div>
-                <ul className="ent-list">
-                  <li><strong>Environment strategy:</strong> dev / staging / production terpisah</li>
-                  <li><strong>Queue system:</strong> untuk export PDF/Excel &amp; sync Oracle (non-blocking)</li>
-                  <li><strong>Cache layer:</strong> Redis untuk session &amp; dashboard performance</li>
-                  <li><strong>Backup &amp; restore drill:</strong> otomatis harian + simulasi restore berkala</li>
-                </ul>
-              </div>
-              <div className="ent-cell">
-                <div className="ent-label">SECURITY</div>
-                <ul className="ent-list">
-                  <li><strong>2FA</strong> untuk admin panel (built-in Filament)</li>
-                  <li><strong>Rate limiting</strong> per-user per-endpoint</li>
-                  <li><strong>Session timeout</strong> + logout across devices</li>
-                  <li><strong>Audit trail</strong> (activity logging) untuk compliance</li>
-                </ul>
-              </div>
-              <div className="ent-cell">
-                <div className="ent-label">OBSERVABILITY</div>
-                <ul className="ent-list">
-                  <li><strong>Laravel Nightwatch</strong> — first-party monitoring dari tim Laravel: exception tracking, slow queries, job failures, Artisan commands, semua dalam satu dashboard</li>
-                  <li><strong>Laravel Pulse</strong> untuk real-time performance metrics</li>
-                  <li><strong>Health check endpoint</strong> untuk uptime monitoring</li>
-                  <li><strong>Centralized logging</strong> — searchable &amp; retention policy</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 10 — Closing */}
-        <section className="slide slide-final" data-slide={10}>
+        {/* 08 — Closing */}
+        <section className="slide slide-final" data-slide={8}>
           <div className="slide-inner slide-center">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
