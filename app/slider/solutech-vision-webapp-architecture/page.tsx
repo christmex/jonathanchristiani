@@ -413,14 +413,6 @@ export default function SolutechVisionPage() {
                   <div className="plugin-item"><span className="plugin-name">Laravel Debugbar</span><span className="plugin-role">Dev profiling</span></div>
                 </div>
               </div>
-<div className="plugin-group">
-                <div className="plugin-group-label">FILAMENT EXTRA</div>
-                <div className="plugin-list">
-                  <div className="plugin-item"><span className="plugin-name">Filament Currency</span><span className="plugin-role">Format mata uang</span></div>
-                  <div className="plugin-item"><span className="plugin-name">Filament Shield</span><span className="plugin-role">RBAC (if needed)</span></div>
-                  <div className="plugin-item"><span className="plugin-name">Filament Blueprint</span><span className="plugin-role">AI-assisted dev</span></div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
