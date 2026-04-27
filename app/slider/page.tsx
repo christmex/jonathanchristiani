@@ -11,7 +11,7 @@ import SiteFooter from "@/app/components/SiteFooter";
 const SLIDES = [
   {
     id: "nihon-fest-2026",
-    href: "/nihon-fest-2026",
+    href: "/slider/nihon-fest-2026",
     kicker: "KEYNOTE",
     title: "Answering the Challenges of Globalization in the Digital Era",
     desc: "From Fullstack Developer to AI Native Engineer. A keynote for Nihon Fest 2026.",

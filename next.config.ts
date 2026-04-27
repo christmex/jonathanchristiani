@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: "/nihon-fest-2026",
+        destination: "/slider/nihon-fest-2026",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
