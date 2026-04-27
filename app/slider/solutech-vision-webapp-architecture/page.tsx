@@ -413,15 +413,7 @@ export default function SolutechVisionPage() {
                   <div className="plugin-item"><span className="plugin-name">Laravel Debugbar</span><span className="plugin-role">Dev profiling</span></div>
                 </div>
               </div>
-              <div className="plugin-group">
-                <div className="plugin-group-label">API &amp; DATA</div>
-                <div className="plugin-list">
-                  <div className="plugin-item"><span className="plugin-name">Dedoc Scramble</span><span className="plugin-role">Auto API docs</span></div>
-                  <div className="plugin-item"><span className="plugin-name">Spatie Query Builder</span><span className="plugin-role">API filter/sort</span></div>
-                  <div className="plugin-item"><span className="plugin-name">Laravel Boost</span><span className="plugin-role">AI toolkit</span></div>
-                </div>
-              </div>
-              <div className="plugin-group">
+<div className="plugin-group">
                 <div className="plugin-group-label">FILAMENT EXTRA</div>
                 <div className="plugin-list">
                   <div className="plugin-item"><span className="plugin-name">Filament Currency</span><span className="plugin-role">Format mata uang</span></div>
