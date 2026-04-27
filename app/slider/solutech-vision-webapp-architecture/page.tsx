@@ -7,7 +7,7 @@ import { ArrowLeft, ArrowUp, ArrowDown, ArrowRight, Check } from "lucide-react";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 
-const TOTAL_SLIDES = 8;
+const TOTAL_SLIDES = 9;
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -174,12 +174,6 @@ export default function SolutechVisionPage() {
               <br />
               <em>No over-engineering.</em>
             </h2>
-            <p className="philosophy-sub">
-              Prinsip utama: bangun apa yang dibutuhkan, bukan apa yang keren.
-              Setiap tool, plugin, dan arsitektur harus punya alasan jelas —
-              bukan karena &ldquo;industry standard&rdquo; atau &ldquo;hype&rdquo;.
-              Sistem yang simpel lebih mudah di-maintain, di-debug, dan di-handover.
-            </p>
             <div className="philosophy-tags">
               <span className="ph-tag">MAINTAINABLE</span>
               <span className="ph-tag">TESTABLE</span>
@@ -439,8 +433,29 @@ export default function SolutechVisionPage() {
           </div>
         </section>
 
-        {/* 08 — Closing */}
-        <section className="slide slide-final" data-slide={8}>
+        {/* 08 — AI Development */}
+        <section className="slide slide-ai" data-slide={8}>
+          <div className="slide-inner slide-center">
+            <div className="slide-num">§ 07 — REKOMENDASI</div>
+            <h2 className="ai-h">
+              Dikembangkan dengan<br />
+              <em>AI-assisted development.</em>
+            </h2>
+            <p className="ai-sub">
+              Untuk mempercepat development secara signifikan,
+              sistem ini direkomendasikan untuk dikembangkan
+              bersama pendekatan AI development.
+            </p>
+            <div className="ai-tag-row">
+              <span className="ai-chip">FASTER DELIVERY</span>
+              <span className="ai-chip">SAME QUALITY</span>
+              <span className="ai-chip">AI-ASSISTED</span>
+            </div>
+          </div>
+        </section>
+
+        {/* 09 — Closing */}
+        <section className="slide slide-final" data-slide={9}>
           <div className="slide-inner slide-center">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -873,7 +888,31 @@ const css = `
   .ent-list-inline { flex-direction: row; gap: 28px; flex-wrap: wrap; }
   .ent-list-inline li { flex: 1; min-width: 240px; }
 
-  /* ── Final (10) ──────────────────────────────────────────── */
+  /* ── AI Development (08) ────────────────────────────────── */
+  .ai-h {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 96px);
+    line-height: 1.0; font-weight: 400;
+    letter-spacing: -0.04em; margin-bottom: 32px;
+  }
+  .ai-h em { font-style: italic; color: var(--accent); }
+  .ai-sub {
+    font-size: 17px; line-height: 1.75;
+    color: var(--ink-dim); max-width: 560px;
+    margin: 0 auto 40px;
+  }
+  .ai-tag-row {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  }
+  .ai-chip {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); padding: 8px 16px;
+    border: 1px solid var(--accent);
+    background: rgba(255,92,46,0.06);
+  }
+
+  /* ── Final ───────────────────────────────────────────────── */
   .final-label {
     font-family: var(--mono); font-size: 11px;
     letter-spacing: 0.22em; text-transform: uppercase;
