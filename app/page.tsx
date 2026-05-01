@@ -95,7 +95,7 @@ export default function Homepage() {
 
   const services = [
     {
-      num: "01 / Ship Fast",
+      num: "01 / Product Builds",
       title: "Full-stack product builds",
       desc: "From zero to production. Product thinking, UI, database, API, deploy. Ideal for founders who need one accountable operator, not a five-person agency retainer.",
       chips: ["Next.js", "Supabase", "Vercel"],
@@ -103,7 +103,7 @@ export default function Homepage() {
     {
       num: "02 / AI Integrations",
       title: "Enterprise integrations",
-      desc: "MCP integration, workflow automation, and AI-assisted development.",
+      desc: "MCP integration, workflow automation, and AI-assisted workflow.",
       chips: ["Cowork", "MCP Integration", "Workflow Automation"],
     },
     {
@@ -146,7 +146,7 @@ export default function Homepage() {
                 animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              <span>Available · Q3 2026</span>
+              <span>Available</span>
               <span className="sep">—</span>
               <span>Batam, ID</span>
               <span className="sep">—</span>
@@ -192,8 +192,8 @@ export default function Homepage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
-              Freelance full-stack developer & AI engineer based in <strong>Batam, Indonesia</strong>.
-              I handle product thinking, design, frontend, backend, and deployment — so you get one
+              AI Native Engineer based in <strong>Batam, Indonesia</strong>.
+              I handle product thinking, design, frontend, backend, and deployment. So you get one
               person accountable for shipping.
             </motion.p>
 
@@ -236,9 +236,9 @@ export default function Homepage() {
             variants={container}
             transition={{ delayChildren: 0.6 }}
           >
-            <StatCard variants={fadeRight} label="Primary Stack" value="Laravel · Next.js" sub="Filament · Sanity" />
-            <StatCard variants={fadeRight} label="Shipped · Production" value="12+" smallValue="projects" desc="Anime festivals to K-12 school platforms." />
-            <StatCard variants={fadeRight} label="Delivery Mode" value="End-to-end" desc="One operator. No PM tax. Direct line." />
+            <StatCard variants={fadeRight} label="Primary Stack" value="Laravel · Next.js" sub="Filament · Vercel" />
+            <StatCard variants={fadeRight} label="Shipped · Production" value="12+" smallValue="projects" desc="From small to enterprise apps" />
+            <StatCard variants={fadeRight} label="Delivery Mode" value="End-to-end" desc="From planning to deployment" />
           </motion.aside>
         </motion.div>
 
@@ -312,7 +312,7 @@ export default function Homepage() {
       </section>
 
       {/* WORK */}
-      <section id="work" ref={workRef} style={{ paddingTop: 40 }}>
+      <section id="work" ref={workRef} className="scroll-mt-20">
         <div className="container">
           <SectionLabel>§ 03 — Selected Work</SectionLabel>
           <div className="work-header">
@@ -819,9 +819,9 @@ function MCPBeamsSection({ onHover, onLeave }: { onHover: () => void; onLeave: (
 }
 
 const PROJECT_TYPES = [
-  { value: "fullstack", label: "Fullstack Product Builds", sub: "end-to-end product" },
-  { value: "enterprise", label: "Enterprise Integration",  sub: "API / ACL / systems" },
-  { value: "consult",   label: "Consultation",             sub: "advice / audit / direction" },
+  { value: "fullstack", label: "Product Builds"},
+  { value: "enterprise", label: "AI Integration"},
+  { value: "consult",   label: "Consultation"},
 ] as const;
 
 function ContactForm({ onHover, onLeave }: { onHover: () => void; onLeave: () => void }) {
@@ -1806,7 +1806,6 @@ const css = `
     justify-content: space-between;
     gap: 10px;
     padding: 14px 14px 14px 14px;
-    min-height: 76px;
     background: transparent;
     border: 1px solid var(--line);
     color: var(--ink-dim);
