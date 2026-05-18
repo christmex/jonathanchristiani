@@ -168,7 +168,7 @@ export default function SolutechVisionPage() {
         {/* 02 — Filosofi */}
         <section className="slide slide-philosophy" data-slide={2}>
           <div className="slide-inner slide-center">
-            <div className="slide-num">§ 01 — FILOSOFI</div>
+            <div className="slide-num">01 — FILOSOFI</div>
             <h2 className="philosophy-h">
               Simplicity first.
               <br />
@@ -186,7 +186,7 @@ export default function SolutechVisionPage() {
         {/* 03 — Tech Stack */}
         <section className="slide" data-slide={3}>
           <div className="slide-inner">
-            <div className="slide-num">§ 02 — TECH STACK INTI</div>
+            <div className="slide-num">02 — TECH STACK INTI</div>
             <h2 className="slide-h slide-h-sm">
               Pilihan yang <em>stable, proven,</em> dan siap enterprise.
             </h2>
@@ -228,7 +228,7 @@ export default function SolutechVisionPage() {
         {/* 04 — UI/UX */}
         <section className="slide" data-slide={4}>
           <div className="slide-inner">
-            <div className="slide-num">§ 03 — UI / UX STRATEGY</div>
+            <div className="slide-num">03 — UI / UX STRATEGY</div>
             <h2 className="slide-h slide-h-sm">
               Filament panel <em>sulit dikustomisasi berat.</em> Kita punya 3 opsi.
             </h2>
@@ -285,7 +285,7 @@ export default function SolutechVisionPage() {
         {/* 05 — Arsitektur Modular */}
         <section className="slide" data-slide={5}>
           <div className="slide-inner">
-            <div className="slide-num">§ 04 — ARSITEKTUR MODULAR</div>
+            <div className="slide-num">04 — ARSITEKTUR MODULAR</div>
             <h2 className="slide-h slide-h-sm">
               Satu aplikasi. <em>Banyak panel.</em> Satu codebase.
             </h2>
@@ -339,7 +339,7 @@ export default function SolutechVisionPage() {
         {/* 06 — RBAC */}
         <section className="slide" data-slide={6}>
           <div className="slide-inner">
-            <div className="slide-num">§ 05 — ACCESS CONTROL (RBAC)</div>
+            <div className="slide-num">05 — ACCESS CONTROL (RBAC)</div>
             <h2 className="slide-h slide-h-sm">
               Mulai <em>sederhana.</em> Naikkan kompleksitas hanya jika perlu.
             </h2>
@@ -383,7 +383,7 @@ export default function SolutechVisionPage() {
         {/* 07 — Quality & Plugins */}
         <section className="slide" data-slide={7}>
           <div className="slide-inner">
-            <div className="slide-num">§ 06 — QUALITY &amp; DEVELOPMENT</div>
+            <div className="slide-num">06 — QUALITY &amp; DEVELOPMENT</div>
             <h2 className="slide-h slide-h-sm">
               <em>TDD</em> sebagai fondasi.
             </h2>
@@ -420,7 +420,7 @@ export default function SolutechVisionPage() {
         {/* 08 — AI Development */}
         <section className="slide slide-ai" data-slide={8}>
           <div className="slide-inner slide-center">
-            <div className="slide-num">§ 07 — REKOMENDASI</div>
+            <div className="slide-num">07 — REKOMENDASI</div>
             <h2 className="ai-h">
               Dikembangkan dengan<br />
               <em>AI-assisted development.</em>

@@ -67,7 +67,7 @@ export default function MobileMenu() {
             <div className="mm-grain" aria-hidden="true" />
 
             <div className="mm-head">
-              <span className="mm-kicker">§ — MENU</span>
+              <span className="mm-kicker">— MENU</span>
               <span className="mm-close-label">ESC · CLOSE</span>
             </div>
 

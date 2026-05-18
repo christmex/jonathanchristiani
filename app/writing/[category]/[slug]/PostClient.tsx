@@ -121,7 +121,7 @@ export default function PostClient({
         <section className="post-related">
           <div className="container">
             <div className="related-head">
-              <span className="related-kicker">§ — More in {category.kicker}</span>
+              <span className="related-kicker">— More in {category.kicker}</span>
               <Link href={`/writing/${category.id}`} className="related-all">
                 All in {category.title} <span className="arrow"><ArrowUpRight size={14} strokeWidth={1.75} /></span>
               </Link>
@@ -268,13 +268,6 @@ const css = `
     font-weight: 400; letter-spacing: -0.02em;
     color: var(--ink); margin: 48px 0 20px;
     padding-top: 20px; border-top: 1px solid var(--line);
-    position: relative;
-  }
-  .prose-h2::before {
-    content: '§';
-    position: absolute; top: 18px; left: -28px;
-    color: var(--accent); font-size: 16px;
-    font-family: var(--mono); font-weight: 700;
   }
   .prose-quote {
     margin: 40px 0; padding: 4px 0 4px 28px;

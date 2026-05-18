@@ -279,7 +279,7 @@ export default function Homepage() {
       {/* SERVICES */}
       <section id="services">
         <div className="container">
-          <SectionLabel>§ 02 — What I Do</SectionLabel>
+          <SectionLabel>02 — What I Do</SectionLabel>
           <WhatTitle>
             Three ways I <em>show up</em> for clients — each priced, scoped, and shipped without the agency overhead.
           </WhatTitle>
@@ -314,7 +314,7 @@ export default function Homepage() {
       {/* WORK */}
       <section id="work" ref={workRef} className="scroll-mt-20">
         <div className="container">
-          <SectionLabel>§ 03 — Selected Work</SectionLabel>
+          <SectionLabel>03 — Selected Work</SectionLabel>
           <div className="work-header">
             <WhatTitle style={{ marginBottom: 0 }}>
               Things I've <em>actually</em> shipped.
@@ -354,7 +354,7 @@ export default function Homepage() {
       {/* PROCESS */}
       <section id="process">
         <div className="container">
-          <SectionLabel>§ 04 — How I Work</SectionLabel>
+          <SectionLabel>04 — How I Work</SectionLabel>
           <WhatTitle>
             A four-step loop. <em>Serial, not parallel.</em>
           </WhatTitle>
@@ -401,7 +401,7 @@ export default function Homepage() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             >
-              <SectionLabel>§ 05 — Work With Me</SectionLabel>
+              <SectionLabel>05 — Work With Me</SectionLabel>
               <h2 className="cta-title">
                 Have something<br />to <em>ship?</em>
               </h2>
@@ -695,7 +695,7 @@ function MCPBeamsSection({ onHover, onLeave }: { onHover: () => void; onLeave: (
     <section id="mcp" className="mcp-section" onMouseEnter={onHover} onMouseLeave={onLeave}>
       <div className="container mcp-container">
         <div className="mcp-copy">
-          <SectionLabel>§ 01 — Toolchain</SectionLabel>
+          <SectionLabel>01 — Toolchain</SectionLabel>
           <h2 className="mcp-title">
             Claude at the center. <em>Everything plugs in.</em>
           </h2>

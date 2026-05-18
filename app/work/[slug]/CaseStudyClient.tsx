@@ -155,7 +155,7 @@ export default function CaseStudyClient({ project }: { project: Project }) {
               variants={fadeUp}
               transition={{ delay: i * 0.05 }}
             >
-              <div className="case-section-num">§ {s.num}</div>
+              <div className="case-section-num">{s.num}</div>
               <div className="case-section-content">
                 <h2 className="case-section-title">{s.title}</h2>
                 <p className="case-section-body">{s.body}</p>
@@ -173,7 +173,7 @@ export default function CaseStudyClient({ project }: { project: Project }) {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="case-next-label">§ — Next</div>
+            <div className="case-next-label">— Next</div>
             <h2 className="case-next-title">
               Have something <em>similar</em> to ship?
             </h2>

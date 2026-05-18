@@ -38,7 +38,7 @@ export default function WritingCategoriesClient({
           >
             <Link href="/" className="inline-icon"><ArrowLeft size={12} strokeWidth={1.75} /> Back Home</Link>
             <span className="sep">·</span>
-            <span>§ — Writing</span>
+            <span>— Writing</span>
             <span className="sep">·</span>
             <span>{totalPosts} notes / {categories.length} categories</span>
           </motion.div>

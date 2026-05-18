@@ -122,7 +122,7 @@ export default function LearnFromJoshPage() {
         {/* 02 — Always Simplify */}
         <section className="slide" data-slide={2}>
           <div className="slide-inner slide-center">
-            <div className="slide-num">§ 01 — SIMPLIFY</div>
+            <div className="slide-num">01 — SIMPLIFY</div>
             <h2 className="principle-h">
               Always simplify<br />
               <em>complex problems</em><br />
@@ -138,7 +138,7 @@ export default function LearnFromJoshPage() {
         {/* 03 — Attention to Detail */}
         <section className="slide" data-slide={3}>
           <div className="slide-inner">
-            <div className="slide-num">§ 02 — CRAFT</div>
+            <div className="slide-num">02 — CRAFT</div>
             <h2 className="slide-h slide-h-sm">Small details <em>reflect professionalism.</em></h2>
             <div className="craft-grid">
               <div className="craft-card">
@@ -166,7 +166,7 @@ export default function LearnFromJoshPage() {
         {/* 04 — DONE */}
         <section className="slide slide-done" data-slide={4}>
           <div className="slide-inner slide-center">
-            <div className="slide-num">§ 03 — DEFINITION OF DONE</div>
+            <div className="slide-num">03 — DEFINITION OF DONE</div>
             <div className="done-word">DONE.</div>
             <p className="done-sub">
               Only call something <em>&ldquo;done&rdquo;</em> when you&rsquo;re truly confident
@@ -187,7 +187,7 @@ export default function LearnFromJoshPage() {
         {/* 05 — What How What */}
         <section className="slide" data-slide={5}>
           <div className="slide-inner">
-            <div className="slide-num">§ 04 — CLIENT FRAMEWORK</div>
+            <div className="slide-num">04 — CLIENT FRAMEWORK</div>
             <h2 className="slide-h slide-h-sm">
               Three questions that must always <em>be answered</em> together with the client.
             </h2>
@@ -228,7 +228,7 @@ export default function LearnFromJoshPage() {
         {/* 06 — Prioritization */}
         <section className="slide" data-slide={6}>
           <div className="slide-inner">
-            <div className="slide-num">§ 05 — PRIORITIZATION</div>
+            <div className="slide-num">05 — PRIORITIZATION</div>
             <h2 className="slide-h slide-h-sm">
               <em>Must-haves</em> first. Nice-to-haves later.
             </h2>
@@ -266,7 +266,7 @@ export default function LearnFromJoshPage() {
         {/* 07 — Value × Efficiency Matrix */}
         <section className="slide" data-slide={7}>
           <div className="slide-inner">
-            <div className="slide-num">§ 06 — DECISION MATRIX</div>
+            <div className="slide-num">06 — DECISION MATRIX</div>
             <h2 className="slide-h slide-h-sm">
               Build the <em>high value + high efficient</em> things first.
             </h2>
@@ -310,7 +310,7 @@ export default function LearnFromJoshPage() {
         {/* 08 — Work-Life Balance */}
         <section className="slide" data-slide={8}>
           <div className="slide-inner">
-            <div className="slide-num">§ 07 — SUSTAINABILITY</div>
+            <div className="slide-num">07 — SUSTAINABILITY</div>
             <h2 className="slide-h slide-h-sm">
               The best work comes from people who <em>truly rest.</em>
             </h2>

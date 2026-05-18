@@ -251,7 +251,7 @@ export default function NihonFest2026Page() {
         {/* 04 — Opening */}
         <section className="slide" data-slide={4}>
           <div className="slide-inner">
-            <div className="slide-num">§ 01 — OPENING</div>
+            <div className="slide-num">01 — OPENING</div>
             <h2 className="slide-h">
               Kita sedang hidup di <em>momen paling transformatif</em>
               <br />
@@ -277,7 +277,7 @@ export default function NihonFest2026Page() {
         {/* 03 — AI Tooling Trend (Claude Code focus) */}
         <section className="slide" data-slide={5}>
           <div className="slide-inner">
-            <div className="slide-num">§ 02 — TREN AI TOOLS</div>
+            <div className="slide-num">02 — TREN AI TOOLS</div>
             <h2 className="slide-h slide-h-sm">
               Dari autocomplete ke <em>partner kerja.</em>
             </h2>
@@ -354,7 +354,7 @@ export default function NihonFest2026Page() {
         {/* 05 — Transformation */}
         <section className="slide" data-slide={6}>
           <div className="slide-inner">
-            <div className="slide-num">§ 03 — New Era</div>
+            <div className="slide-num">03 — New Era</div>
             <h2 className="slide-h slide-h-sm">
               From <em>writing code</em>, to <em>orchestrating systems</em>.
             </h2>
@@ -388,7 +388,7 @@ export default function NihonFest2026Page() {
         {/* 06 — Showcase */}
         <section className="slide" data-slide={7}>
           <div className="slide-inner">
-            <div className="slide-num">§ 04 — Showcase</div>
+            <div className="slide-num">04 — Showcase</div>
             <h2 className="slide-h slide-h-sm">
               5 projects. <em>Less than 1 month.</em> One person.
             </h2>

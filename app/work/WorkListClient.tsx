@@ -55,7 +55,7 @@ export default function WorkListClient({ projects }: { projects: Project[] }) {
           >
             <Link href="/" className="inline-icon"><ArrowLeft size={12} strokeWidth={1.75} /> Back Home</Link>
             <span className="sep">·</span>
-            <span>§ — Index</span>
+            <span>— Index</span>
           </motion.div>
 
           <motion.h1
@@ -100,6 +100,7 @@ export default function WorkListClient({ projects }: { projects: Project[] }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ paddingLeft: 16 }}
                 className="list-row"
                 onMouseEnter={() => setCursorHovering(true)}
                 onMouseLeave={() => setCursorHovering(false)}
@@ -262,7 +263,7 @@ const css = `
     position: relative; overflow: hidden; border-radius: 2px;
   }
   .list-visual-img { object-fit: cover; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
-  .list-row:hover .list-visual-img { transform: scale(1.03); }
+  .list-row:hover .list-visual-img { transform: scale(1.04); }
   .list-visual-fallback {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;

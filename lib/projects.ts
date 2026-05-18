@@ -111,6 +111,34 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "tab-hotels",
+    year: "2024 - Present",
+    title: "TAB Hotels",
+    role: "Hospitality Booking Platform · Full-stack & Design",
+    desc: "Multi-location budget hotel chain — direct booking flow, branch discovery, promo system, and OTA integrations (Expedia, KAI). Designed for trust at first scroll and bookings without friction.",
+    tags: ["Next.js", "Laravel", "Filament", "Tailwind"],
+    variant: "v2",
+    status: "production",
+    image: "/images/projects/tabhotels.com.png",
+    links: [
+      { label: "Visit live", href: "https://tabhotels.com", external: true },
+      { label: "Case study", href: "/work/tab-hotels" },
+    ],
+    caseStudy: {
+      overview:
+        "A direct-booking website for TAB Hotels — a multi-branch budget hotel chain across Surabaya, Bandung, and Yogyakarta. Guests can discover branches, see the rooms and surrounding attractions, read real reviews, and book without leaving the site.",
+      background:
+        "TAB was paying heavy commissions to OTAs while their direct channel was a static landing page that nobody trusted. Guests would discover TAB on Expedia, then never come back through the front door.",
+      myRole:
+        "End-to-end. Brand-aligned UI design, frontend, booking logic, admin panel for branch managers, and OTA partnership integrations. Worked directly with the operations team to map real check-in flows.",
+      impact:
+        "Direct bookings climbed from a trickle to a meaningful share of monthly volume. Branch managers now publish promos and update room availability themselves — no developer in the loop. Review aggregation built credibility for first-time visitors.",
+      learned:
+        "Hospitality UX is mostly about reducing doubt. Every section — team photo, reviews, location map, partnership logos — exists to answer one unspoken question: 'is this place real and is this place safe?' Visual trust beats clever interactions.",
+      stack: ["Next.js", "Laravel", "Filament", "Tailwind"],
+    },
+  },
+  {
     slug: "lancar-logistic",
     year: "2023",
     title: "Lancar Logistic",
@@ -119,6 +147,7 @@ export const projects: Project[] = [
     tags: ["PM", "Fullstack Engineer", "SEO"],
     variant: "v1",
     status: "archived",
+    image: "/images/projects/lancarlogistic.com.png",
     links: [{ label: "Case study", href: "/work/lancar-logistic" }],
     caseStudy: {
       overview:

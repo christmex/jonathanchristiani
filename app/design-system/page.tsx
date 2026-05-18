@@ -27,7 +27,7 @@ export default function DesignSystemPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span>§ — Design System</span>
+            <span>— Design System</span>
             <span className="sep">·</span>
             <span>v1.0</span>
             <span className="sep">·</span>
@@ -247,7 +247,7 @@ function DSSection({ num, title, children }: { num: string; title: string; child
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
         >
-          <span className="ds-section-num">§ {num}</span>
+          <span className="ds-section-num">{num}</span>
           <h2 className="ds-section-title">{title}</h2>
         </motion.div>
         <div className="ds-section-body">{children}</div>
@@ -326,7 +326,7 @@ const TYPE_SCALE = [
   { label: "H2",         size: "clamp(26px,2.4vw,34px)", family: "var(--serif)", weight: 400, style: "normal",  text: "Three ways I show up for clients." },
   { label: "Lede",       size: "clamp(18px,1.6vw,22px)", family: "var(--serif)", weight: 300, style: "italic",  text: "A runtime exception bubbled all the way up." },
   { label: "Body",       size: "19px",  family: "var(--serif)", weight: 300, style: "normal", text: "Freelance full-stack developer and AI engineer based in Batam, Indonesia." },
-  { label: "UI / Mono",  size: "12px",  family: "var(--mono)",  weight: 400, style: "normal", text: "§ 01 — SHIP · § 02 — INTEGRATE · § 03 — RESCUE" },
+  { label: "UI / Mono",  size: "12px",  family: "var(--mono)",  weight: 400, style: "normal", text: "01 — SHIP · 02 — INTEGRATE · 03 — RESCUE" },
   { label: "Chip",       size: "10px",  family: "var(--mono)",  weight: 400, style: "normal", text: "LARAVEL · NEXT.JS · TYPESCRIPT · POSTGRESQL" },
 ];
 
