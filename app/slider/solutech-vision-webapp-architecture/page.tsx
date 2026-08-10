@@ -478,7 +478,8 @@ export default function SolutechVisionPage() {
 
 const css = `
   /* ── Base deck ───────────────────────────────────────────── */
-  .deck { scroll-snap-type: y mandatory; overflow-y: auto; height: 100dvh; }
+  .deck { scroll-snap-type: y mandatory; overflow-y: auto; height: 100dvh; scrollbar-width: none; }
+  .deck::-webkit-scrollbar { display: none; }
   .slide {
     scroll-snap-align: start;
     min-height: 100dvh;

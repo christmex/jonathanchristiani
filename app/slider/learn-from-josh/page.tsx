@@ -380,7 +380,8 @@ export default function LearnFromJoshPage() {
 
 const css = `
   /* ── Base deck ─────────────────────────────── */
-  .deck { scroll-snap-type: y mandatory; overflow-y: auto; height: 100dvh; }
+  .deck { scroll-snap-type: y mandatory; overflow-y: auto; height: 100dvh; scrollbar-width: none; }
+  .deck::-webkit-scrollbar { display: none; }
   .slide { scroll-snap-align: start; min-height: 100dvh; display: flex; flex-direction: column; position: relative; }
   .slide-inner {
     flex: 1; display: flex; flex-direction: column; justify-content: center;
