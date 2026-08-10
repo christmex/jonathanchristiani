@@ -10,6 +10,16 @@ import SiteFooter from "@/app/components/SiteFooter";
 
 const SLIDES = [
   {
+    id: "about-me",
+    href: "/slider/about-me",
+    kicker: "PROFILE",
+    title: "About Me",
+    desc: "AI Native Engineer & FullStack Engineer — experience, stack, cyber security, and how I work.",
+    event: "Personal",
+    date: "Aug 2026",
+    tags: ["Profile", "Experience", "Cyber Security"],
+  },
+  {
     id: "nihon-fest-2026",
     href: "/slider/nihon-fest-2026",
     kicker: "KEYNOTE",
