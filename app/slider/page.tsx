@@ -8,6 +8,16 @@ import PageShell from "@/app/components/PageShell";
 
 const SLIDES = [
   {
+    id: "the-power-of-open-source",
+    href: "/slider/the-power-of-open-source",
+    kicker: "TALK",
+    title: "The Power of Open Source",
+    desc: "Build fast, ship fast. Introducing FilamentPHP and the open source TALL stack behind it.",
+    event: "Talk",
+    date: "Oct 2026",
+    tags: ["Open Source", "FilamentPHP", "TALL Stack"],
+  },
+  {
     id: "about-me",
     href: "/slider/about-me",
     kicker: "PROFILE",
