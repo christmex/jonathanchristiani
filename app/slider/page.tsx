@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
-import SiteNav from "@/app/components/SiteNav";
-import SiteFooter from "@/app/components/SiteFooter";
 
 const SLIDES = [
   {
@@ -51,7 +49,6 @@ export default function SliderIndexPage() {
       cursorHovering={cursorHovering}
     >
       <style>{css}</style>
-      <SiteNav setCursorHovering={setCursorHovering} />
 
       <header className="sl-hero">
         <div className="container">
@@ -61,10 +58,6 @@ export default function SliderIndexPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Link href="/" className="inline-icon">
-              <ArrowLeft size={12} strokeWidth={1.75} /> Back Home
-            </Link>
-            <span className="sep">·</span>
             <span>Slides</span>
             <span className="sep">·</span>
             <span>{SLIDES.length} presentations</span>
@@ -127,7 +120,6 @@ export default function SliderIndexPage() {
         </div>
       </section>
 
-      <SiteFooter backHref="/" backLabel="BACK HOME" />
     </PageShell>
   );
 }
