@@ -14,7 +14,9 @@ const FIRST_TIP_SLIDE = 10;
 
 const DECK_TITLE = "The Power of Open Source";
 
-const SPEAKER_ROLE = "Software Engineer & Cyber Security Enthusiast";
+const SPEAKER_ROLE = "Co-Founder PT. NihonNoMise Global Overseas";
+
+const NIHONNOMISE_LOGO = { src: "/images/nihonnomise-logo.png", alt: "NihonNoMise logo", width: 312, height: 388 } as const;
 
 const GITHUB_ACCOUNT = { handle: "/christmex", href: "https://github.com/christmex" } as const;
 const INSTAGRAM_ACCOUNT = { handle: "/jonathan.christiani", href: "https://www.instagram.com/jonathan.christiani" } as const;
@@ -228,7 +230,17 @@ export default function ThePowerOfOpenSourcePage() {
               <motion.h1 className="cover-title" variants={fadeUp}>
                 {PROFILE.firstName}<br /><em>{PROFILE.lastName}.</em>
               </motion.h1>
-              <motion.p className="cover-sub" variants={fadeUp}>{SPEAKER_ROLE}</motion.p>
+              <motion.div className="cover-role" variants={fadeUp}>
+                <Image
+                  src={NIHONNOMISE_LOGO.src}
+                  alt={NIHONNOMISE_LOGO.alt}
+                  width={NIHONNOMISE_LOGO.width}
+                  height={NIHONNOMISE_LOGO.height}
+                  className="cover-role-logo"
+                  loading="eager"
+                />
+                <p className="cover-sub">{SPEAKER_ROLE}</p>
+              </motion.div>
               <motion.div className="social-row" variants={fadeUp}>
                 {SOCIAL_ACCOUNTS.map(({ platform, Icon, handle, href }) => (
                   <a key={platform} href={href} target="_blank" rel="noreferrer" className="social-link" aria-label={`${platform} ${handle}`} {...hoverHandlers}>
@@ -601,7 +613,9 @@ const css = `
   .cover-split { display: grid; grid-template-columns: 1fr 0.9fr; gap: 64px; align-items: center; }
   .cover-title { font-family: var(--serif); font-size: clamp(52px, 7.4vw, 116px); line-height: 0.96; font-weight: 400; letter-spacing: -0.04em; margin-bottom: 24px; }
   .cover-title em { font-style: italic; color: var(--accent); }
-  .cover-sub { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; color: var(--ink-dim); margin-bottom: 24px; }
+  .cover-role { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+  .cover-role-logo { width: 56px; height: auto; flex-shrink: 0; }
+  .cover-sub { font-family: var(--mono); font-size: 13px; letter-spacing: 0.08em; color: var(--ink-dim); }
   .cover-hint { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
   .cover-hint kbd { display: inline-block; padding: 2px 7px; border: 1px solid var(--line); font-family: var(--mono); font-size: 10px; color: var(--ink-dim); border-radius: 3px; }
   .cover-photo { margin: 0; }
