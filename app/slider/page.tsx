@@ -8,6 +8,16 @@ import PageShell from "@/app/components/PageShell";
 
 const SLIDES = [
   {
+    id: "basic-web-hacking",
+    href: "/slider/basic-web-hacking",
+    kicker: "SECURITY",
+    title: "Basic Web Hacking: From IDOR to Account Takeover",
+    desc: "A beginner-friendly walk from a common web vulnerability to full account takeover, then how to defend against it.",
+    event: "Talk",
+    date: "Oct 2026",
+    tags: ["Security", "IDOR", "Web"],
+  },
+  {
     id: "the-power-of-open-source",
     href: "/slider/the-power-of-open-source",
     kicker: "TALK",
