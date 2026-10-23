@@ -32,8 +32,8 @@ const SECURITY_ASPECTS: { letter: string; name: string; meaning: string }[] = [
 ];
 
 const IDOR_EXAMPLE_STEPS: { label: string; value: string; note: string; isHighlighted?: boolean }[] = [
-  { label: "Normal request", value: "GET /api/users/1023", note: "Your own account." },
-  { label: "Change the id", value: "GET /api/users/1024", note: "Another user's account." },
+  { label: "Normal request", value: "GET /api/profile/1023", note: "Your own account." },
+  { label: "Change the id", value: "GET /api/profile/1024", note: "Another user's account." },
   { label: "The server never checks", value: "200 OK", note: "It returns the data anyway.", isHighlighted: true },
 ] as const;
 
@@ -369,6 +369,16 @@ export default function BasicWebHackingPage() {
             The hacking lab is ready. Let&rsquo;s walk an IDOR all the way to a full account takeover,
             then patch it.
           </motion.p>
+          <motion.div className="demo-endpoints" variants={fadeUp}>
+            <div className="demo-endpoint">
+              <span className="demo-endpoint-label">User API</span>
+              <code className="demo-endpoint-code">GET /api/profile/1</code>
+            </div>
+            <div className="demo-endpoint">
+              <span className="demo-endpoint-label">Reset password</span>
+              <code className="demo-endpoint-code">/reset-password/[token]?email=victim@example.com</code>
+            </div>
+          </motion.div>
           <motion.div className="demo-badge" variants={fadeUp}>Lab environment, authorized target</motion.div>
         </RevealSlide>
 
@@ -498,7 +508,7 @@ function IdorFlow() {
           animate={{ left: ["2%", "2%", "2%", "98%", "98%", "98%"], opacity: [0, 1, 1, 1, 1, 0] }}
           transition={{ duration: 6, times: [0, 0.067, 0.433, 0.633, 0.9, 1], ease: "easeInOut" }}
         >
-          <code>GET /api/users/{attempt.id}</code>
+          <code>GET /api/profile/{attempt.id}</code>
         </motion.div>
 
         <motion.div
@@ -740,6 +750,10 @@ const css = `
   /* ── Demo (07) ────────────────────────────── */
   .demo-sub { font-size: clamp(16px, 1.8vw, 22px); line-height: 1.65; color: var(--ink-dim); max-width: 720px; margin: 0 auto 28px; }
   .demo-sub em { font-style: italic; color: var(--accent); }
+  .demo-endpoints { display: flex; flex-direction: column; gap: 10px; align-items: center; margin: 4px 0 30px; }
+  .demo-endpoint { display: flex; align-items: center; gap: 16px; border: 1px solid var(--line); background: var(--bg-2); padding: 12px 20px; }
+  .demo-endpoint-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-dim); white-space: nowrap; }
+  .demo-endpoint-code { font-family: var(--mono); font-size: clamp(13px, 1.3vw, 16px); color: var(--ink); }
   .demo-badge { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); padding: 10px 18px; border: 1px solid var(--accent); }
 
   /* ── Learn (08) ───────────────────────────── */
