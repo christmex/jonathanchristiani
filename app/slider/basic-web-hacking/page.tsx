@@ -9,7 +9,7 @@ import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 import { PROFILE } from "@/lib/profile";
 
-const TOTAL_SLIDES = 10;
+const TOTAL_SLIDES = 11;
 
 const DECK_TITLE = "Basic Web Hacking";
 const DECK_SUBTITLE = "From IDOR to Account Takeover";
@@ -62,6 +62,13 @@ const ATO_CAUSES = [
   "A password reset token tied to a guessable id",
   "Updating another user's account because the id is trusted",
 ] as const;
+
+const ATO_CHAIN: { code: string; note: string; owned?: boolean }[] = [
+  { code: `"reset_token": "7bc3..."`, note: "Pulled straight from the leaked user response." },
+  { code: "POST /reset-password", note: "Send the stolen token with a new password." },
+  { code: "200 OK", note: "The server trusts the token and sets the password." },
+  { code: "POST /login", note: "Log in as her. The account is yours.", owned: true },
+];
 
 const DEFENSE_POINTS = [
   { title: "Authorize every request", detail: "Check that the logged-in user owns the record, on the server, every time." },
@@ -331,8 +338,29 @@ export default function BasicWebHackingPage() {
           </motion.div>
         </RevealSlide>
 
-        {/* 07 Live demo */}
-        <RevealSlide slideNumber={7} isCentered>
+        {/* 07 The takeover chain */}
+        <RevealSlide slideNumber={7}>
+          <motion.div className="slide-num" variants={fadeUp}>THE CHAIN</motion.div>
+          <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
+            One token, <em>four steps.</em>
+          </motion.h2>
+          <motion.p className="lede" variants={fadeUp}>
+            That leaked reset token is all it takes. No password needed.
+          </motion.p>
+          <div className="ato-chain">
+            {ATO_CHAIN.map((step, stepIndex) => (
+              <motion.div className={`ato-step${step.owned ? " is-owned" : ""}`} key={step.code} variants={fadeUp}>
+                <span className="ato-step-num">{String(stepIndex + 1).padStart(2, "0")}</span>
+                <code className="ato-step-code">{step.code}</code>
+                <span className="ato-step-note">{step.note}</span>
+              </motion.div>
+            ))}
+          </div>
+        </RevealSlide>
+
+
+        {/* 08 Live demo */}
+        <RevealSlide slideNumber={8} isCentered>
           <motion.div className="slide-num" variants={fadeUp}>HANDS ON</motion.div>
           <motion.h2 className="title-h title-h-md" variants={fadeUp}>
             Live <em>demo.</em>
@@ -344,8 +372,8 @@ export default function BasicWebHackingPage() {
           <motion.div className="demo-badge" variants={fadeUp}>Lab environment, authorized target</motion.div>
         </RevealSlide>
 
-        {/* 08 How to defend */}
-        <RevealSlide slideNumber={8}>
+        {/* 09 How to defend */}
+        <RevealSlide slideNumber={9}>
           <motion.div className="slide-num" variants={fadeUp}>THE FIX</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             How we <em>close the gap.</em>
@@ -361,8 +389,8 @@ export default function BasicWebHackingPage() {
           </div>
         </RevealSlide>
 
-        {/* 09 Learn more */}
-        <RevealSlide slideNumber={9}>
+        {/* 10 Learn more */}
+        <RevealSlide slideNumber={10}>
           <motion.div className="slide-num" variants={fadeUp}>KEEP LEARNING</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             Where to <em>go next.</em>
@@ -384,8 +412,8 @@ export default function BasicWebHackingPage() {
           </div>
         </RevealSlide>
 
-        {/* 10 Closing */}
-        <RevealSlide slideNumber={10} isCentered>
+        {/* 11 Closing */}
+        <RevealSlide slideNumber={11} isCentered>
           <motion.div className="slide-num" variants={fadeUp}>STAY CURIOUS, STAY ETHICAL</motion.div>
           <motion.h2 className="title-h" variants={fadeUp}>
             Thank you<span className="title-dot">.</span>
@@ -665,6 +693,18 @@ const css = `
   .idor-json-line.is-hot .idor-json-k,
   .idor-json-line.is-hot .idor-json-v { color: var(--accent); }
   .idor-record-foot { font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em; color: var(--accent); padding-top: 2px; }
+
+  /* ── Takeover chain (07) ──────────────────── */
+  .ato-chain { display: flex; flex-direction: column; gap: 2px; max-width: 1060px; }
+  .ato-step {
+    display: grid; grid-template-columns: 44px 300px 1fr; gap: 26px; align-items: center;
+    padding: 20px 28px; border: 1px solid var(--line); background: var(--bg-2); transition: border-color 0.2s;
+  }
+  .ato-step-num { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: var(--accent); }
+  .ato-step-code { font-family: var(--mono); font-size: clamp(14px, 1.4vw, 18px); color: var(--ink); white-space: nowrap; }
+  .ato-step-note { font-size: 14px; color: var(--ink-dim); }
+  .ato-step.is-owned { border-color: var(--accent); }
+  .ato-step.is-owned .ato-step-code { color: var(--accent); }
 
   /* ── Point lists (05, 06) ─────────────────── */
   .point-list { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 2px; max-width: 980px; }
