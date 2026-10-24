@@ -9,7 +9,7 @@ import { useCursor } from "@/app/hooks/useCursor";
 import PageShell from "@/app/components/PageShell";
 import { PROFILE } from "@/lib/profile";
 
-const TOTAL_SLIDES = 11;
+const TOTAL_SLIDES = 12;
 
 const DECK_TITLE = "Basic Web Hacking";
 const DECK_SUBTITLE = "From IDOR to Account Takeover";
@@ -18,10 +18,32 @@ const NIHONNOMISE_LOGO = { src: "/images/nihonnomise-logo.png", alt: "NihonNoMis
 
 const GITHUB_ACCOUNT = { handle: "/christmex", href: "https://github.com/christmex" } as const;
 const INSTAGRAM_ACCOUNT = { handle: "/jonathan.christiani", href: "https://www.instagram.com/jonathan.christiani" } as const;
+const MEDIUM_ACCOUNT = { handle: "christmex.medium.com", href: "https://christmex.medium.com/" } as const;
 
 const SOCIAL_ACCOUNTS = [
   { platform: "GitHub", Icon: GithubIcon, ...GITHUB_ACCOUNT },
   { platform: "Instagram", Icon: InstagramIcon, ...INSTAGRAM_ACCOUNT },
+] as const;
+
+const SHARING_CHANNELS = [
+  {
+    platform: "Instagram",
+    Icon: InstagramIcon,
+    href: INSTAGRAM_ACCOUNT.href,
+    displayLink: "instagram.com/jonathan.christiani",
+    topic: "Programming, especially",
+    highlight: "Laravel",
+    description: "Tips, tricks, and everyday lessons from building real apps, mostly with Laravel.",
+  },
+  {
+    platform: "Medium",
+    Icon: MediumIcon,
+    href: MEDIUM_ACCOUNT.href,
+    displayLink: MEDIUM_ACCOUNT.handle,
+    topic: "Writing about",
+    highlight: "Cyber Security",
+    description: "How systems break and how they get defended, written down as I learn.",
+  },
 ] as const;
 
 const SECURITY_ASPECTS: { letter: string; name: string; meaning: string }[] = [
@@ -236,8 +258,40 @@ export default function BasicWebHackingPage() {
           {socialRow}
         </RevealSlide>
 
-        {/* 02 The 4 aspects */}
+        {/* 02 In my free time */}
         <RevealSlide slideNumber={2}>
+          <motion.div className="slide-num" variants={fadeUp}>WHO I AM</motion.div>
+          <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
+            In my <em>free time.</em>
+          </motion.h2>
+          <div className="channel-grid">
+            {SHARING_CHANNELS.map(({ platform, Icon, href, displayLink, topic, highlight, description }) => (
+              <motion.a
+                key={platform}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="channel-card"
+                variants={fadeUp}
+                {...hoverHandlers}
+              >
+                <div className="channel-platform">
+                  <Icon />
+                  <span>{platform}</span>
+                </div>
+                <h3 className="channel-topic">{topic} <em>{highlight}</em></h3>
+                <p className="channel-description">{description}</p>
+                <span className="channel-handle">
+                  {displayLink}
+                  <ArrowUpRight size={13} strokeWidth={1.75} />
+                </span>
+              </motion.a>
+            ))}
+          </div>
+        </RevealSlide>
+
+        {/* 03 The 4 aspects */}
+        <RevealSlide slideNumber={3}>
           <motion.div className="slide-num" variants={fadeUp}>THE BASICS</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             Four aspects an attacker <em>goes after.</em>
@@ -260,8 +314,8 @@ export default function BasicWebHackingPage() {
           </motion.p>
         </RevealSlide>
 
-        {/* 03 What is IDOR */}
-        <RevealSlide slideNumber={3}>
+        {/* 04 What is IDOR */}
+        <RevealSlide slideNumber={4}>
           <motion.div className="slide-num" variants={fadeUp}>THE VULNERABILITY</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             What is <em>IDOR?</em>
@@ -281,8 +335,8 @@ export default function BasicWebHackingPage() {
           </div>
         </RevealSlide>
 
-        {/* 04 How IDOR works (animated) */}
-        <RevealSlide slideNumber={4}>
+        {/* 05 How IDOR works (animated) */}
+        <RevealSlide slideNumber={5}>
           <motion.div className="slide-num" variants={fadeUp}>IN MOTION</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             Same endpoint. <em>One number.</em>
@@ -295,8 +349,8 @@ export default function BasicWebHackingPage() {
           </motion.div>
         </RevealSlide>
 
-        {/* 05 Why IDOR is dangerous */}
-        <RevealSlide slideNumber={5}>
+        {/* 06 Why IDOR is dangerous */}
+        <RevealSlide slideNumber={6}>
           <motion.div className="slide-num" variants={fadeUp}>WHY IT MATTERS</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             Small bug, <em>big blast radius.</em>
@@ -313,8 +367,8 @@ export default function BasicWebHackingPage() {
           </motion.div>
         </RevealSlide>
 
-        {/* 06 From IDOR to Account Takeover */}
-        <RevealSlide slideNumber={6}>
+        {/* 07 From IDOR to Account Takeover */}
+        <RevealSlide slideNumber={7}>
           <motion.div className="slide-num" variants={fadeUp}>THE ESCALATION</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             From IDOR to <em>Account Takeover.</em>
@@ -338,8 +392,8 @@ export default function BasicWebHackingPage() {
           </motion.div>
         </RevealSlide>
 
-        {/* 07 The takeover chain */}
-        <RevealSlide slideNumber={7}>
+        {/* 08 The takeover chain */}
+        <RevealSlide slideNumber={8}>
           <motion.div className="slide-num" variants={fadeUp}>THE CHAIN</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             One token, <em>four steps.</em>
@@ -359,8 +413,8 @@ export default function BasicWebHackingPage() {
         </RevealSlide>
 
 
-        {/* 08 Live demo */}
-        <RevealSlide slideNumber={8} isCentered>
+        {/* 09 Live demo */}
+        <RevealSlide slideNumber={9} isCentered>
           <motion.div className="slide-num" variants={fadeUp}>HANDS ON</motion.div>
           <motion.h2 className="title-h title-h-md" variants={fadeUp}>
             Live <em>demo.</em>
@@ -382,8 +436,8 @@ export default function BasicWebHackingPage() {
           <motion.div className="demo-badge" variants={fadeUp}>Lab environment, authorized target</motion.div>
         </RevealSlide>
 
-        {/* 09 How to defend */}
-        <RevealSlide slideNumber={9}>
+        {/* 10 How to defend */}
+        <RevealSlide slideNumber={10}>
           <motion.div className="slide-num" variants={fadeUp}>THE FIX</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             How we <em>close the gap.</em>
@@ -399,8 +453,8 @@ export default function BasicWebHackingPage() {
           </div>
         </RevealSlide>
 
-        {/* 10 Learn more */}
-        <RevealSlide slideNumber={10}>
+        {/* 11 Learn more */}
+        <RevealSlide slideNumber={11}>
           <motion.div className="slide-num" variants={fadeUp}>KEEP LEARNING</motion.div>
           <motion.h2 className="slide-h slide-h-sm" variants={fadeUp}>
             Where to <em>go next.</em>
@@ -422,8 +476,8 @@ export default function BasicWebHackingPage() {
           </div>
         </RevealSlide>
 
-        {/* 11 Closing */}
-        <RevealSlide slideNumber={11} isCentered>
+        {/* 12 Closing */}
+        <RevealSlide slideNumber={12} isCentered>
           <motion.div className="slide-num" variants={fadeUp}>STAY CURIOUS, STAY ETHICAL</motion.div>
           <motion.h2 className="title-h" variants={fadeUp}>
             Thank you<span className="title-dot">.</span>
@@ -470,6 +524,14 @@ function InstagramIcon() {
       <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
       <circle cx="12" cy="12" r="4.25" />
       <circle cx="17.5" cy="6.5" r="0.75" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function MediumIcon() {
+  return (
+    <svg className="brand-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
     </svg>
   );
 }
@@ -651,6 +713,28 @@ const css = `
   .aspect-meaning { font-size: 13.5px; line-height: 1.6; color: var(--ink-dim); }
   .aspect-footnote { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--ink-faint); }
 
+  .channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .channel-card {
+    display: flex; flex-direction: column; padding: 36px 34px;
+    border: 1px solid var(--line); background: var(--bg-2);
+    color: inherit; text-decoration: none; transition: border-color 0.2s;
+  }
+  .channel-card:hover { border-color: var(--accent); }
+  .channel-platform {
+    display: inline-flex; align-items: center; gap: 10px; margin-bottom: 22px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent);
+  }
+  .channel-platform .brand-icon { width: 20px; height: 20px; }
+  .channel-topic { font-family: var(--serif); font-size: clamp(28px, 2.8vw, 42px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 14px; }
+  .channel-topic em { font-style: italic; color: var(--accent); }
+  .channel-description { font-size: 15px; line-height: 1.65; color: var(--ink-dim); margin-bottom: 28px; }
+  .channel-handle {
+    margin-top: auto; display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; color: var(--ink);
+    transition: color 0.2s;
+  }
+  .channel-card:hover .channel-handle { color: var(--accent); }
+
   /* ── Code steps (03) ──────────────────────── */
   .code-steps { display: flex; flex-direction: column; gap: 2px; }
   .code-step {
@@ -778,6 +862,7 @@ const css = `
     .slide-inner { padding: 100px 24px 60px; }
 
     .aspect-grid { grid-template-columns: 1fr 1fr; }
+    .channel-grid { grid-template-columns: 1fr; }
     .code-step { grid-template-columns: 1fr; gap: 8px; }
     .code-step-note { text-align: left; }
     .defense-grid, .learn-grid { grid-template-columns: 1fr; }
